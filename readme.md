@@ -1,6 +1,13 @@
 ## Point of Sales System
 This project aims to provide a user-friendly Point-of-Sale system that keeps track of the items sold and the total sales of every transaction in a department store.
-The Web App is built using PostgreSQL DBMS and the Laravel PHP Framework.
+The web application is built using PostgreSQL DBMS and the Laravel PHP Framework.
+
+## Developers
+- Capiral
+- Gordo
+- Mila
+- Hadji Abdulmadid
+- Podiotan
 
 ## Laravel PHP Framework
 
