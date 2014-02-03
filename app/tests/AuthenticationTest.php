@@ -4,7 +4,7 @@ class AuthenticationTest extends TestCase
 {
     /**
      * Tests login with invalid username or password.
-     * The function returns false.
+     * The function should return false.
      */
     public function testLoginWithInvalidCredentials(){
         $this->assertFalse(Auth::attempt([
@@ -20,7 +20,7 @@ class AuthenticationTest extends TestCase
 	
     /**
      * Tests login with valid username and password.
-     * The function returns true.
+     * The function should return true.
      */
     public function testLoginWithValidCredentials(){
         $this->assertTrue(Auth::attempt([
@@ -36,12 +36,12 @@ class AuthenticationTest extends TestCase
     public function testLoginWithInvalidArguments(){
         Auth::attempt([
                     'username' => admin,
-                    'password' => 'password'
+                    password => 'password'
         ]);
     }
     
      /** Tests the logout method with User logged in.
-      *  The function returns true.
+      *  The user should be logged out after the method call.
       */
     public function testLogoutWithUserLoggedIn(){
         Auth::attempt([
@@ -55,7 +55,7 @@ class AuthenticationTest extends TestCase
 	
     /**
      * Tests the logout method with user not logged in.
-     * The function returns false.
+     * The user must not be logged in before and after the method call.
      */
     public function testLogoutWithUserNotLoggedIn(){
         $this->assertFalse(Auth::check());
