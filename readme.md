@@ -2,13 +2,6 @@
 This project aims to provide a user-friendly Point-of-Sale system that keeps track of the items sold and the total sales of every transaction in a department store.
 The web application is built using PostgreSQL DBMS and the Laravel PHP Framework.
 
-## Developers
-- Capiral
-- Gordo
-- Mila
-- Hadji Abdulmadid
-- Podiotan
-
 ## Laravel PHP Framework
 
 [![Latest Stable Version](https://poser.pugx.org/laravel/framework/version.png)](https://packagist.org/packages/laravel/framework) [![Total Downloads](https://poser.pugx.org/laravel/framework/d/total.png)](https://packagist.org/packages/laravel/framework) [![Build Status](https://travis-ci.org/laravel/framework.png)](https://travis-ci.org/laravel/framework) [![License](https://poser.pugx.org/laravel/framework/license.png)](https://packagist.org/packages/laravel/framework) 
