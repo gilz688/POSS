@@ -2,19 +2,21 @@
 
 class AuthenticationTest extends TestCase
 {
+    protected $useDatabase = true;
+    
     /**
      * Tests login with invalid username or password.
      * The function should return false.
      */
     public function testLoginWithInvalidCredentials(){
         $this->assertFalse(Auth::attempt([
-                    'username' => 'admin',
+                    'username' => 'admin1',
                     'password' => 'wrongpass'
         ]));
         
         $this->assertFalse(Auth::attempt([
                     'username' => 'wronguser',
-                    'password' => 'password'
+                    'password' => 'admin1_password'
         ]));
     }
 	
@@ -24,8 +26,8 @@ class AuthenticationTest extends TestCase
      */
     public function testLoginWithValidCredentials(){
         $this->assertTrue(Auth::attempt([
-                    'username' => 'admin',
-                    'password' => 'password'
+                    'username' => 'admin1',
+                    'password' => 'admin1_password'
         ]));
     }
 	
@@ -35,8 +37,8 @@ class AuthenticationTest extends TestCase
      */
     public function testLoginWithInvalidArguments(){
         Auth::attempt([
-                    'username' => admin,
-                    password => 'password'
+                    'username' => admin1,
+                    password => 'admin1_password'
         ]);
     }
     
@@ -45,8 +47,8 @@ class AuthenticationTest extends TestCase
       */
     public function testLogoutWithUserLoggedIn(){
         Auth::attempt([
-                    'username' => 'admin',
-                    'password' => 'password'
+                    'username' => 'admin1',
+                    'password' => 'admin1_password'
         ]);
         $this->assertTrue(Auth::check());
         Auth::logout();
@@ -62,4 +64,5 @@ class AuthenticationTest extends TestCase
         Auth::logout();
         $this->assertFalse(Auth::check());
     }
+    
 }
