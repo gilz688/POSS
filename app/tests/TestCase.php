@@ -2,18 +2,40 @@
 
 class TestCase extends Illuminate\Foundation\Testing\TestCase {
 
-	/**
-	 * Creates the application.
-	 *
-	 * @return \Symfony\Component\HttpKernel\HttpKernelInterface
-	 */
-	public function createApplication()
-	{
-		$unitTesting = true;
+    protected $useDatabase = false;
 
-		$testEnvironment = 'testing';
+    /**
+     * Creates the application.
+     *
+     * @return \Symfony\Component\HttpKernel\HttpKernelInterface
+     */
+    public function createApplication() {
+        $unitTesting = true;
 
-		return require __DIR__.'/../../bootstrap/start.php';
-	}
+        // switches to an in-memory sqlite database for testing purposes
+        $testEnvironment = 'testing';
 
+        return require __DIR__ . '/../../bootstrap/start.php';
+    }
+
+    /**
+     * Default preparation for each test
+     */
+    public function setUp()
+    {
+        parent::setUp();
+        $this->prepareForTests();
+    }
+ 
+    /**
+     * Migrates the database and seeds test data if requested by the test.
+     */
+    private function prepareForTests()
+    {
+        if($this->useDatabase){
+            Artisan::call('migrate');
+            Eloquent::unguard();
+            Artisan::call('db:seed',['--class' => 'TestDataSeeder']);
+        }
+    }
 }
