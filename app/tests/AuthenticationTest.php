@@ -30,17 +30,7 @@ class AuthenticationTest extends TestCase
                     'password' => 'admin1_password'
         ]));
     }
-
-     /**
-     * Tests the login method with missing arguments.
-     * @expectedException ErrorException
-     */
-    public function testLoginWithMissingArguments(){
-        Auth::attempt([
-                    'username' => 'admin1'
-        ]);
-    }
-    
+	
     /**
      * Tests the login method with invalid arguments.
      * @expectedException ErrorException

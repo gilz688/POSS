@@ -21,7 +21,6 @@ class CreateUsersTable extends Migration {
             $table->string("lastname", 24)->nullable()->default(null);
             
             $table->timestamps();
-            $table->softDeletes();
         });
     }
     public function down()
