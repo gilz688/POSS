@@ -3,8 +3,7 @@
 class DatabaseSeeder extends Seeder {
 
 	/**
-	 * Run the database seeds.
-	 *
+	 * Seeds database with initial data.
 	 * @return void
 	 */
 	public function run()
