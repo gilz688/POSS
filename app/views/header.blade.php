@@ -10,6 +10,13 @@
                 <a href="{{ URL::route("user/profile") }}">
                     profile
                 </a>
+                
+                @if (Auth::user()->role == 'admin')
+                |
+                <a href="{{ URL::route("users") }}">
+                    users
+                </a>
+                @endif
             @else
                 <a href="{{ URL::route("user/login") }}">
                     login

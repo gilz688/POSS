@@ -5,6 +5,22 @@ class TestCase extends Illuminate\Foundation\Testing\TestCase {
     protected $useDatabase = false;
 
     /**
+     * Valid credentials in the Test Database
+     */
+    protected $adminCredentials = [
+        'username' => 'admin1',
+        'password' => 'admin1_password'
+    ];
+    protected $auditorCredentials = [
+        'username' => 'auditor1',
+        'password' => 'auditor1_password'       
+    ];
+    protected $clerkCredentials = [
+        'username' => 'clerk1',
+        'password' => 'clerk1_password'       
+    ];
+    
+    /**
      * Creates the application.
      *
      * @return \Symfony\Component\HttpKernel\HttpKernelInterface

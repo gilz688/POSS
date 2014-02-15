@@ -3,9 +3,9 @@
 class Administration {
 
     public static function createUser($userData) {
-        $rules = [ 'username' => 'required',
+        $rules = [ 'username' => 'required|Unique:users',
             'password' => 'required'];
-
+        
         if (Auth::check() && Auth::user()->role == "admin") {
             $validator = Validator::make($userData, $rules);
             if ($validator->passes()) {
@@ -33,7 +33,15 @@ class Administration {
             throw new UnauthorizedException('User is not admin!');
         }
     }
-
+    
+    public static function getUsers(){
+        if (Auth::check() && Auth::user()->role == "admin") {
+            return User::all();
+        } else {
+            throw new UnauthorizedException('User is not admin!');
+        }
+    }
+    
 }
 
 /**

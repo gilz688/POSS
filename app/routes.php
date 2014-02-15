@@ -43,4 +43,16 @@ Route::group(["before" => "auth"], function()
         "as"   => "user/logout",
         "uses" => "UserController@logoutAction"
     ]);
+    Route::any("/users", [
+        "as"   => "users",
+        "uses" => "AdminController@usersAction"
+    ]);
+    Route::any("/users/add", [
+        "as"   => "users/add",
+        "uses" => "AdminController@addUserAction"
+    ]);
+    Route::get("/users/remove", [
+        "as"   => "users/remove",
+        "uses" => "AdminController@removeUserAction"
+    ]);
 });

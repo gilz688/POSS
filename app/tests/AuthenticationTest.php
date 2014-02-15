@@ -25,10 +25,7 @@ class AuthenticationTest extends TestCase
      * The function should return true.
      */
     public function testLoginWithValidCredentials(){
-        $this->assertTrue(Auth::attempt([
-                    'username' => 'admin1',
-                    'password' => 'admin1_password'
-        ]));
+        $this->assertTrue(Auth::attempt($this->adminCredentials));
     }
 
      /**
@@ -56,10 +53,7 @@ class AuthenticationTest extends TestCase
       *  The user should be logged out after the method call.
       */
     public function testLogoutWithUserLoggedIn(){
-        Auth::attempt([
-                    'username' => 'admin1',
-                    'password' => 'admin1_password'
-        ]);
+        Auth::attempt($this->adminCredentials);
         $this->assertTrue(Auth::check());
         Auth::logout();
         $this->assertFalse(Auth::check());

@@ -2,15 +2,6 @@
 
 class AdministrationTest extends TestCase{
     protected $useDatabase = true;
-    private $adminCredentials = [
-        'username' => 'admin1',
-        'password' => 'admin1_password'
-    ];
-
-    private $clerkCredentials = [
-        'username' => 'clerk1',
-        'password' => 'clerk1_password'       
-    ];
     
      /**
      * Tests createUser() function with valid data

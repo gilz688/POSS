@@ -3,13 +3,17 @@
 class DatabaseSeeder extends Seeder {
 
 	/**
-	 * Seeds database with initial data.
+	 * Run the database seeds.
+	 *
 	 * @return void
 	 */
 	public function run()
 	{
 		Eloquent::unguard();
                 $this->call('UserTableSeeder');
+				$this->call('TransactionTableSeeder');
+				$this->call('ItemTableSeeder');
+				$this->call('CategoryTableSeeder');
 	}
 
 }

@@ -12,6 +12,7 @@ class User extends Eloquent implements UserInterface, RemindableInterface {
 	 */
 	protected $table = 'users';
         
+        protected $fillable = array('username', 'password', 'role');
         /**
 	 * Set whether soft deletion is enabled or not.
 	 *
