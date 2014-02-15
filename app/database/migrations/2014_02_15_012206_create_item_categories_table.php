@@ -7,8 +7,8 @@ class CreateItemCategoriesTable extends Migration {
     public function up() {
         Schema::create('item_categories', function(Blueprint $table) {
             $table->increments('id');
-            $table->string('name',16);
-            $table->string('description',64);
+            $table->string('name',32);
+            $table->string('description',128);
             $table->timestamps();
             $table->softDeletes();
         });

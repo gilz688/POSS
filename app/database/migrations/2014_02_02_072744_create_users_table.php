@@ -9,16 +9,16 @@ class CreateUsersTable extends Migration {
         Schema::create('users', function(Blueprint $table) {
             $table->increments('id');
 
-            $table->string('username', 16)->unique();
+            $table->string('username', 32)->unique();
             $table->string('password', 64);
 
             $table->enum('role', array('clerk', 'auditor', 'admin'))->default('clerk');
 
             $table->string('email', 255)->nullable()->default(null);
 
-            $table->string('firstname', 24)->nullable()->default(null);
-            $table->string('middlename', 24)->nullable()->default(null);
-            $table->string('lastname', 24)->nullable()->default(null);
+            $table->string('firstname', 32)->nullable()->default(null);
+            $table->string('middlename', 32)->nullable()->default(null);
+            $table->string('lastname', 32)->nullable()->default(null);
 
             $table->timestamps();
             $table->softDeletes();

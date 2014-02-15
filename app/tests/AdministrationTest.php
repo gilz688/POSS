@@ -85,8 +85,8 @@ class AdministrationTest extends TestCase{
      /**
      * Tests removeUser() function with valid id
      * with authorized user currently logged in.
-     * When user with the specified id is queried
-     * from the database, none is found.
+     * When user with the specified id is searched
+     * in the database, none is found.
      */
     public function testRemoveUserWithValidId(){
         Auth::attempt($this->adminCredentials);
@@ -169,13 +169,9 @@ class AdministrationTest extends TestCase{
         ];
         
         $userId = Administration::createUser($userData);
-        // check if user was successfully created
         $this->assertNotNull(User::find($userId));
         
         Auth::logout();
         Administration::removeUser($userId);
-        
-        // check if user was not deleted
-        $this->assertNull(User::find($userId));
     }
 }

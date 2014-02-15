@@ -1,6 +1,6 @@
 <?php
 
-class PurchasedItems extends Eloquent{
+class PurchasedItem extends Item{
     protected $table = 'purchased_items';
     protected $softDelete = true;
 }
