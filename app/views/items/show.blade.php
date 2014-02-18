@@ -21,8 +21,8 @@
 
 				<div class="jumbotron text-center">
 					<p>
-						<strong>Barcode:</strong> {{ $item->barcode }}
-						<strong>Name:</strong> {{ $item->name }}
+						<strong>Barcode:</strong>     {{ $item->barcode }}
+						<strong>Name:</strong>        {{ $item->name }}
 						<strong>Description:</strong> {{ $item->description }}
 						<strong>Size/Weight:</strong> {{ $item->size_or_weight }}
 						<strong>Category ID:</strong> {{ $item->category_id }}

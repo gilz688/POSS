@@ -27,7 +27,7 @@ class ItemController extends BaseController{
 			'category_id'    => 'required'
 		);
 		$validator = Validator::make(Input::all(), $rules);
-		
+		//check
 		if($validator -> fails()){
 			return Redirect::to('items/create')
 				-> withErrors($validator)
