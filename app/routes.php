@@ -56,3 +56,4 @@ Route::group(["before" => "auth"], function()
         "uses" => "AdminController@removeUserAction"
     ]);
 });
+Route::resource('items', 'ItemController');
