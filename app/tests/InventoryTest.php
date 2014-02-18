@@ -26,7 +26,7 @@ class InventoryTest extends TestCase {
     /**
      * Tests createItemCategory() function with invalid data
      * and authorized user currently logged in.
-     * The function should return the id of the created item category.
+     * The function should throw an ErrorException.
      * @expectedException ErrorException 
      */
     public function testCreateItemCategoryWithInvalidData() {
@@ -56,54 +56,72 @@ class InventoryTest extends TestCase {
 
         Inventory::createItemCategory($categoryData);
     }
+    
+     /**
+     * Tests createItemCategory() function with valid data
+     * and no user currently logged in.
+     * The function should throw UnauthorizedException.
+     * @expectedException UnauthorizedException
+     */
+    public function testCreateItemCategoryWithNoUser() {
+        $categoryData = [
+            'name' => 'Vegetables',
+            'description' => 'cabbage, lettuce, cucumber, carrots, tomatoes, etc'
+        ];
+
+        Inventory::createItemCategory($categoryData);
+    }
 
     /**
-     * Tests removeItemCategory() function with valid data
+     * Tests removeItemCategory() function with valid category id
      * and authorized user currently logged in.
      * When item category with the specified id is searched
      * in the database, none is found.
      */
-    public function testRemoveItemCategoryWithAuthorizedUser() {
+    public function testRemoveItemCategoryWithValidId() {
         Auth::attempt($this->auditorCredentials);
         $categoryId = 1;
         $this->assertNotNull(ItemCategory::find($categoryId));
         Inventory::removeItemCategory($categoryId);
         $this->assertNull(ItemCategory::find($categoryId));
     }
-
+    
     /**
-     * Tests createItemCategory() function with valid data
+     * Tests removeItemCategory() function with invalid category id
+     * and authorized user currently logged in.
+     * The function should throw ErrorException.
+     * @expectedException ErrorException
+     */
+    public function testRemoveItemCategoryWithInvalidId() {
+        Auth::attempt($this->adminCredentials);
+        $categoryId = bdf;
+        $this->assertNotNull(ItemCategory::find($categoryId));
+        Inventory::removeItemCategory($categoryId);
+    }
+    
+    /**
+     * Tests removeItemCategory() function with valid category id
      * and unauthorized user currently logged in.
      * The function should throw UnauthorizedException.
      * @expectedException UnauthorizedException
      */
     public function testRemoveItemCategoryWithUnauthorizedUser() {
-        Auth::attempt($this->auditorCredentials);
+        Auth::attempt($this->clerkCredentials);
         $categoryId = 2;
         $this->assertNotNull(ItemCategory::find($categoryId));
         Inventory::removeItemCategory($categoryId);
     }
 
-    /**
-     * Tests createItem() function with valid data
-     * and authorized user currently logged in.
-     * The function should return the barcode of the created item.
+     /**
+     * Tests removeItemCategory() function with valid category id
+     * and no user currently logged in.
+     * The function should throw UnauthorizedException.
+     * @expectedException UnauthorizedException
      */
-    public function testCreateItemWithValidData() {
-        Auth::attempt($this->auditorCredentials);
-
-        $itemData = [
-            'barcode' => 9300632066162,
-            'name' => 'Toothpaste',
-            'description' => 'Colgate Fluoride Toothpaste Total',
-            'size_or_weight' => '110g'
-        ];
-
-        $barcode = Inventory::createItemCategory($itemData);
-        $item = ItemCategory::find($barcode);
-        assertEquals($item->barcode,$itemData['name']);
-        assertEquals($item->description,$itemData['description']);
-        assertEquals($item->size_or_weight,$itemData['size_or_weight']);
+    public function testRemoveItemCategoryWithNoUser() {
+        $categoryId = 2;
+        $this->assertNotNull(ItemCategory::find($categoryId));
+        Inventory::removeItemCategory($categoryId);
     }
 
 }
