@@ -55,5 +55,28 @@ Route::group(["before" => "auth"], function()
         "as"   => "users/remove",
         "uses" => "AdminController@removeUserAction"
     ]);
+	
+	Route::get("/items/index", [
+		"as"   => "items",
+		"uses" => "ItemController@index"
+	]);
+	Route::get("/items/create", [
+		"as"   => "items/create",
+		"uses" => "ItemController@create"
+	]);
+	Route::get("/items/store", [
+		"as"   => "items/store",
+		"uses" => "ItemController@store"
+	]);
+	Route::get("/items/show", [
+		"as"   => "items/show",
+		"uses" => "ItemController@show"
+	]);
+	Route::get("/items/destroy", [
+		"as"   => "items/destroy",
+		"uses" => "ItemController@destroy"
+	]);
+	
+	
+	Route::resource('items', 'ItemController');
 });
-Route::resource('items', 'ItemController');

@@ -24,6 +24,14 @@
         </tr>
         <tr>
             <td>
+                {{ Form::label("confirm", "Confirm Password") }}
+            </td>
+            <td>
+                {{ Form::password("confirm", []) }}
+            </td>
+        </tr>
+        <tr>
+            <td>
                 {{ Form::label("role", "Role") }}
             </td>
             <td>

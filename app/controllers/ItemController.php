@@ -14,6 +14,17 @@ class ItemController extends BaseController{
 		return View::make('items.create') -> with('items', $items);
 	 }
 	 /**
+	 * Show the form for creating a new resource.
+	 *
+	 * @return Response
+	 */
+	public function create()
+	{
+		// load the create form (app/views/items/create.blade.php)
+		return View::make('items.create');
+	}
+
+	 /**
 	  * Store a newly created resource
 	  * @return Response
 	  */
@@ -61,14 +72,21 @@ class ItemController extends BaseController{
 	 }
 	 /**
 	  * Edit item
+	  * @param $barcode
+	  * @return Response
 	 */
-	 public function edit(){
-		//wala pa
-	 }
+	 public function edit($barcode){
+		// get the item
+		$item = Item::find($barcode);
+
+		return View::make('items.edit')
+			->with('item', $item);
+	}
+
 	 /**
 	  * Update item
-	  * Process the create form submit and save the nerd to the database.
-	 */
+	  * Process the create form submit and save the item to the database.
+	  */
 	 public function update(){
 	 //wala pa sad
 	 }

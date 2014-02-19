@@ -1,9 +1,8 @@
 <!DOCTYPE html>
 <html>
-	<head>
-		<title>Point of Sale System</title>
-		<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css">
-	</head>
+	@section("header")
+	
+	<!--	<link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css"> -->
 	<body>
 		<div class="container">
 
@@ -31,4 +30,5 @@
 
 		</div>
 	</body>
+	@section(footer)
 </html>
