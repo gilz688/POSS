@@ -2,43 +2,46 @@
 
 class Administration {
 
-    private static function checkPermissions() {
-        if (!Auth::check() || Auth::user()->role != "auditor" && Auth::user()->role != "admin") {
-            throw new UnauthorizedException("User is not auditor or admin!");
-        }
-    }
-
     public static function createUser($userData) {
-        self::checkPermissions();
-
         $rules = [ 'username' => 'required|Unique:users',
             'password' => 'required'];
-
-        $validator = Validator::make($userData, $rules);
-        if ($validator->passes()) {
-            $userData['password'] = Hash::make($userData['password']);
-            $userId = User::create($userData)->id;
-            return $userId;
+        
+        if (Auth::check() && Auth::user()->role == "admin") {
+            $validator = Validator::make($userData, $rules);
+            if ($validator->passes()) {
+                $userData['password'] = Hash::make($userData['password']);
+                $userId = User::create($userData)->id;
+                return $userId;
+            } else {
+                throw new ErrorException("Invalid data!");
+            }
         } else {
-            throw new ErrorException("Invalid data!");
+            throw new UnauthorizedException('User is not admin!');
         }
     }
 
     public static function removeUser($userId) {
-        self::checkPermissions();
-        $user = User::find($userId);
-        if ($user != null) {
-            $user->delete();
+        if (Auth::check() && Auth::user()->role == "admin") {
+            $user = User::find($userId);
+            if($user != null){
+                $user->delete();
+            }
+            else{
+                throw new ErrorException("Invalid userId!");
+            }
         } else {
-            throw new ErrorException("Invalid userId!");
+            throw new UnauthorizedException('User is not admin!');
         }
     }
-
-    public static function getUsers() {
-        self::checkPermissions();
-        return User::all();
+    
+    public static function getUsers(){
+        if (Auth::check() && Auth::user()->role == "admin") {
+            return User::all();
+        } else {
+            throw new UnauthorizedException('User is not admin!');
+        }
     }
-
+    
 }
 
 /**

@@ -3,7 +3,7 @@
 class Inventory {
 
     private static function checkPermissions() {
-        if (!Auth::check() || Auth::user()->role != "auditor" && Auth::user()->role != "admin") {
+        if (!Auth::check() && Auth::user()->role != "auditor" || Auth::user()->role != "auditor") {
             throw new UnauthorizedException("User is not auditor or admin!");
         }
     }

@@ -1,10 +1,10 @@
 @extends("layout")
 @section("content")
-<table style="width:300px">
+<table class="users_table">
     <tr>
         <th>username</th>
-        <th>role</th>
-        <th></th>
+        <th>Role</th>
+        <th>Action</th>
     </tr>
     @foreach ($users as $user)
     <tr> 
@@ -18,5 +18,5 @@
     </tr>
     @endforeach
 </table>
-<a href="{{ URL::to('users/add') }}">add user</a>
+    <a href="{{ URL::to('users/add') }}" class="link">Add User</a>
 @stop

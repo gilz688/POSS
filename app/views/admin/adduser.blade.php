@@ -1,11 +1,11 @@
 @extends("layout")
 @section("content")
-<div class="login-form">
+<div class="login">
     {{ Form::open([
         "route"        => "users/add",
         "autocomplete" => "off"
     ]) }}
-    <table style="width:300px">
+    <table class="users_table">
         <tr>
             <td>
                 {{ Form::label("username", "Username") }}
@@ -20,14 +20,6 @@
             </td>
             <td>
                 {{ Form::password("password", []) }}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {{ Form::label("confirm", "Confirm Password") }}
-            </td>
-            <td>
-                {{ Form::password("confirm", []) }}
             </td>
         </tr>
         <tr>
