@@ -15,6 +15,11 @@
                 <a href="{{ URL::route("users") }}">
                     Users  
                 </a>
+
+                <a href="#">
+                    Manage Items
+                </a>
+                
                 @endif
 
             @else
