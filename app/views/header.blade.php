@@ -19,7 +19,6 @@
                 <a href="#">
                     Manage Items
                 </a>
-                
                 @endif
 
             @else
@@ -27,6 +26,8 @@
                     Login
                 </a>
             @endif
+
+            <a href="#">About</a>
         </div>
     </div>
 @show

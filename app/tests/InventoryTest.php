@@ -106,4 +106,28 @@ class InventoryTest extends TestCase {
         assertEquals($item->size_or_weight,$itemData['size_or_weight']);
     }
 
+    /**
+     * Tests createItem() function with invalid data
+     * and authorized user currently logged in.
+     * The function should return the id of the created item category.
+     * @expectedException ErrorException  
+    */
+    public function testCreateItemWithInvalidData(){
+        Auth::attempt($this->auditorCredentials);
+
+        $itemData =[
+            'barcode' => abnkkbsnpl,
+            'name' => 'Shampoo',
+            'description' => 'Head & Shoulders Anti-dandruff Shampoo - refreshing',
+            'size_or_weight' => '400mL'
+
+        ];
+
+        $barcode = Inventory::createItemCategory($itemData);
+        $item = ItemCategory::find($barcode);
+        assertEquals($item->barcode,$itemData['name']);
+        assertEquals($item->description,$itemData['description']);
+        assertEquals($item->size_or_weight,$itemData['size_or_weight']);
+    }
+
 }
