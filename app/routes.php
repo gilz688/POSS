@@ -55,4 +55,19 @@ Route::group(["before" => "auth"], function()
         "as"   => "users/remove",
         "uses" => "AdminController@removeUserAction"
     ]);
+	Route::get("/items/add", [
+		"as"   => "items/add",
+		"uses" => "ItemController@addItemAction"
+	]);
+	
+	Route::get("/items", [
+		"as"   => "items",
+		"uses" => "ItemController@itemsAction"
+	]);
+	Route::get("/items/remove", [
+		"as"   => "items/remove",
+		"uses" => "ItemController@removeItemAction"
+	]);
+	
+	Route::resource('items', 'ItemController');
 });
