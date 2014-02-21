@@ -16,8 +16,8 @@
                     Users  
                 </a>
 
-                <a href="#">
-                    Manage Items
+                <a href="items">
+                     Items
                 </a>
                 @endif
 

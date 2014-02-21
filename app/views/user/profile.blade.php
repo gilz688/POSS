@@ -1,5 +1,6 @@
 @extends("layout")
 @section("content")
+
 	{{HTML::style('css/profile.css')}}
 		<div class="pic">
 			<img src="image/meow.jpg">

@@ -6,11 +6,11 @@ class ItemController extends Controller{
         return View::make('item/items', array(
                     'items' => Item::getItems(),
                     'barcode' => Item::item()->barcode,
-					'name' => Item::item->name,
-					'price' => Item::item->price,
-					'description' => Item::item->description,
-					'size_or_weight' => Item::item->size_or_weight,
-					'category_id' => Item::item->category_id
+					'name' => Item::item()->name,
+					'price' => Item::item()->price,
+					'description' => Item::item()->description,
+					'size_or_weight' => Item::item()->size_or_weight,
+					'category_id' => Item::item(()->category_id
         ));
     }
 
@@ -33,11 +33,14 @@ class ItemController extends Controller{
                 }
             } else {
                 throw new ErrorException("Do not leave any blank field!");
-                return Redirect::route("items/add");
+                return Redirect::route('items/add');
             }
         }
         return View::make('items/add');
     }
-
-    
+	public function removeItemAction() {
+        $itemBarcode = Input::get('barcode');
+        Item::removeItem($itemBarcode);
+        return Redirect::route('items');
+    }
 }
