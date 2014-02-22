@@ -8,11 +8,25 @@ class ItemCategoryRepository implements TableRepository {
         'clerk' => false,
         null => false
     ];
+    
+    protected static $readPermissions = [
+        'admin' => true,
+        'auditor' => true,
+        'clerk' => true,
+        null => true
+    ];
 
     public function checkWritePermissions() {
         $role = Auth::user()->role;
         if (self::$writePermissions[$role] != true) {
-            throw new UnauthorizedException('Access to table repository is denied!');
+            throw new UnauthorizedException('Write access to table repository is denied!');
+        }
+    }
+    
+    public function checkReadPermissions() {
+        $role = Auth::user()->role;
+        if (self::$readPermissions[$role] != true) {
+            throw new UnauthorizedException('Read access to table repository is denied!');
         }
     }
 
@@ -43,6 +57,7 @@ class ItemCategoryRepository implements TableRepository {
     }
 
     public function all() {
+        $this->checkReadPermissions();
         return ItemCategory::all();
     }
 
@@ -75,6 +90,7 @@ class ItemCategoryRepository implements TableRepository {
     }
     
     public function find($id) {
+        $this->checkReadPermissions();
         $itemCategory = ItemCategory::find($id);
         if ($itemCategory == null) {
             return null;
