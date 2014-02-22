@@ -9,6 +9,7 @@ class ItemCategoryTest extends TestCase {
      * It returns its attributes.
      */
     public function testFind() {
+        Auth::attempt($this->clerkCredentials);
         $id = 1;
         $itemCategories = new ItemCategoryRepository;
         $attributes = $itemCategories->find($id);
@@ -22,6 +23,7 @@ class ItemCategoryTest extends TestCase {
      * It returns null.
      */
     public function testFindWithInvalidId() {
+        Auth::attempt($this->clerkCredentials);
         $id = -2;
         $itemCategories = new ItemCategoryRepository;
         $attributes = $itemCategories->find($id);
