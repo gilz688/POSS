@@ -1,6 +1,6 @@
 <?php
 
-class InventoryItemRepository implements TableRepository{
+class PurchasedItemsRepository implements TableRepository{
 
     public function add($attributes) {
         // some code here

@@ -9,7 +9,7 @@ class AdminController extends Controller {
         ));
     }
     
-    public function addUserAction() {
+    public function addAction() {
         if (Input::server('REQUEST_METHOD') == 'POST')
         {
             try{
@@ -28,7 +28,7 @@ class AdminController extends Controller {
         return View::make('admin/adduser');
     }
     
-    public function removeUserAction() {
+    public function deleteAction() {
         $userId = Input::get('userId');
         Administration::removeUser($userId);
         return Redirect::route('users');

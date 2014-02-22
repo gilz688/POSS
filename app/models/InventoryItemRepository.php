@@ -1,6 +1,6 @@
 <?php
 
-class TransactionRepository implements TableRepository{
+class InventoryItemRepository implements TableRepository{
 
     protected static $writePermissions = [
         'admin' => false,

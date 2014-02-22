@@ -58,7 +58,7 @@ class ItemCategoryRepository implements TableRepository {
 
     public function all() {
         $this->checkReadPermissions();
-        return ItemCategory::all();
+        return ItemCategory::orderBy('id')->get();
     }
 
     public function edit($id, $attributes) {
@@ -85,7 +85,7 @@ class ItemCategoryRepository implements TableRepository {
                     throw new ErrorException('Description should be string!');
                 }
             }
-            $itemCategory->save();
+            $itemCategory->update();
         }
     }
     
