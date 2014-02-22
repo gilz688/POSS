@@ -15,7 +15,9 @@
                 <a href="{{ URL::route("users") }}">
                     Users  
                 </a>
-
+                <a href="{{ URL::route("items/categories") }}">
+                    Item Categories  
+                </a>
                 <a href="items">
                      Items
                 </a>

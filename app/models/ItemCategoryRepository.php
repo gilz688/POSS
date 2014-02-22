@@ -85,7 +85,7 @@ class ItemCategoryRepository implements TableRepository {
                     throw new ErrorException('Description should be string!');
                 }
             }
-            $itemCategory->save();
+            $itemCategory->update();
         }
     }
     

@@ -5,7 +5,7 @@
         <link
             type="text/css"
             rel="stylesheet"
-            href="css/layout.css" />
+            href="../css/layout.css" />
         <title>
             Point of Sales System
         </title>
@@ -17,6 +17,5 @@
                 @yield("content")
             </div>
         </div>
-        @include("footer")
     </body>
 </html>

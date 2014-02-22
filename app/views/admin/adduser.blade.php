@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-<div class="login">
+<div class="adduser">
     {{ Form::open([
         "route"        => "users/add",
         "autocomplete" => "off"
