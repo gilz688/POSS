@@ -43,7 +43,7 @@ class ItemTest extends TestCase {
 
         $itemData = [
            'barcode' => 800552999632,
-            'name' => Body Spray,
+            'name' => 'Body Spray',
 			'price' => 150.25, 
             'description' => 'Ever Bilena body spray',
 			'size_or_weight' => '100mL',
@@ -130,7 +130,7 @@ class ItemTest extends TestCase {
         Auth::attempt($this->clerkCredentials);
         $itemBarcode = 052000324822;
         $this->assertNotNull(Item::find($itemBarcode));
-        Item::removeItem$itemBarcode);
+        Item::removeItem($itemBarcode);
     }
 
      /**
