@@ -4,13 +4,7 @@ class ItemController extends Controller{
 
 	public function itemsAction() {
         return View::make('item/items', array(
-                    'items' => Item::getItems(),
-                    'barcode' => Item::item()->barcode,
-					'name' => Item::item()->name,
-					'price' => Item::item()->price,
-					'description' => Item::item()->description,
-					'size_or_weight' => Item::item()->size_or_weight,
-					'category_id' => Item::item(()->category_id
+                    'items' => Item::getItems()
         ));
     }
 
