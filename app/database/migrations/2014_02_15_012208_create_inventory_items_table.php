@@ -8,6 +8,7 @@ class CreateInventoryItemsTable extends Migration {
         Schema::create('inventory_items', function(Blueprint $table) {
             $table->integer('barcode');
             $table->integer('quantity');
+            $table->foreign('barcode')->references('barcode')->on('items');
             $table->primary('barcode');
             $table->timestamps();
             $table->softDeletes();
