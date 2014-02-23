@@ -4,8 +4,8 @@ class ItemCategoryController extends Controller{
 
     private $categories;
 
-    public function __construct() {
-        $this->categories = new ItemCategoryRepository;
+    public function __construct(ItemCategoryRepository $categories) {
+        $this->categories = $categories;
     }
 
     public function categoriesAction() {

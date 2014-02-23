@@ -10,16 +10,15 @@
                 <a href="{{ URL::route("user/profile") }}">
                     Profile
                 </a>
-
+                <a href="{{ URL::route("transactions") }}">
+                    Transactions  
+                </a>
                 @if (Auth::user()->role == 'admin')
                 <a href="{{ URL::route("users") }}">
                     Users  
                 </a>
                 <a href="{{ URL::route("items/categories") }}">
                     Item Categories  
-                </a>
-                <a href="{{ URL::route("transactions") }}">
-                    Transactions  
                 </a>
                 <a href="items">
                      Items
