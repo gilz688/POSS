@@ -55,31 +55,53 @@ Route::group(["before" => "auth"], function() {
         "uses" => "AdminController@deleteAction"
     ]);
 
+    /*
+     * ItemCategoryController
+     */
     Route::get("/items/categories", [
         "as" => "items/categories",
         "uses" => "ItemCategoryController@categoriesAction"
     ]);
-    
     Route::get("/items/categories/remove", [
         "as" => "items/categories/remove",
         "uses" => "ItemCategoryController@deleteAction"
     ]);
-    
     Route::any("/items/categories/add", [
         "as" => "items/categories/add",
         "uses" => "ItemCategoryController@addAction"
     ]);
-    
     Route::any("/items/categories/edit", [
         "as" => "items/categories/edit",
         "uses" => "ItemCategoryController@editAction"
     ]);
 
+    /*
+     * TransactionController
+     */
+    Route::get("/transactions", [
+        "as" => "transactions",
+        "uses" => "TransactionController@listAction"
+    ]);
+    Route::get("/transactions/void", [
+        "as" => "transactions/void",
+        "uses" => "TransactionController@voidAction"
+    ]);
+    Route::any("/transactions/add", [
+        "as" => "transactions/add",
+        "uses" => "TransactionController@addAction"
+    ]);
+    Route::any("/transactions/view", [
+        "as" => "transactions/view",
+        "uses" => "TransactionController@addAction"
+    ]);
+
+    /*
+     * ItemController
+     */
     Route::get("/items/add", [
         "as" => "items/add",
         "uses" => "ItemController@addItemAction"
     ]);
-
     Route::get("/items", [
         "as" => "items",
         "uses" => "ItemController@itemsAction"
@@ -88,6 +110,5 @@ Route::group(["before" => "auth"], function() {
         "as" => "items/remove",
         "uses" => "ItemController@removeItemAction"
     ]);
-
     Route::resource('items', 'ItemController');
 });
