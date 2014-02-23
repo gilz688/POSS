@@ -6,7 +6,7 @@ class CreateItemsTable extends Migration {
 
     public function up() {
         Schema::create('items', function(Blueprint $table) {
-            $table->integer('barcode');
+            $table->bigInteger('barcode');
             $table->string('name',32);
             $table->string('description',128);
             $table->string('size_or_weight',32);

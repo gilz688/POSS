@@ -15,6 +15,11 @@ class TestUserTableSeeder extends DatabaseSeeder {
                 'role' => 'clerk'
             ],
             [
+                'username' => 'clerk2',
+                'password' => Hash::make('clerk2_password'),
+                'role' => 'clerk'
+            ],
+            [
                 'username' => 'auditor1',
                 'password' => Hash::make('auditor1_password'),
                 'role' => 'auditor'

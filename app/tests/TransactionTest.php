@@ -4,49 +4,95 @@ class TransactionTest extends TestCase {
 
     protected $useDatabase = true;
 
-     /**
+    /**
      * Tests find() function with valid id
+     * and an auditor currently logged in.
      * It returns its attributes.
      */
-    public function testFind() {
-        Auth::attempt($this->clerkCredentials);
-        $id = 1;
-        $itemCategories = new ItemCategoryRepository;
-        $attributes = $itemCategories->find($id);
-        $this->assertEquals($attributes['id'],$id);
-        $this->assertTrue(array_key_exists('name', $attributes));
-        $this->assertTrue(array_key_exists('description', $attributes));
+    public function testFindWithAuditor() {
+        Auth::attempt($this->auditorCredentials);
+        $id = 2;
+        $transactions = new TransactionRepository();
+        $attributes = $transactions->find($id);
+        $this->assertEquals($attributes['id'], $id);
+        $this->assertTrue(array_key_exists('cashier_number', $attributes));
+        $this->assertTrue(array_key_exists('creator_id', $attributes));
     }
     
-     /**
-     * Tests find() function with invalid id
+        /**
+     * Tests find() function with valid id
+     * and an clerk currently logged in.
+     * It returns its attributes.
+     */
+    public function testFindWithClerk() {
+        Auth::attempt($this->clerkCredentials);
+        $id = 1;
+        $transactions = new TransactionRepository();
+        $attributes = $transactions->find($id);
+        $this->assertEquals($attributes['id'], $id);
+        $this->assertTrue(array_key_exists('cashier_number', $attributes));
+        $this->assertTrue(array_key_exists('creator_id', $attributes));
+    }
+
+    /**
+     * Tests find() function with invalid id.
+     * and a clerk currently logged in.
      * It returns null.
      */
-    public function testFindWithInvalidId() {
+    public function testFindWithInvalidIdandClerkLoggedIn() {
         Auth::attempt($this->clerkCredentials);
         $id = -2;
-        $itemCategories = new ItemCategoryRepository;
-        $attributes = $itemCategories->find($id);
+        $transactions = new TransactionRepository();
+        $attributes = $transactions->find($id);
         $this->assertNull($attributes);
     }
-        
+
+    /**
+     * Tests find() function with invalid id.
+     * and a auditor currently logged in.
+     * It returns null.
+     */
+    public function testFindWithInvalidIdAuditorLoggedIn() {
+        Auth::attempt($this->auditorCredentials);
+        $id = -2;
+        $transactions = new TransactionRepository();
+        $attributes = $transactions->find($id);
+        $this->assertNull($attributes);
+    }
+
+    /**
+     * Tests find() function with a transaction created
+     * by another clerk.
+     * It returns UnauthorizedException.
+     * @expectedException UnauthorizedException
+     */
+    public function testFindWithTransactionByAnotherClerk() {
+        Auth::attempt($this->clerkCredentials);
+        $id = 2;
+        $transactions = new TransactionRepository();
+        $attributes = $transactions->find($id);
+        $this->assertNull($attributes);
+    }
+
     /**
      * Tests add() function with valid data
      * and authorized user currently logged in.
-     * The function should return the id of the created item category.
+     * The function should return the id of the created transaction.
      */
     public function testAdd() {
-        Auth::attempt($this->adminCredentials);
+        Auth::attempt($this->clerkCredentials);
 
         $categoryData = [
-            'name' => 'Cosmetics',
-            'description' => 'shampoo, conditioners, lotions, perfumes, etc'
+            'cashier_number' => 2,
         ];
-        $itemCategories = new ItemCategoryRepository;
-        $id = $itemCategories->add($categoryData);
-        $attributes = $itemCategories->find($id);
-        $this->assertEquals($attributes['name'], $categoryData['name']);
-        $this->assertEquals($attributes['description'], $categoryData['description']);
+
+        $transactions = new TransactionRepository();
+        $id = $transactions->add($categoryData);
+
+        $attributes = $transactions->find($id);
+        $this->assertNotNull($attributes);
+        $this->assertEquals($attributes['cashier_number'], 2);
+        $this->assertEquals($attributes['creator_id'], Auth::user()->id);
     }
 
     /**
@@ -56,15 +102,14 @@ class TransactionTest extends TestCase {
      * @expectedException ErrorException 
      */
     public function testAddWithInvalidData() {
-        Auth::attempt($this->adminCredentials);
+        Auth::attempt($this->clerkCredentials);
 
         $categoryData = [
-            'name' => Cosmetics,
-            'description' => 5
+            'cashier_number' => asd,
         ];
 
-        $itemCategories = new ItemCategoryRepository;
-        $id = $itemCategories->add($categoryData);
+        $transactions = new TransactionRepository();
+        $transactions->add($categoryData);
     }
 
     /**
@@ -74,16 +119,14 @@ class TransactionTest extends TestCase {
      * @expectedException UnauthorizedException
      */
     public function testAddWithUnauthorizedUser() {
-        Auth::attempt($this->clerkCredentials);
+        Auth::attempt($this->auditorCredentials);
 
         $categoryData = [
-            'name' => 'Vegetables',
-            'description' => 'cabbage, lettuce, cucumber, carrots, tomatoes, etc'
+            'cashier_number' => 2,
         ];
 
-        $itemCategories = new ItemCategoryRepository;
-        $id = $itemCategories->add($categoryData);
-        $attributes = $itemCategories->find($id);
+        $transactions = new TransactionRepository();
+        $transactions->add($categoryData);
     }
 
     /**
@@ -93,28 +136,28 @@ class TransactionTest extends TestCase {
      * in the database, none is found.
      */
     public function testDelete() {
-        Auth::attempt($this->adminCredentials);
-        $id = 1;
-        $itemCategories = new ItemCategoryRepository;
-        $this->assertNotNull($itemCategories->find($id));
-        $itemCategories->delete($id);
-        $this->assertNull($itemCategories->find($id));
+        Auth::attempt($this->auditorCredentials);
+        $id = 2;
+        $transactions = new TransactionRepository();
+        $this->assertNotNull($transactions->find($id));
+        $transactions->delete($id);
+        $this->assertNull($transactions->find($id));
     }
 
-    
-     /**
+    /**
      * Tests delete() function with invalid id
      * and authorized user currently logged in.
      * The function should throw ErrorException.
      * @expectedException ErrorException
      */
     public function testDeleteWithInvalidId() {
-        Auth::attempt($this->adminCredentials);
-        $id = -2;
-        $itemCategories = new ItemCategoryRepository;
-        $itemCategories->delete($id);
+        Auth::attempt($this->auditorCredentials);
+        $id = -31;
+        $transactions = new TransactionRepository();
+        $this->assertNull($transactions->find($id));
+        $transactions->delete($id);
     }
-    
+
     /**
      * Tests delete() function with valid id
      * and unauthorized user currently logged in.
@@ -122,59 +165,26 @@ class TransactionTest extends TestCase {
      * @expectedException UnauthorizedException
      */
     public function testDeleteWithUnauthorizedUser() {
-        Auth::attempt($this->auditorCredentials);
-        $id = 3;
-        $itemCategories = new ItemCategoryRepository;
-        $this->assertNotNull($itemCategories->find($id));
-        $itemCategories->delete($id);
-        $this->assertNotNull($itemCategories->find($id));
-    }
-    
-     /**
-     * Tests edit() function with valid id
-     * and authorized user currently logged in.
-     * When item category with the specified id is searched
-     * it should return the new attribute(s).
-     */
-    public function testEdit() {
-        Auth::attempt($this->adminCredentials);
-        $id = 1;
-        $data = ['name' => 'Grocery Items'];
-        $itemCategories = new ItemCategoryRepository;
-        $this->assertNotNull($itemCategories->find($id));
-        $itemCategories->edit($id,$data);
-        $attributes = $itemCategories->find($id);
-        $this->assertEquals($data['name'],$attributes['name']);
-    }
-
-    
-     /**
-     * Tests edit() function with invalid id
-     * and authorized user currently logged in.
-     * The function should throw ErrorException.
-     * @expectedException ErrorException
-     */
-    public function testEditWithInvalidData() {
-        Auth::attempt($this->adminCredentials);
-        $id = 1;
-        $data = ['name' => 342];
-        $itemCategories = new ItemCategoryRepository;
-        $this->assertNotNull($itemCategories->find($id));
-        $itemCategories->edit($id,$data);
-    }
-    
-    /**
-     * Tests edit() function with valid id
-     * and unauthorized user currently logged in.
-     * The function should throw UnauthorizedException.
-     * @expectedException UnauthorizedException
-     */
-    public function testEditWithUnauthorizedUser() {
         Auth::attempt($this->clerkCredentials);
         $id = 1;
-        $data = ['name' => 'Grocery Items 2'];
-        $itemCategories = new ItemCategoryRepository;
-        $this->assertNotNull($itemCategories->find($id));
-        $itemCategories->edit($id,$data);
+        $transactions = new TransactionRepository();
+        $this->assertNotNull($transactions->find($id));
+        $transactions->delete($id);
+        $this->assertNull($transactions->find($id));
+    }
+
+    /**
+     * Tests edit() function with valid id
+     * and authorized user currently logged in.
+     * The function should throw IllegalOperationException.
+     * @expectedException IllegalOperationException
+     */
+    public function testEdit() {
+        Auth::attempt($this->auditorCredentials);
+        $id = 2;
+        $data = ['cashier_number' => 3];
+        $transactions = new TransactionRepository();
+        $this->assertNotNull($transactions->find($id));
+        $transactions->edit($id, $data);
     }
 }

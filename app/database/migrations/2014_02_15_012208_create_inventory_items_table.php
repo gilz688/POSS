@@ -6,7 +6,7 @@ class CreateInventoryItemsTable extends Migration {
 
     public function up() {
         Schema::create('inventory_items', function(Blueprint $table) {
-            $table->integer('barcode');
+            $table->bigInteger('barcode');
             $table->integer('quantity');
             $table->foreign('barcode')->references('barcode')->on('items');
             $table->primary('barcode');

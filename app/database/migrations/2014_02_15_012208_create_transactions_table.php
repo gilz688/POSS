@@ -10,11 +10,10 @@ class CreateTransactionsTable extends Migration {
             $table->increments('id');
             $table->integer('cashier_number');
             $table->integer('creator_id')->unsigned();
-            $table->integer('voider_id')->unsigned();
+            $table->integer('voider_id')->unsigned()->nullable();
             $table->foreign('creator_id')->references('id')->on('users');
             $table->foreign('voider_id')->references('id')->on('users')->nullable()->unsigned();
-
-            $table->timestamp('created_at');
+            $table->timestamps();
             $table->softDeletes();
         });
     }

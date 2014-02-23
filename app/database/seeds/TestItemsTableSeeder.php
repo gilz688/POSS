@@ -13,7 +13,7 @@ class TestItemsTableSeeder extends DatabaseSeeder {
                 
             ],
             [
-                'barcode' => 052000324822,
+                'barcode' => 52000324822,
                 'name' => 'Sports Drink',
                 'description' => 'Gatorade Sports Drink, Fierce Grape',
                 'size_or_weight' => '20oz',
@@ -28,6 +28,7 @@ class TestItemsTableSeeder extends DatabaseSeeder {
             ]
         ];
 
+        Eloquent::unguard();
         foreach ($items as $item) {
             Item::create($item);
         }

@@ -7,6 +7,8 @@ class TestDataSeeder extends DatabaseSeeder {
         $this->call('TestUserTableSeeder');
         $this->call('ItemCategoriesTableSeeder');   
         $this->call('TestItemsTableSeeder');  
+        $this->call('TestTransactionTableSeeder');
+        $this->call('TestPurchasedItemsTableSeeder');
     }
 
 }

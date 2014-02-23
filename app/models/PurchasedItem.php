@@ -3,4 +3,9 @@
 class PurchasedItem extends Item{
     protected $table = 'purchased_items';
     protected $softDelete = true;
+    
+    public function transaction()
+    {
+        return $this->belongsTo('Transaction');
+    }
 }
