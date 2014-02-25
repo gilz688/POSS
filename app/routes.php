@@ -58,22 +58,7 @@ Route::group(["before" => "auth"], function() {
     /*
      * ItemCategoryController
      */
-    Route::get("/items/categories", [
-        "as" => "items/categories",
-        "uses" => "ItemCategoryController@categoriesAction"
-    ]);
-    Route::get("/items/categories/remove", [
-        "as" => "items/categories/remove",
-        "uses" => "ItemCategoryController@deleteAction"
-    ]);
-    Route::any("/items/categories/add", [
-        "as" => "items/categories/add",
-        "uses" => "ItemCategoryController@addAction"
-    ]);
-    Route::any("/items/categories/edit", [
-        "as" => "items/categories/edit",
-        "uses" => "ItemCategoryController@editAction"
-    ]);
+    Route::resource('itemcategories', 'ItemCategoryController');
 
     /*
      * TransactionController

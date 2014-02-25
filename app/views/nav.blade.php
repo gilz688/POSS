@@ -16,7 +16,7 @@
           <ul class="nav navbar-nav">
             @if(Auth::check())
                 @if(Auth::user()->role == 'admin')
-                    <li><a href="/items/categories">Item Categories</a></li>
+                    <li><a href="/itemcategories">Item Categories</a></li>
                     <li><a href="/items">Items</a></li> 
                     <li><a href="/users">Users</a></li> 
                 @endif

@@ -16,13 +16,16 @@
         <td> {{ $category['name'] }} </td>
         <td> {{ $category['description'] }} </td>
         <td>
-            <a href="{{ route('items/categories/edit', [ 'categoryId' => $category['id'] ]) }} ">edit</a>
-            | 
-            <a href=" {{ route('items/categories/remove', [ 'categoryId' => $category['id'] ]) }} ">remove</a>
+            {{ Form::open(['url' => 'itemcategories/' . $category['id'], 'style' => 'float: left;']) }}
+		{{ Form::hidden('_method', 'DELETE') }}
+		{{ Form::submit('remove', ['class' => 'btn btn-warning']) }}
+            {{ Form::close() }}
+            &nbsp;
+            <a class="btn btn-small btn-success" href="{{ URL::route('itemcategories.edit',$category['id']) }} ">edit</a>
         </td>
     </tr>
     @endforeach
     </tbody>
 </table>
-<a href="{{ URL::to('items/categories/add') }}">add category</a>
+<a class="btn btn-small btn-primary" href="{{ URL::route('itemcategories.create') }}">add category</a>
 @stop

@@ -2,7 +2,7 @@
 @section("content")
 
 {{ Form::open([
-        "route"        => "items/categories/add",
+        "url"        => "itemcategories",
         "autocomplete" => "off",
         "class"        => "form-horizontal"
 ]) }}
