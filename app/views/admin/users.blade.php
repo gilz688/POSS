@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
-<div class="user"></div>
-    <table class="users_table">
+<div class="user">
+    <table class="table table-hover">
         <tr>
             <th>username</th>
             <th>Role</th>

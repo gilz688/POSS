@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-<table style="width:300px">
+<table>
     <tr>
         <th>Barcode</th>
         <th>Name</th>

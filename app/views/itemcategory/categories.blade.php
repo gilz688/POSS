@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-<table style="width:300px">
+<table class="table table-hover">
     <tr>
         <th>Category ID</th>
         <th>Category</th>
