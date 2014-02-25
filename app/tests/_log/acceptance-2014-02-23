@@ -1,66 +1,0 @@
-[2014-02-23 05:34:50] AuthCept.php.INFO: am on page "/" [] []
-[2014-02-23 05:34:50] AuthCept.php.INFO: see "Login" [] []
-[2014-02-23 05:34:50] AuthCept.php.INFO: PASSED [] []
-[2014-02-23 05:41:29] AuthCept.php.INFO: am on page "/" [] []
-[2014-02-23 05:41:29] AuthCept.php.INFO: see "Log out" [] []
-[2014-02-23 05:41:29] AuthCept.php.ALERT: Failed asserting that 
--->  <bold>/</bold><info>Point of Sales System   Point of Sales System   Login   About   	 		LOG IN</info>
---> contains "log out". [] []
-[2014-02-23 05:41:29] AuthCept.php.INFO: # FAILED # [] []
-[2014-02-23 05:41:29] AuthCept.php.INFO: PASSED [] []
-[2014-02-23 05:41:43] AuthCept.php.INFO: am on page "/" [] []
-[2014-02-23 05:41:43] AuthCept.php.INFO: see "Login" [] []
-[2014-02-23 05:41:43] AuthCept.php.INFO: PASSED [] []
-[2014-02-23 05:44:09] AuthCept.php.INFO: am on page "/" [] []
-[2014-02-23 05:44:10] AuthCept.php.INFO: see "Login" [] []
-[2014-02-23 05:44:10] AuthCept.php.INFO: PASSED [] []
-[2014-02-23 05:47:00] AuthCept.php.INFO: am on page "/" [] []
-[2014-02-23 05:47:01] AuthCept.php.INFO: see "Login" [] []
-[2014-02-23 05:47:01] AuthCept.php.INFO: fill field "username","admin1" [] []
-[2014-02-23 05:47:01] AuthCept.php.INFO: fill field "password","admin1_password" [] []
-[2014-02-23 05:47:01] AuthCept.php.INFO: click "login" [] []
-[2014-02-23 05:47:01] AuthCept.php.ALERT: CSS or XPath 'login' was not found on page. [] []
-[2014-02-23 05:47:01] AuthCept.php.INFO: # FAILED # [] []
-[2014-02-23 05:47:01] AuthCept.php.INFO: PASSED [] []
-[2014-02-23 05:47:41] AuthCept.php.INFO: am on page "/" [] []
-[2014-02-23 05:47:41] AuthCept.php.INFO: see "Login" [] []
-[2014-02-23 05:47:41] AuthCept.php.INFO: fill field "username","admin1" [] []
-[2014-02-23 05:47:41] AuthCept.php.INFO: fill field "password","admin1_password" [] []
-[2014-02-23 05:47:41] AuthCept.php.INFO: click "Login" [] []
-[2014-02-23 05:47:41] AuthCept.php.INFO: see "Hello admin1" [] []
-[2014-02-23 05:47:41] AuthCept.php.ALERT: Failed asserting that 
---><info>Point of Sales System   Point of Sales System   Login   About   	 		LOG IN</info>
---> contains "hello admin1". [] []
-[2014-02-23 05:47:41] AuthCept.php.INFO: # FAILED # [] []
-[2014-02-23 05:47:41] AuthCept.php.INFO: PASSED [] []
-[2014-02-23 05:48:17] AuthCept.php.INFO: am on page "/" [] []
-[2014-02-23 05:48:17] AuthCept.php.INFO: see "Login" [] []
-[2014-02-23 05:48:17] AuthCept.php.INFO: fill field "username","admin1" [] []
-[2014-02-23 05:48:17] AuthCept.php.INFO: fill field "password","admin1_password" [] []
-[2014-02-23 05:48:17] AuthCept.php.INFO: click "Login" [] []
-[2014-02-23 05:48:18] AuthCept.php.INFO: see "Hello admin1!" [] []
-[2014-02-23 05:48:18] AuthCept.php.ALERT: Failed asserting that 
---><info>Point of Sales System   Point of Sales System   Login   About   	 		LOG IN</info>
---> contains "hello admin1!". [] []
-[2014-02-23 05:48:18] AuthCept.php.INFO: # FAILED # [] []
-[2014-02-23 05:48:18] AuthCept.php.INFO: PASSED [] []
-[2014-02-23 05:49:10] AuthCept.php.INFO: am on page "/" [] []
-[2014-02-23 05:49:11] AuthCept.php.INFO: see "Login" [] []
-[2014-02-23 05:49:11] AuthCept.php.INFO: fill field "username","admin1" [] []
-[2014-02-23 05:49:11] AuthCept.php.INFO: fill field "password","admin1_password" [] []
-[2014-02-23 05:49:11] AuthCept.php.INFO: click "Login" [] []
-[2014-02-23 05:49:11] AuthCept.php.INFO: am on page "/profile" [] []
-[2014-02-23 05:49:11] AuthCept.php.INFO: PASSED [] []
-[2014-02-23 05:50:22] LoginAsAdminCept.php.INFO: am on page "/" [] []
-[2014-02-23 05:50:22] LoginAsAdminCept.php.INFO: see "Login" [] []
-[2014-02-23 05:50:22] LoginAsAdminCept.php.INFO: fill field "username","admin1" [] []
-[2014-02-23 05:50:22] LoginAsAdminCept.php.INFO: fill field "password","admin1_password" [] []
-[2014-02-23 05:50:22] LoginAsAdminCept.php.INFO: click "Login" [] []
-[2014-02-23 05:50:22] LoginAsAdminCept.php.INFO: am on page "/profile" [] []
-[2014-02-23 05:50:23] LoginAsAdminCept.php.INFO: PASSED [] []
-[2014-02-23 05:50:46] LoginAsAdminCept.php.INFO: am on page "/" [] []
-[2014-02-23 05:50:46] LoginAsAdminCept.php.INFO: fill field "username","admin1" [] []
-[2014-02-23 05:50:46] LoginAsAdminCept.php.INFO: fill field "password","admin1_password" [] []
-[2014-02-23 05:50:46] LoginAsAdminCept.php.INFO: click "Login" [] []
-[2014-02-23 05:50:47] LoginAsAdminCept.php.INFO: am on page "/profile" [] []
-[2014-02-23 05:50:47] LoginAsAdminCept.php.INFO: PASSED [] []

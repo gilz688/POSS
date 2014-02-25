@@ -1,6 +1,0 @@
-[2014-02-24 11:03:46] LoginAsAdminCept.php.INFO: am on page "/" [] []
-[2014-02-24 11:03:47] LoginAsAdminCept.php.INFO: fill field "username","admin1" [] []
-[2014-02-24 11:03:47] LoginAsAdminCept.php.INFO: fill field "password","admin1_password" [] []
-[2014-02-24 11:03:47] LoginAsAdminCept.php.INFO: click "Login" [] []
-[2014-02-24 11:03:48] LoginAsAdminCept.php.INFO: am on page "/profile" [] []
-[2014-02-24 11:03:51] LoginAsAdminCept.php.INFO: PASSED [] []

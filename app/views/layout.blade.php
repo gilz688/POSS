@@ -9,9 +9,6 @@
     <!-- Bootstrap core CSS -->
     {{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')}}
 
-    <!-- Bootstrap optional theme CSS -->
-    {{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap-theme.min.css')}}
-    
     <!-- Custom styles for this template -->
     {{ HTML::style('css/layout.css')}}
     </head>

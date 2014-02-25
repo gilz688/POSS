@@ -31,7 +31,8 @@
           </ul>
           <ul class="nav navbar-nav navbar-right">
             @if(Auth::check())
-              <li><a href="/profile">Profile</a></li>
+              <li>
+                  <a href="/profile">Profile</a></li>
               <li>{{ HTML::link('/logout', 'Logout') }}</li>
             @endif
           </ul>

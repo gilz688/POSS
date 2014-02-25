@@ -11,8 +11,10 @@
 class_name: WebGuy
 modules:
     enabled:
-        - PhpBrowser
+        - WebDriver
         - WebHelper
     config:
-        PhpBrowser:
-            url: 'http://localhost/'
+        WebDriver:
+            browser: phantomjs
+            url: 'http://localhost:80/'
+            restart: true

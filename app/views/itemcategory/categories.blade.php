@@ -1,12 +1,15 @@
 @extends("layout")
 @section("content")
 <table class="table table-hover">
+    <thead>
     <tr>
         <th>Category ID</th>
         <th>Category</th>
         <th>Description</th>
         <th>Action</th>
     </tr>
+    <thead>
+    <tbody
     @foreach ($categories as $category)
     <tr> 
         <td> {{ $category['id'] }} </td>
@@ -19,6 +22,7 @@
         </td>
     </tr>
     @endforeach
+    </tbody>
 </table>
 <a href="{{ URL::to('items/categories/add') }}">add category</a>
 @stop

@@ -2,7 +2,7 @@
 
 class ItemController extends Controller{
 
-	public function itemsAction() {
+    public function itemsAction() {
         return View::make('item/items', array(
                     'items' => Item::getItems()
         ));

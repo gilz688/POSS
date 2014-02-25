@@ -31,7 +31,7 @@ extends Controller
             }
             $data['errors'] = new MessageBag([
                 'password' => [
-                    'Username and/or password invalid.'
+                    'Invalid username and/or password.'
                 ]
             ]);
             $data['username'] = Input::get('username');

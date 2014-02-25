@@ -1,34 +1,44 @@
 @extends("layout")
 @section("content")
-<div class="additemcategory">
-    {{ Form::open([
+
+{{ Form::open([
         "route"        => "items/categories/add",
-        "autocomplete" => "off"
-    ]) }}
-    <table class="itemcategories_table">
-        <tr>
-            <td>
-                {{ Form::label("name", "Category Name") }}
-            </td>
-            <td>
-                {{ Form::text("name", Input::get("name"), []) }}
-            </td>
-        </tr>
-        <tr>
-            <td>
-                {{ Form::label("category", "Description") }}
-            </td>
-            <td>
-                {{ Form::text("description", Input::get("description"), []) }}
-            </td>
-        </tr>
-    </table>
-        @if ($error = $errors->first("name"))
-            <div class="error">
-                {{ $error }}
-            </div>
-        @endif
-        {{ Form::submit("Add Item Category") }}
-    {{ Form::close() }}
+        "autocomplete" => "off",
+        "class"        => "form-horizontal"
+]) }}
+<fieldset>
+
+<!-- Form Name -->
+<legend>Add New Item Category</legend>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="name">Category Name</label>  
+  <div class="col-md-4">
+  <input id="name" name="name" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
 </div>
+
+<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="description">Description</label>  
+  <div class="col-md-6">
+  <input id="description" name="description" type="text" placeholder="" class="form-control input-md" required="">
+    
+  </div>
+</div>
+
+<!-- Button -->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="add"></label>
+  <div class="col-md-4">
+    <button id="add" name="add" class="btn btn-primary">Add</button>
+  </div>
+</div>
+
+</fieldset>
+
+{{ Form::close() }}
+
 @stop
