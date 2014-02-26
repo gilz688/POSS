@@ -32,13 +32,33 @@ class InventoryItemRepository implements TableRepository{
 
     public function add($attributes) {
         $this->checkWritePermissions();
-        // some code here
+        $rules =[
+			'barcode' => 'required|Unique:inventory_items',
+			'quantity' => 'required',
+			'price' => 'required'
+		];
+		$validator = Validator::make($attributes, $rules);
+		if($validator->passes()) {
+			$look = $attributes['barcode'];
+			$find = Item::find($look);
+			if($find != null) {
+				$inventory = new InventoryItem;
+				$inventory->barcode = $attributes['barcode'];
+				$inventory->quantity = $attributes['quantity'];
+				$inventory->price = $attributes['price'];
+				$inventory->save();
+				return $inventory->barcode;
+			} else {
+				throw new ErrorException("Cannot add inventory");
+			}
+		} else {
+			throw new ErrorException("Invalid data!");
+		}
     }
 
     public function delete($id) {
         $this->checkWritePermissions();
-        // some code here
-    }
+    }	
 
     public function all() {
         $this->checkReadPermissions();
@@ -50,8 +70,13 @@ class InventoryItemRepository implements TableRepository{
         // some code here
     }
     
-    public function find($id) {
+    public function find($barcode) {
         $this->checkReadPermissions();
-        // some code here
+        $inventory = Item::find($barcode);
+		if ($inventory == null) {
+			return null;
+		} else {
+			return $inventory->attributesToArray();
+		}
     }
 }
