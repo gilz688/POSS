@@ -62,7 +62,7 @@ class ItemCategoryController extends Controller {
      */
     public function edit($id) {
         $categoryData = $this->categories->find($id);
-        return View::make('itemcategory.edit', ['id' => $id, 'name' => $categoryData['name'], 'description' => $categoryData['description']]);
+        return View::make('itemcategory.edit', $categoryData);
     }
 
     /**

@@ -8,7 +8,6 @@ $baseDir = dirname($vendorDir);
 return array(
     'AdminController' => $baseDir . '/app/controllers/AdminController.php',
     'Administration' => $baseDir . '/app/models/Administration.php',
-    'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
     'Boris\\CLIOptionsHandler' => $vendorDir . '/d11wtq/boris/lib/Boris/CLIOptionsHandler.php',
     'Boris\\ColoredInspector' => $vendorDir . '/d11wtq/boris/lib/Boris/ColoredInspector.php',
@@ -932,6 +931,7 @@ return array(
     'Psr\\Log\\NullLogger' => $vendorDir . '/psr/log/Psr/Log/NullLogger.php',
     'PurchasedItem' => $baseDir . '/app/models/PurchasedItem.php',
     'PurchasedItemsRepository' => $baseDir . '/app/models/PurchasedItemsRepository.php',
+    'SessionController' => $baseDir . '/app/controllers/SessionController.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'Stack\\Builder' => $vendorDir . '/stack/builder/src/Stack/Builder.php',
     'Stack\\StackedHttpKernel' => $vendorDir . '/stack/builder/src/Stack/StackedHttpKernel.php',
@@ -1433,7 +1433,6 @@ return array(
     'TransactionRepository' => $baseDir . '/app/models/TransactionRepository.php',
     'UnauthorizedException' => $baseDir . '/app/models/TableRepository.php',
     'User' => $baseDir . '/app/models/User.php',
-    'UserController' => $baseDir . '/app/controllers/UserController.php',
     'UserTableSeeder' => $baseDir . '/app/database/seeds/UserTableSeeder.php',
     'Whoops\\Exception\\ErrorException' => $vendorDir . '/filp/whoops/src/Whoops/Exception/ErrorException.php',
     'Whoops\\Exception\\Frame' => $vendorDir . '/filp/whoops/src/Whoops/Exception/Frame.php',

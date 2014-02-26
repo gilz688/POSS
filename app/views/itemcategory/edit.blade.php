@@ -10,7 +10,7 @@
 <fieldset>
 
     <!-- Form Name -->
-    <legend>Edit Item Category</legend>
+    <legend>Edit Existing Item Category</legend>
 
     <!-- Text input-->
     <div class="form-group">

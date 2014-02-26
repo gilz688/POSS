@@ -58,7 +58,7 @@ class ItemCategoryRepository implements TableRepository {
 
     public function all() {
         $this->checkReadPermissions();
-        return ItemCategory::orderBy('id')->get();
+        return ItemCategory::orderBy('name')->get();
     }
 
     public function edit($id, $attributes) {

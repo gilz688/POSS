@@ -8,37 +8,64 @@ class TransactionController extends Controller {
         $this->transactionRepository = $transactionRepository;
     }
 
-    public function listAction() {
-        $transactions = $this->transactionRepository->all();
-        return View::make('transaction/list', array(
-                    'transactions' => $transactions
-        ));
-    }
-
-    /*
-     *  Mark transaction as void.
+    /**
+     * Display all transactions.
+     *
+     * @return Response
      */
-
-    public function voidAction() {
-        $transactionId = Input::get('transactionId');
-        $this->transactionRepository->delete($transactionId);
-        return Redirect::route('transactions');
+    public function index() {
+        $transactions = $this->transactionRepository->all();
+        return View::make('transaction.index', [
+                    'transactions' => $transactions
+        ]);
     }
 
-    public function addAction() {
-        if (Input::server('REQUEST_METHOD') == 'POST') {
-            try {
-                $transactionData = [
-                    'cashier_number' => Input::get('cashierNumber')
-                ];
-                $this->transactionRepository->add($transactionData);
-                return Redirect::route('transactions');
-            } catch (UnauthorizedException $ex) {
-                echo $ex->getMessage();
-            }
-        }
+    /**
+     * Show the form for creating a new transaction.
+     *
+     * @return Response
+     */
+    public function create() {
+        return View::make('transaction.create');
+    }
 
-        return View::make('transaction/add');
+    /**
+     * Mark the specified transaction as void.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function destroy($id) {
+        $this->transactionRepository->delete($id);
+        return Redirect::route('transactions.index');
+    }
+
+    /**
+     * Store a newly created transaction in storage.
+     *
+     * @return Response
+     */
+    public function store() {
+        try {
+            $transactionData = [
+                'cashier_number' => Input::get('cashierNumber')
+            ];
+            $this->transactionRepository->add($transactionData);
+            return Redirect::route('transactions.index');
+        } catch (UnauthorizedException $ex) {
+            echo $ex->getMessage();
+        }
+        return Redirect::route('transactions.index');
+    }
+    
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return Response
+     */
+    public function show($id) {
+        
     }
 
 }

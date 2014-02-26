@@ -19,7 +19,7 @@ class TransactionTest extends TestCase {
         $this->assertTrue(array_key_exists('creator_id', $attributes));
     }
     
-        /**
+    /**
      * Tests find() function with valid id
      * and an clerk currently logged in.
      * It returns its attributes.
