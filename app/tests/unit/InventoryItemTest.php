@@ -65,7 +65,7 @@ class InventoryItemTest extends TestCase {
 		
 		$inventoryData = [
 			'barcode' => 5200032482,
-			'quantity' => -50,
+			'quantity' => 'fifty',
 			'price' => -25.00
 		];
 		
@@ -90,7 +90,6 @@ class InventoryItemTest extends TestCase {
 		
 		$inventoryItems = new InventoryItemRepository;
 		$barcode = $inventoryItems->add($inventoryData);
-		$attributes = $inventoryItems->find($barcode);
 	}
 	
 	/*
@@ -119,7 +118,7 @@ class InventoryItemTest extends TestCase {
 	public function testDeleteWithInvalidData() {
 		Auth::attempt($this->adminCredentials);
 		
-		$barcode = -5011321361058;
+		$barcode = '5011321361058';
 		
 		$inventoryItems = new InventoryItemRepository;
 		$inventoryItems->delete($barcode);
@@ -186,8 +185,8 @@ class InventoryItemTest extends TestCase {
 	/*
      * Tests edit() function with valid data
      * and unauthorized user currently logged in.
-     * When item category with the specified id is searched
-     * it should return the new attribute(s).
+     * The function should throw UnauthorizedException.
+     * @expectedException ErrorException
     */
 	public function testEditWithUnauthorizedUser() {
 		Auth::attempt($this->clerkCredentials);
