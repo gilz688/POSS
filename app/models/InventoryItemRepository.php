@@ -3,9 +3,9 @@
 class InventoryItemRepository implements TableRepository{
 
     protected static $writePermissions = [
-        'admin' => false,
+        'admin' => true,
         'auditor' => false,
-        'clerk' => true,
+        'clerk' => false,
         null => false
     ];
     
@@ -33,50 +33,73 @@ class InventoryItemRepository implements TableRepository{
     public function add($attributes) {
         $this->checkWritePermissions();
         $rules =[
-			'barcode' => 'required|Unique:inventory_items',
-			'quantity' => 'required',
-			'price' => 'required'
-		];
-		$validator = Validator::make($attributes, $rules);
-		if($validator->passes()) {
-			$look = $attributes['barcode'];
-			$find = Item::find($look);
-			if($find != null) {
-				$inventory = new InventoryItem;
-				$inventory->barcode = $attributes['barcode'];
-				$inventory->quantity = $attributes['quantity'];
-				$inventory->price = $attributes['price'];
-				$inventory->save();
-				return $inventory->barcode;
-			} else {
-				throw new ErrorException("Cannot add inventory");
-			}
-		} else {
-			throw new ErrorException("Invalid data!");
-		}
+            'barcode' => 'required|Unique:inventory_items',
+            'quantity' => 'required|Integer',
+            'price' => 'required'
+        ];
+        $validator = Validator::make($attributes, $rules);
+        $find = InventoryItem::find($attributes['barcode']);
+        $find1 = Item::find($attributes['barcode']);
+        if(($validator->passes()) and ($find == null) and ($find1 != null)) {
+            $inventory = new InventoryItem;
+            $inventory->barcode = $attributes['barcode'];
+            $inventory->quantity = $attributes['quantity'];
+            $inventory->price = $attributes['price'];
+            $inventory->save();
+            return $inventory->barcode;
+        } else {
+            throw new ErrorException("Cannot add to the inventory.");
+        }
     }
 
-    public function delete($id) {
+    public function delete($barcode) {
         $this->checkWritePermissions();
-    }	
+        $inventory = InventoryItem::find($barcode);
+        if($inventory != null) {
+            $inventory->delete();
+        } else {
+            throw new ErrorException("Invalid barcode!");
+        }
+    }   
 
     public function all() {
         $this->checkReadPermissions();
-        return InventoryItem::all();
+        return InventoryItem::orderBy('barcode')->get();
     }
 
-    public function edit($id, $attributes) {
+    public function edit($barcode, $attributes) {
         $this->checkWritePermissions();
-        // some code here
+        $inventoryItem = InventoryItem::find($barcode);
+        if ($inventoryItem == null) {
+            throw new ErrorException("Invalid barcode!");
+        } else {
+            if (array_key_exists('quantity', $attributes)) {
+                $quantity = $attributes['quantity'];
+                if(gettype($quantity) == 'integer') {
+                    $inventoryItem->quantity = $attributes['quantity'];
+                } else {
+                    throw new ErrorException("Quantity should be integer!");
+                }
+            }
+            if (array_key_exists('price', $attributes)) {
+                $price = $attributes['price'];
+                if(gettype($price) == 'integer') {
+                    $inventoryItem->price = $attributes['price'];
+                } else {
+                    throw new ErrorException("Price should be integer!");
+                }
+            }
+            $inventoryItem->update();
+        }
     }
     
     public function find($barcode) {
         $this->checkReadPermissions();
-        $inventory = Item::find($barcode);
-		if ($inventory == null) {
-			return null;
-		} else {
-			return $inventory->attributesToArray();
-		}
+        $inventory = InventoryItem::find($barcode);
+        if ($inventory == null) {
+            return null;
+        } else {
+            return $inventory->attributesToArray();
+        }
     }
 }
