@@ -2,39 +2,128 @@
 
 class ItemController extends Controller{
 
-    public function itemsAction() {
-        return View::make('item/items', array(
-                    'items' => Item::getItems()
+private $items;
+
+    public function __construct(ItemRepository $items) {
+        $this->items = $items;
+    }
+
+    /**
+     * Display a listing of the resource.
+     *
+     * @return Response
+     */
+    public function index() {
+        return View::make('item.index', array(
+                    'items' => $this->items->all()
         ));
     }
 
-    public function addItemAction() {
-        if (Input::server('REQUEST_METHOD') == 'POST') {
-            if ((Input::get('barcode') != null) && (Input::get('name') != null) && (Input::get('price') != null) && (Input::get('description') != null) && (Input::get('size_or_weight') != null) && (Input::get('category_id') != null)) {
-                $itemData = [
-                    'barcode' => Input::get('barcode'),
-                    'name' => Input::get('name'),
-                    'price' => Input::get('price'),
-					'description' => Input::get('description'),
-					'size_or_weight' => Input::get('size_or_weight'),
-					'category_id' => Input::get('category_id')
-                ];
-                try {
-                    Item::createItem($itemData);
-                    return Redirect::route('items/add');
-                } catch (ErrorException $exception) {
-                    echo $exception->getMessage();
-                }
-            } else {
-                throw new ErrorException("Do not leave any blank field!");
-                return Redirect::route('items/add');
-            }
-        }
-        return View::make('items/add');
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return Response
+     */
+    public function create() {
+        return View::make('item.create');
     }
-	public function removeItemAction() {
-        $itemBarcode = Input::get('barcode');
-        Item::removeItem($itemBarcode);
-        return Redirect::route('items');
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @return Response
+     */
+    public function store() {
+        $itemData = [
+			'barcode' => Input::get('barcode'),
+            'itemName' => Input::get('itemName'),
+			'price' => Input::get('price'),
+			'quantity' => Input::get('quantity'),
+            'itemDescription' => Input::get('itemDescription'),
+			'label' => Input::get('label'),
+			'category_id' => Input::get('category_id'),
+        ];
+        $rules = array(
+			'barcode' => 'required',
+            'itemName' => 'required',
+			'price' => 'required',
+			'quantity' => 'required',
+            'itemDescription' => 'required',
+			'label' => 'required',
+			'category_id' => 'required',
+        );
+        $validator = Validator::make($itemData, $rules);
+
+        if ($validator->fails()) {
+            return Redirect::to('items/create')
+                            ->withErrors($validator)
+                            ->withInput(Input::all());
+        }
+        $this->items->add($itemData);
+        Session::flash('message', 'Successfully added new item!');
+        return Redirect::route('items.index');
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  bigint  $barcode
+     * @return Response
+     */
+    public function edit($barcode) {
+        $itemData = $this->items->find($barcode);
+        return View::make('item.edit', $itemData);
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  bigint  $barcode
+     * @return Response
+     */
+    public function update($barcode) {
+        $itemData = [
+			'itemName' => Input::get('itemName'),
+			'price' => Input::get('price'),
+			'quantity' => Input::get('quantity'),
+            'itemDescription' => Input::get('itemDescription'),
+			'label' => Input::get('label'),
+        ];
+        $rules = [
+            'itemName' => '',
+			'price' => '',
+			'quantity' => '',
+            'itemDescription' => '',
+			'label' => '',
+        ];
+        $validator = Validator::make($itemData, $rules);
+        if ($validator->fails()) {
+            return Redirect::to('items/' . $barcode . '/edit')
+                            ->withErrors($validator)
+                           ->withInput(Input::all());
+        }
+        $this->items->edit($barcode, $itemData);
+        return Redirect::route('items.index');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  bigint  $barcode
+     * @return Response
+     */
+    public function destroy($barcode) {
+        $this->items->delete($barcode);
+        return Redirect::route('items.index');
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  bigint  $barcode
+     * @return Response
+     */
+    public function show($barcode) {
+        
     }
 }

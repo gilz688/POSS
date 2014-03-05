@@ -2,147 +2,201 @@
 
 class ItemTest extends TestCase {
 
-    protected $useDatabase = true;
+     protected $useDatabase = true;
 
+     /**
+     * Tests find() function with valid barcode
+     * It returns its attributes.
+     */
+    public function testFind() {
+        Auth::attempt($this->clerkCredentials);
+        $barcode = 1428500365641;
+        $items = new ItemRepository;
+        $attributes = $items->find($barcode);
+        $this->assertEquals($attributes['barcode'],$barcode);
+        $this->assertTrue(array_key_exists('itemName', $attributes));
+		$this->assertTrue(array_key_exists('price', $attributes));
+		$this->assertTrue(array_key_exists('quantity', $attributes));
+        $this->assertTrue(array_key_exists('itemDescription', $attributes));
+		$this->assertTrue(array_key_exists('label', $attributes));
+		$this->assertTrue(array_key_exists('category_id', $attributes));
+    }
+    
+	
+     /**
+     * Tests find() function with invalid barcode
+     * It returns null.
+     */
+    public function testFindWithInvalidBarcode() {
+        Auth::attempt($this->clerkCredentials);
+        $barcode = 92910389213;
+        $items = new ItemRepository;
+        $attributes = $items->find($barcode);
+        $this->assertNull($attributes);
+    }
+        
     /**
-     * Tests createItem() function with valid data
+     * Tests add() function with valid data
      * and authorized user currently logged in.
      * The function should return the barcode of the created item .
      */
-    public function testCreateItemWithValidData() {
+    public function testAdd() {
         Auth::attempt($this->adminCredentials);
 
         $itemData = [
-			'barcode' => 800552999632,
-            'name' => 'Body Spray',
-			'price' => 150.25, 
-            'description' => 'Ever Bilena body spray',
-			'size_or_weight' => '100mL',
-            'category_id' => 10
-			
+			'barcode' => 1200032458813,
+            'itemName' => 'Mineral Water',
+			'price' => 15.25,
+			'quantity' => 10,
+            'itemDescription' => 'water, beverages,',
+			'label' => '500mL',
+			'category_id' => 3,
         ];
-
-        $itemBarcode = Inventory::createItem($itemData);
-        $item = Item::find($itemBarcode);
-		$item->assertEquals($item->barcode, $itemData['barcode']);
-        $this->assertEquals($item->name, $itemData['name']);
-		$this->assertEquals($item->price, $itemData['price']);
-        $this->assertEquals($item->description, $itemData['description']);
-		$this->assertEquals($item->size_or_weight, $itemData['size_or_weight']);
-		$this->assertEquals($item->category_id, $itemData['category_id']);
+        $items = new ItemRepository;
+        $barcode = $items->add($itemData);
+        $attributes = $items->find($barcode);
+        $this->assertEquals($attributes['itemName'], $itemData['itemName']);
+		$this->assertEquals($attributes['price'], $itemData['price']);
+		$this->assertEquals($attributes['quantity'], $itemData['quantity']);
+        $this->assertEquals($attributes['itemDescription'], $itemData['itemDescription']);
+		$this->assertEquals($attributes['label'], $itemData['label']);
+		$this->assertEquals($attributes['category_id'], $itemData['category_id']);
     }
 
     /**
-     * Tests create() function with invalid data
+     * Tests add() function with invalid data
      * and authorized user currently logged in.
-     * The function should throw an ErrorException.
+     * The function should return the barcode of the created item .
      * @expectedException ErrorException 
      */
-    public function testCreateItemWithInvalidData() {
-        Auth::attempt($this->auditorCredentials);
+    public function testAddWithInvalidData() {
+        Auth::attempt($this->adminCredentials);
 
-        $itemData = [
-           'barcode' => 800552999632,
-            'name' => 'Body Spray',
-			'price' => 150.25, 
-            'description' => 'Ever Bilena body spray',
-			'size_or_weight' => '100mL',
-            'category_id' => 10
+        $categoryData = [
+			'barcode' => 1200032458813,
+            'itemName' => 'Mineral Water',
+			'price' => 15.25,
+			'quantity' => 5,
+            'itemDescription' => shampoo, conditioners, lotions, perfumes, etc,
+			'label' => '500mL',
+			'category_id' => 3,
         ];
 
-        Item::createItem($itemData);
+        $items = new ItemRepository;
+        $barcode = $items->add($itemData);
     }
 
     /**
-     * Tests createItem() function with valid data
+     * Tests add() function with valid data
      * and unauthorized user currently logged in.
      * The function should throw UnauthorizedException.
      * @expectedException UnauthorizedException
      */
-    public function testCreateItemWithUnauthorizedUser() {
+    public function testAddWithUnauthorizedUser() {
         Auth::attempt($this->clerkCredentials);
 
         $itemData = [
-            'barcode' => 067712190335,
-            'name' => 'Canned Sardines',
-			'price' => 30.25, 
-            'description' => 'Mega Sardines',
-			'size_or_weight' => '120g',
-            'category_id' => 5
+            'barcode' => 8944032458812,
+            'itemName' => 'Canned Sardines',
+			'price' => 13.25,
+			'quantity' => 5,
+            'itemDescription' => 'Mega Sardines',
+			'label' => '170g',
+			'category_id' => 5,
         ];
 
-        Item::createItem($itemData);
+        $items = new ItemRepository;
+        $barcode = $items->add($itemData);
+        $attributes = $items->find($barcode);
+    }
+	
+	/**
+     * Tests delete() function with valid barcode
+     * and authorized user currently logged in.
+     * When item category with the specified barcode is searched
+     * in the database, none is found.
+     */
+    public function testDelete() {
+        Auth::attempt($this->adminCredentials);
+        $barcode = 4800088145053;
+        $items = new ItemRepository;
+        $this->assertNotNull($items->find($barcode));
+        $items->delete($barcode);
+        $this->assertNull($items->find($barcode));
     }
     
      /**
-     * Tests createItem() function with valid data
-     * and no user currently logged in.
-     * The function should throw UnauthorizedException.
-     * @expectedException UnauthorizedException
-     */
-    public function testCreateItemWithNoUser() {
-        $itemData = [
-            'barcode' => 067712190335,
-            'name' => 'Canned Sardines',
-			'price' => 30.25, 
-            'description' => 'Mega Sardines',
-			'size_or_weight' => '120g',
-            'category_id' => 5
-        ];
-
-        Item::createItem($itemData);
-    }
-
-    /**
-     * Tests removeItem() function with valid item barcode
-     * and authorized user currently logged in.
-     * When item  with the specified barcode is searched
-     * in the database, none is found.
-     */
-    public function testRemoveItemWithValidBarcode() {
-        Auth::attempt($this->adminCredentials);
-        $itemBarcode = 800552999632;
-        $this->assertNotNull(Item::find($itemBarcode));
-        Item::removeItem($itemBarcode);
-        $this->assertNull(Item::find($itemBarcode));
-    }
-    
-    /**
-     * Tests removeItem() function with invalid item barcode
+     * Tests delete() function with invalid barcode
      * and authorized user currently logged in.
      * The function should throw ErrorException.
      * @expectedException ErrorException
      */
-    public function testRemoveItemWithInvalidBarcode() {
+    public function testDeleteWithInvalidBarcode() {
         Auth::attempt($this->adminCredentials);
-        $itemBarcode = asdhd;
-        $this->assertNotNull(Item::find($itemBarcode));
-        Item::removeItem($itemBarcode);
+        $barcode = -192104883;
+        $items = new ItemRepository;
+        $items->delete($barcode);
     }
     
     /**
-     * Tests removeItem() function with valid item barcode
+     * Tests delete() function with valid barocde
      * and unauthorized user currently logged in.
      * The function should throw UnauthorizedException.
      * @expectedException UnauthorizedException
      */
-    public function testRemoveItemCategoryWithUnauthorizedUser() {
-        Auth::attempt($this->clerkCredentials);
-        $itemBarcode = 052000324822;
-        $this->assertNotNull(Item::find($itemBarcode));
-        Item::removeItem($itemBarcode);
+    public function testDeleteWithUnauthorizedUser() {
+        Auth::attempt($this->auditorCredentials);
+        $barcode = 4800088145053;
+        $items = new ItemRepository;
+        $this->assertNotNull($items->find($barcode));
+        $items->delete($barcode);
+        $this->assertNotNull($items->find($barcode));
+    }
+    
+     /**
+     * Tests edit() function with valid barcode
+     * and authorized user currently logged in.
+     * When item with the specified barcode is searched
+     * it should return the new attribute(s).
+     */
+    public function testEdit() {
+        Auth::attempt($this->adminCredentials);
+        $barcode = 5011321361058;
+        $data = ['price' => 31.25];
+        $items = new ItemRepository;
+        $this->assertNotNull($items->find($barcode));
+        $items->edit($barcode,$data);
+        $attributes = $items->find($barcode);
+        $this->assertEquals($data['price'],$attributes['price']);
     }
 
      /**
-     * Tests removeItem() function with valid item barcode
-     * and no user currently logged in.
+     * Tests edit() function with invalid barcode
+     * and authorized user currently logged in.
+     * The function should throw ErrorException.
+     * @expectedException ErrorException
+     */
+    public function testEditWithInvalidData() {
+        Auth::attempt($this->adminCredentials);
+        $barcode = -5011321361058;
+        $data = ['price' => 342.768];
+        $items = new ItemRepository;
+        $this->assertNotNull($items->find($barcode));
+        $items->edit($barcode,$data);
+    }
+    
+    /**
+     * Tests edit() function with valid barcode
+     * and unauthorized user currently logged in.
      * The function should throw UnauthorizedException.
      * @expectedException UnauthorizedException
      */
-    public function testRemoveItemCategoryWithNoUser() {
-        $itemBarcode = 052000324822;
-        $this->assertNotNull(Item::find($itemBarcode));
-        Item::removeItem($itemBarcode);
+    public function testEditWithUnauthorizedUser() {
+        Auth::attempt($this->clerkCredentials);
+        $barcode = 5011321361058;
+        $data = ['price' => 5.25];
+        $items = new ItemRepository;
+        $this->assertNotNull($items->find($barcode));
+        $items->edit($barcode,$data);
     }
-
 }
