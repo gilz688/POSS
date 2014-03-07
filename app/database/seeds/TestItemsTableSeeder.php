@@ -1,6 +1,6 @@
 <?php
 
-class ItemsTableSeeder extends DatabaseSeeder {
+class TestItemsTableSeeder extends DatabaseSeeder {
 
     public function run() {
         $items = [

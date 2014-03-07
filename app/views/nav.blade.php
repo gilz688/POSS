@@ -25,10 +25,6 @@
 
                     @if(Auth::user()->role == 'admin')
 
-                    @if(Request::is('inventoryitems*')) <li class="active">
-                        @else <li>
-                        @endif <a href="">Inventory Items</a></li>
-
                     @if(Request::is('users*')) <li class="active">
                         @else <li>
                         @endif <a href="/users">Users</a></li> 
