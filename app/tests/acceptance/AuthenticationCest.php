@@ -26,11 +26,11 @@ class AuthenticationCest
         $I->am('admin');
         $I->wantTo('log in');
         $I->expectTo('see my profile page');
-        $I->amOnPage('/');
+        $I->amOnPage('/login');
         $I->fillField('username', 'admin1');
         $I->fillField('password', 'admin1_password');
         $I->click('Login');
-        $I->canSeeInCurrentUrl('/profile');
+        $I->canSeeInCurrentUrl('/');
         
         $I->click('Logout');
     }
@@ -40,11 +40,11 @@ class AuthenticationCest
         $I->am('auditor');
         $I->wantTo('log in');
         $I->expectTo('see my profile page');
-        $I->amOnPage('/');
+        $I->amOnPage('/login');
         $I->fillField('username', 'auditor1');
         $I->fillField('password', 'auditor1_password');
         $I->click('Login');
-        $I->canSeeInCurrentUrl('/profile');
+        $I->canSeeInCurrentUrl('/');
         
         $I->click('Logout');
     }
@@ -54,11 +54,11 @@ class AuthenticationCest
         $I->am('clerk');
         $I->wantTo('log in');
         $I->expectTo('see my profile page');
-        $I->amOnPage('/');
+        $I->amOnPage('/login');
         $I->fillField('username', 'clerk1');
         $I->fillField('password', 'clerk1_password');
         $I->click('Login');
-        $I->canSeeInCurrentUrl('/profile');
+        $I->canSeeInCurrentUrl('/');
         
         $I->click('Logout');
     }
@@ -68,7 +68,7 @@ class AuthenticationCest
         $I->am('admin');
         $I->wantTo('login with wrong password');
         $I->expectTo('see error message');
-        $I->amOnPage('/');
+        $I->amOnPage('/login');
         $I->fillField('username', 'admin1');
         $I->fillField('password', 'admin1_qwerty');
         $I->click('Login');
@@ -79,7 +79,7 @@ class AuthenticationCest
         $this->resetSession($I);
         $I->wantToTest('login with blank credentials');
         $I->expectTo('see error message');
-        $I->amOnPage('/');
+        $I->amOnPage('/login');
         $I->fillField('username', '');
         $I->fillField('password', '');
         $I->click('Login');

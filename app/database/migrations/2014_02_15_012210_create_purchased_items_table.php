@@ -13,6 +13,7 @@ class CreatePurchasedItemsTable extends Migration {
             $table->integer('quantity');
             $table->timestamps();
             $table->primary(array('transaction_id', 'barcode'));
+            $table->softDeletes();
         });
     }
 

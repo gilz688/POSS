@@ -15,6 +15,7 @@ class TestInventoryItemTableSeeder extends DatabaseSeeder {
         foreach ($inventoryItems as $inventoryItem) {
             InventoryItem::create($inventoryItem);
         }
-    }
+    
+	}
 
 }
