@@ -10,16 +10,16 @@ class ItemTest extends TestCase {
      */
     public function testFind() {
         Auth::attempt($this->clerkCredentials);
-        $barcode = 1428500365641;
+        $barcode = 5011321361058;
         $items = new ItemRepository;
         $attributes = $items->find($barcode);
         $this->assertEquals($attributes['barcode'],$barcode);
-        $this->assertTrue(array_key_exists('itemName', $attributes));
-		$this->assertTrue(array_key_exists('price', $attributes));
-		$this->assertTrue(array_key_exists('quantity', $attributes));
-        $this->assertTrue(array_key_exists('itemDescription', $attributes));
-		$this->assertTrue(array_key_exists('label', $attributes));
-		$this->assertTrue(array_key_exists('category_id', $attributes));
+        $this->assertEquals($attributes['itemName'],'Shampoo');
+        $this->assertEquals($attributes['price'],30.25);
+        $this->assertEquals($attributes['quantity'],50);
+        $this->assertEquals($attributes['itemDescription'],'Head & Shoulders Anti-dandruff Shampoo - refreshing');
+        $this->assertEquals($attributes['label'],'6pcs/half dozen');
+        $this->assertEquals($attributes['category_id'],10);
     }
     
 	
@@ -72,7 +72,7 @@ class ItemTest extends TestCase {
     public function testAddWithInvalidData() {
         Auth::attempt($this->adminCredentials);
 
-        $categoryData = [
+        $itemData = [
 			'barcode' => 1200032458813,
             'itemName' => 'Mineral Water',
 			'price' => 15.25,
@@ -179,9 +179,9 @@ class ItemTest extends TestCase {
     public function testEditWithInvalidData() {
         Auth::attempt($this->adminCredentials);
         $barcode = -5011321361058;
-        $data = ['price' => 342.768];
+        $data = ['price' => 342.78];
         $items = new ItemRepository;
-        $this->assertNotNull($items->find($barcode));
+        $this->assertNull($items->find($barcode));
         $items->edit($barcode,$data);
     }
     

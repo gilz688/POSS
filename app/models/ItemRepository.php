@@ -56,6 +56,7 @@ class ItemRepository implements TableRepository{
 			$item->label = $attributes['label'];
 			$item->category_id = $attributes['category_id'];
             $item->save();
+            return $item->barcode;
         } else {
             throw new ErrorException("Invalid data!");
         }
@@ -88,7 +89,7 @@ class ItemRepository implements TableRepository{
             }
 			if(array_key_exists('price',$attributes)){
                 $price = $attributes['price'];
-                if(gettype($price) == 'string'){
+                if(gettype($price) == 'double'){
                     $item->price = $attributes['price'];
                 }
                 else{
@@ -97,7 +98,7 @@ class ItemRepository implements TableRepository{
             }
 			if(array_key_exists('quantity',$attributes)){
                 $quantity = $attributes['quantity'];
-                if(gettype($quantity) == 'string'){
+                if(gettype($quantity) == 'integer'){
                     $item->quantity = $attributes['quantity'];
                 }
                 else{
@@ -121,6 +122,7 @@ class ItemRepository implements TableRepository{
                 else{
                     throw new ErrorException('Label should be a string!');
                 }
+                
             }
             $item->update();
         }

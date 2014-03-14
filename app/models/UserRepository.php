@@ -49,11 +49,38 @@ class UserRepository implements TableRepository {
 
     public function edit($id, $attributes) {
         $this->checkPermissions($id);
-        // some code here
+        $user = User::find($id);
+        if ($id == null) {
+            throw new ErrorException("Invalid id!");
+        } else {
+            if(array_key_exists('username',$attributes)){
+                $username = $attributes['username'];
+                if(gettype($username) == 'string'){
+                    $user->username = $attributes['username'];
+                }
+                else{
+                    throw new ErrorException('Username should be a string!');
+                }
+            }
+            if(array_key_exists('password',$attributes)){
+                $password = $attributes['password'];
+                if(gettype($password) == 'string'){
+                    $user->password = Hash::make($attributes['password']);
+                }
+                else{
+                    throw new ErrorException('Password should be string!');
+                }
+            }
+            $user->update();
+        }
     }
 
     public function find($id) {
         $this->checkPermissions($id);
-        // some code here
+        $user = User::find($id);
+        if($user == null){
+            return null;
+        }
+        return $user->attributesToArray();
     }
 }
