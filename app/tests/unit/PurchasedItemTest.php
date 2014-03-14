@@ -98,7 +98,7 @@ class PurchasedItemTest extends TestCase {
 	{
 		Auth::attempt($this->adminCredentials);
 	    $items = new PurchasedItemsRepository;
-		$items->delete(0000000000001);
+		$items->delete(0000000000002);
 	}
 	
 	public function test_EditPurchasedItem()

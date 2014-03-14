@@ -79,7 +79,7 @@ class PurchasedItemsRepository implements TableRepository {
 					$item->quantity = $attributes['quantity'];
 				}
 				else{
-					throw new ErrorException('Quantity should be an integer.! ');
+					throw new ErrorException('Quantity must be an integer.! ');
 				}
 			}
 			$item->update();
