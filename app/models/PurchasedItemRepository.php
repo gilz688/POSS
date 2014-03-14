@@ -1,6 +1,6 @@
 <?php
 
-class PurchasedItemsRepository implements TableRepository {
+class PurchasedItemRepository implements TableRepository {
 
 	 protected static $writePermissions = [
         'admin' => true,

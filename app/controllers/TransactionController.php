@@ -1,6 +1,6 @@
 <?php
 
-class TransactionController extends Controller {
+class TransactionController extends Controller implements ResourceController{
 
     private $transactionRepository;
 

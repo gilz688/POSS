@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends Controller {
+class UserController extends Controller implements ResourceController {
 
     private $users;
 
