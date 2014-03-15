@@ -34,7 +34,7 @@
                     <li class="active">
                         @else <li>
                         @endif {{ HTML::linkRoute('transactions.index', 'Transactions') }}</li>     
-                    @endif
+
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -42,7 +42,8 @@
                             <li>{{ HTML::link('/report/clerkperformance', 'Clerk Performance Report') }}</li>
                         </ul>
                     </li>
-                </ul>
+                    @endif
+                </ul>   
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())
                     <li>

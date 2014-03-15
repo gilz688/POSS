@@ -134,7 +134,9 @@ class ItemRepository implements TableRepository{
         if ($item == null) {
             return null;
         } else {
-            return $item->attributesToArray();
+            $attributes = $item->attributesToArray();
+            $attributes['itemcategory'] = $item->itemcategory->attributesToArray();
+            return $attributes;
         }
     }
 }
