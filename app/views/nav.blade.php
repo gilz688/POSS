@@ -17,25 +17,31 @@
                     @if(Auth::check())
                     @if(Request::is('itemcategories*')) <li class="active">
                         @else <li>
-                        @endif <a href="/itemcategories">Item Categories</a></li>
+                        @endif {{ HTML::linkRoute('itemcategories.index', 'Item Categories') }}</li>
 
                     @if(Request::is('items*')) <li class="active">
                         @else <li>
-                        @endif <a href="/items">Items</a></li> 
+                        @endif {{ HTML::linkRoute('items.index', 'Items') }}</li> 
 
                     @if(Auth::user()->role == 'admin')
 
                     @if(Request::is('users*')) <li class="active">
                         @else <li>
-                        @endif <a href="/users">Users</a></li> 
+                        @endif {{ HTML::linkRoute('users.index', 'Users') }}</li> 
                     @endif
 
                     @if(Request::is('transactions*')) 
                     <li class="active">
                         @else <li>
-                        @endif <a href="/transactions">Transactions</a></li>     
+                        @endif {{ HTML::linkRoute('transactions.index', 'Transactions') }}</li>     
                     @endif
-                    
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>{{ HTML::link('/report/sales', 'Sales Report') }}</li>
+                            <li>{{ HTML::link('/report/clerkperformance', 'Clerk Performance Report') }}</li>
+                        </ul>
+                    </li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     @if(Auth::check())

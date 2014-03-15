@@ -68,4 +68,12 @@ class TransactionController extends Controller implements ResourceController{
         
     }
 
+    public function update($id){
+
+    }
+
+    public function edit($id){
+        
+    }
+
 }

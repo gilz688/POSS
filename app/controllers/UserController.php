@@ -83,4 +83,8 @@ class UserController extends Controller implements ResourceController {
         $userData = User::find($id)->attributesToArray();
         return View::make('user.edit', $userData);
     }
+
+    public function update($id){
+
+    }
 }

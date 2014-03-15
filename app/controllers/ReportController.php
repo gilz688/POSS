@@ -1,11 +1,18 @@
 <?php
+use Carbon\Carbon;
 class ReportController extends Controller{
 	
+    private $transactionRepository;
+
+    public function __construct(TransactionRepository $transactionRepository) {
+        $this->transactionRepository = $transactionRepository;
+    }
+
 	public function getSalesReport(){
-		$rows = [
-			['date' => '3/14/2014', 'hour' => '3:00-4:00', 'sales' => '800'],
-			['date' => '3/14/2014', 'hour' => '4:00-5:00', 'sales' => '1000']
-		];
-		return View::make('report.sales', array('rows' => $rows));
+		$start = Carbon::create(2014,03,13,0,0,0);
+		$end = $start->addDay();
+		$report = new SalesReport($this->transactionRepository,$start,$end);
+		$rows = $report->getRows();
+		return View::make('report.sales', ['rows' => $rows]);
 	}
 }
