@@ -61,6 +61,7 @@ class TransactionRepository implements TableRepository {
                 if($role == 'clerk' && $transaction->creator_id != Auth::user()->id){
                     throw new UnauthorizedException('Clerks can only view the transactions they created!');
                 }
+                $transaction['purchasedItems'] = $transaction->purchasedItems->toArray();
                 return $transaction->attributesToArray();
             default:
                 throw new UnauthorizedException('Read access to table repository is denied!');
