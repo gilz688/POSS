@@ -5,7 +5,7 @@ class PurchasedItemRepository implements TableRepository {
 	 protected static $writePermissions = [
         'admin' => true,
         'auditor' => false,
-        'clerk' => false,
+        'clerk' => true,
         null => false
     ];
     
@@ -75,14 +75,10 @@ class PurchasedItemRepository implements TableRepository {
 		else {
 			if(array_key_exists('quantity',$attributes)){
 				$quantity = $attributes['quantity'];
-				if(gettype($quantity) == 'integer'){
 					$item->quantity = $attributes['quantity'];
-				}
-				else{
-					throw new ErrorException('Quantity must be an integer.! ');
-				}
+					$item->update();
 			}
-			$item->update();
+			
 		}
     }
 
