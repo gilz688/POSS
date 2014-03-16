@@ -90,5 +90,4 @@ class PurchasedItemRepository implements TableRepository {
             return $item->attributesToArray();
         }
     }
-
 }

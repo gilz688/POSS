@@ -65,7 +65,11 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function show($id) {
-        
+        $transaction = $this->transactionRepository->find($id);
+        $items = $transaction['purchasedItems'];
+        return View::make('transaction.show', [
+                    'items' => $items
+        ]);
     }
 
     public function update($id){
