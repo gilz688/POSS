@@ -50,4 +50,9 @@ Route::group(["before" => "auth"], function() {
      * ItemController
      */
     Route::resource('items', 'ItemController');
+    
+    /*
+     * PurchasedItemController
+     */
+    Route::resource('purchaseditems', 'PurchasedItemController');
 });

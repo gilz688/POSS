@@ -34,6 +34,12 @@
                     <li class="active">
                         @else <li>
                         @endif <a href="/transactions">Transactions</a></li>     
+                    
+                    
+                    @if(Request::is('purchaseditems*')) 
+                    <li class="active">
+                        @else <li>
+                        @endif <a href="/purchaseditems">Purchases</a></li>     
                     @endif
                     
                 </ul>
