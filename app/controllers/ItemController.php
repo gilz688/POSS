@@ -1,6 +1,6 @@
 <?php
 
-class ItemController extends Controller{
+class ItemController extends Controller implements ResourceController{
 
 private $items;
 
@@ -124,6 +124,8 @@ private $items;
      * @return Response
      */
     public function show($barcode) {
-        
+        return View::make('item.show', [
+                    'item' => $this->items->find($barcode)
+        ]);
     }
 }

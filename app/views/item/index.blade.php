@@ -3,26 +3,20 @@
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Barcode</th>
             <th>Name</th>
-			<th>Price(php)</th>
-			<th>Quantity</th>
-			<th>Description</th>
+            <th>Category</th>
+            <th>Price(Php)</th>
 			<th>Label</th>
-			<th>Category ID</th>
             <th>Option</th>
         </tr>
     <thead>
     <tbody
         @foreach ($items as $item)
         <tr> 
-			<td> {{ $item['barcode'] }} </td>
-            <td> {{ $item['itemName'] }} </td>
+            <td> {{ HTML::link('items/' . $item['barcode'], $item['itemName']) }} </td>
+            <td> {{ $item['itemcategory']['name'] }} </td>
 			<td> {{ $item['price'] }} </td>
-			<td> {{ $item['quantity'] }} </td>
-            <td> {{ $item['itemDescription'] }} </td>
 			<td> {{ $item['label'] }} </td>
-			<td> {{ $item['category_id'] }} </td>
             <td>
                 @if(Auth::user()->role == 'admin')
                 {{ Form::open(['url' => 'items/' . $item['barcode'], 'style' => 'float: left;']) }}

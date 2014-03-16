@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 class TransactionRepository implements TableRepository {
 
     public function add($attributes) {
@@ -64,6 +64,37 @@ class TransactionRepository implements TableRepository {
                 return $transaction->attributesToArray();
             default:
                 throw new UnauthorizedException('Read access to table repository is denied!');
+        }
+    }
+
+    public function get(Carbon $start, Carbon $end){
+        if(Auth::user()==null){
+            throw new UnauthorizedException('Read access to table repository is denied!');
+        }
+        $role = Auth::user()->role;
+        $id = Auth::user()->id;
+        switch ($role) {
+            case 'admin': case 'auditor':
+                return Transaction::whereBetween('created_at',[$start,$end])->orderBy('created_at')->get();
+            case 'clerk':
+                return Transaction::whereBetween('created_at',[$start,$end])->orderBy('created_at')->get();
+            default:
+                throw new UnauthorizedException('Read access to table repository is denied!');
+        }
+    }
+
+    public function getTotal($id){
+        $transaction = Transaction::find($id);
+        if($transaction == null){
+            throw new ErrorException('Invalid transaction id');
+        }
+        else{
+            $items = $transaction->purchasedItems;
+            $sales = 0.00;
+            foreach($items as $item){
+                $sales += $item->item->price * $item->quantity;
+            }
+            return ['items' => count($items), 'sales' => $sales];
         }
     }
 }

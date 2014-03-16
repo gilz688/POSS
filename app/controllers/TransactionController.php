@@ -1,6 +1,6 @@
 <?php
 
-class TransactionController extends Controller {
+class TransactionController extends Controller implements ResourceController{
 
     private $transactionRepository;
 
@@ -65,6 +65,14 @@ class TransactionController extends Controller {
      * @return Response
      */
     public function show($id) {
+        
+    }
+
+    public function update($id){
+
+    }
+
+    public function edit($id){
         
     }
 

@@ -85,3 +85,4 @@ class UserRepository implements TableRepository {
     }
 
 }
+

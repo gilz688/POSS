@@ -1,6 +1,6 @@
 <?php
 
-class UserController extends Controller {
+class UserController extends Controller implements ResourceController {
 
     private $users;
 
@@ -82,5 +82,9 @@ class UserController extends Controller {
          */
         $userData = User::find($id)->attributesToArray();
         return View::make('user.edit', $userData);
+    }
+
+    public function update($id){
+
     }
 }

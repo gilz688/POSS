@@ -1,6 +1,6 @@
 <?php
 
-class ItemCategoryController extends Controller {
+class ItemCategoryController extends Controller implements ResourceController{
 
     private $categories;
 

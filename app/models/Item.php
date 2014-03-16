@@ -6,6 +6,6 @@ class Item extends Eloquent{
     protected $softDelete = true;
 
     public function itemCategory(){
-        $this->belongsTo(ItemCategory);
+        return $this->belongsTo('ItemCategory','category_id');
     }
 }
