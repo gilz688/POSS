@@ -6,7 +6,7 @@ class Transaction extends Eloquent {
     protected $softDelete = true;
 
     public function purchasedItems() {
-        return $this->hasMany('PurchasedItem', 'transaction_id', 'id');
+        return $this->hasMany('PurchasedItem', 'id', 'id');
     }
     
     public function creator(){

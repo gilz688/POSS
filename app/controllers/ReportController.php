@@ -15,4 +15,19 @@ class ReportController extends Controller{
 		$rows = $report->getRows();
 		return View::make('report.sales', ['rows' => $rows]);
 	}
+	
+	// Display all clerk
+	public function displayAllClerk() {
+		$users = new UserRepository;
+		return View::make('report.display', array(
+				'users'=> $users->displayClerk()
+			));
+	}
+
+	// Display clerk performance
+	public function show($creator_id){
+		$clerk = new ClerkPerformance;
+		$t = $clerk->getTran($creator_id);		// Returns an array.
+		return View::make('report.clerk',['rows' => $t]);
+	}
 }

@@ -8,6 +8,10 @@ class TestTransactionTableSeeder extends DatabaseSeeder {
                 'cashier_number' => 1,
                 'creator_id' => 2
             ],
+			[
+                'cashier_number' => 3,
+                'creator_id' => 2
+            ],
             [
                 'cashier_number' => 2,
                 'creator_id' => 3

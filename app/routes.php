@@ -51,8 +51,6 @@ Route::group(["before" => "auth"], function() {
      */
     Route::resource('items', 'ItemController');
 
-    
-
     /*
      * PurchasedItemController
      */
@@ -60,4 +58,10 @@ Route::group(["before" => "auth"], function() {
 
     Route::get("/report/sales","ReportController@getSalesReport");
 
+	// Display all clerk names
+    Route::get('/report/clerkperformance', 'ReportController@displayAllClerk');
+
+    // Display the clerk performance
+    Route::resource('/report/clerk', 'ReportController');
+	
 });

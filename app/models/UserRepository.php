@@ -83,6 +83,10 @@ class UserRepository implements TableRepository {
         }
         return $user->attributesToArray();
     }
+	
+	public function displayClerk() {
+        return User::where('role','=', 'clerk')->get();
+    }
 
 }
 

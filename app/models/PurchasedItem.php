@@ -6,7 +6,7 @@ class PurchasedItem extends Eloquent{
     
     public function transaction()
     {
-        return $this->belongsTo('Transaction');
+        return $this->belongsTo('Transaction','id','id');
     }
 
     public function item(){
