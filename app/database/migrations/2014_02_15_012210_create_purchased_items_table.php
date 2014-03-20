@@ -12,7 +12,7 @@ class CreatePurchasedItemsTable extends Migration {
             $table->foreign('barcode')->references('barcode')->on('items');
             $table->integer('quantity');
             $table->timestamps();
-            $table->primary(array('transaction_id', 'barcode'));
+            $table->primary(array('id', 'barcode'));
             $table->softDeletes();
         });
     }

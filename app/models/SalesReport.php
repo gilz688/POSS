@@ -4,6 +4,7 @@ class SalesReport{
 	private $start;
 	private $end;
 	private $rows;
+	private $header = ['hour','transactions','items','sales'];
 	private $repository;
 
 	public function __construct(TransactionRepository $repository, Carbon $start, Carbon $end){
@@ -25,8 +26,8 @@ class SalesReport{
 			$row = [
 				'hour' => $a->format('g:ia') . '-' . $next->format('g:ia'),
 				'transactions' => count($transactions),
-				'sales' => $total['sales'],
-				'number' => $total['number']
+				'items' => $total['items'],
+				'sales' => $total['sales']
 			];
 			array_push($this->rows,$row);
 			$a=$next;
@@ -35,16 +36,20 @@ class SalesReport{
 
 	private function getTotal($transactions){
 		$sales = 0.0;
-		$number = 0;
+		$items = 0;
 		foreach($transactions as $transaction){
 			$total = $this->repository->getTotal($transaction['id']);
+			$items += $total['items'];
 			$sales += $total['sales'];
-			$number += $total['items'];
 		}
-		return ['sales' => $sales, 'number' => $number];
+		return ['items' => $items, 'sales' => $sales];
 	}
 
 	public function getRows(){
 		return $this->rows;
+	}
+
+	public function getHeader(){
+		return $this->header;
 	}
 }

@@ -58,6 +58,8 @@ Route::group(["before" => "auth"], function() {
 
     Route::get("/report/sales","ReportController@getSalesReport");
 
+    Route::post("/report/sales","ReportController@postSalesReport");
+
 	// Display all clerk names
     Route::get('/report/clerkperformance', 'ReportController@displayAllClerk');
 
