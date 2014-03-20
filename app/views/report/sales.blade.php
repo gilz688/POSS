@@ -18,6 +18,7 @@
 </div>
 {{ Form::close() }}
 
+<script src="../script/htmltable.js"></script>
 <script src="../script/salesreport.js"></script>
 
 <div id="spinner"></div>

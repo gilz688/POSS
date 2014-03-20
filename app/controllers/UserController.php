@@ -15,7 +15,7 @@ class UserController extends Controller implements ResourceController {
      */
     public function index() {
         return View::make('user.index', array(
-                    'users' => $this->users->all(),
+                    'users' => $this->users->paginate(),
                     'username' => Auth::user()->username
         ));
     }

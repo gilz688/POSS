@@ -10,6 +10,7 @@ interface TableRepository {
     public function edit($id, $attributes);
     public function find($id);
     public function all();
+    public function paginate($limit = 10);
 }
 
 /**

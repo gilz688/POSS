@@ -1,5 +1,7 @@
 @extends("layout")
 @section("content")
+<div class="loader"></div>
+<div class="list">
 <table class="table table-hover">
     <thead
         <tr>
@@ -13,9 +15,9 @@
 
         @foreach ($transactions as $transaction)
         <tr> 
-            <td> {{ $transaction['id'] }} </td>
-            <td> {{ $transaction['cashier_number'] }} </td>
-            <td> {{ $transaction['creator_id'] }} </td>
+            <td> {{ $transaction->id }} </td>
+            <td> {{ $transaction->cashier_number }} </td>
+            <td> {{ $transaction->creator_id }} </td>
             <td>
                 @if(Auth::user()->role == 'auditor')
                 {{ Form::open(['url' => 'transactions/' . $transaction['id'], 'style' => 'float: left;']) }}
@@ -24,12 +26,14 @@
                 {{ Form::close() }}
                 @endif
                 &nbsp;
-                <a class="btn btn-small btn-info" href="{{ URL::route('transactions.show',$transaction['id']) }} ">view invoice</a>
+                <a class="btn btn-small btn-info" href="{{ URL::route('transactions.show',$transaction->id) }} ">view invoice</a>
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+{{ $transactions->links() }}
+</div>
 @if(Auth::user()->role == 'clerk')
 <a class="btn btn-small btn-primary" href="{{ URL::route('transactions.create') }}">Add Transaction</a>
 @endif

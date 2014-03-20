@@ -98,4 +98,16 @@ class ItemCategoryRepository implements TableRepository {
             return $itemCategory->attributesToArray();
         }
     }
+
+    /**
+     * Get results by page
+     *
+     * @param int $page
+     * @param int $limit
+     * @return StdClass
+     */
+    public function paginate($limit = 10){
+        $items = ItemCategory::paginate($limit);
+        return $items;
+    }
 }

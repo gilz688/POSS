@@ -15,7 +15,7 @@ private $items;
      */
     public function index() {
         return View::make('item.index', array(
-                    'items' => $this->items->all()
+                    'items' => $this->items->paginate()
         ));
     }
 

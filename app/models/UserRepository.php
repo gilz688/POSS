@@ -88,5 +88,9 @@ class UserRepository implements TableRepository {
         return User::where('role','=', 'clerk')->get();
     }
 
+    public function paginate($limit = 10){
+        $items = User::paginate($limit);
+        return $items;
+    }
 }
 

@@ -94,4 +94,9 @@ class PurchasedItemRepository implements TableRepository {
             return $item->attributesToArray();
         }
     }
+
+    public function paginate($limit = 10){
+        $items = PurchasedItem::paginate($limit);
+        return $items;
+    }
 }
