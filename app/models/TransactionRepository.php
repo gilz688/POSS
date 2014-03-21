@@ -35,12 +35,12 @@ class TransactionRepository implements TableRepository {
         }
     }
 
-    public function all() {
+    public function all(array $columns = ["*"]) {
         switch (Auth::user()->role) {
             case 'admin': case 'auditor':
                 return Transaction::all();
             case 'clerk':
-                return Transaction::where('creator_id', Auth::user()->id)->get();
+                return Transaction::where('creator_id', Auth::user()->id)->get($columns);
             default:
                 throw new UnauthorizedException('Read access to table repository is denied!');
         }

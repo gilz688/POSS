@@ -62,9 +62,9 @@ class PurchasedItemRepository implements TableRepository {
        
     }
 
-    public function all() {
+    public function all(array $columns = ["*"]) {
 		$this->checkReadPermissions();
-        return PurchasedItem::orderBy('transaction_id')->get();
+        return PurchasedItem::orderBy('transaction_id')->get($columns);
     }
 
     public function edit($id, $attributes) {
