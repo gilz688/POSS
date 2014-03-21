@@ -25,8 +25,11 @@ class TransactionController extends Controller implements ResourceController{
      *
      * @return Response
      */
-    public function create() {
-        return View::make('transaction.create');
+    public function create() {		
+		return View::make('transaction.create');
+		//$transactionData['cashier_number'] = Input::get('cashier_number');                
+        //$transactionData['id'] = $this->transactionRepository->add($transactionData);
+        //return View::make('purchaseditem.create', $transactionData);
     }
 
     /**
@@ -47,11 +50,10 @@ class TransactionController extends Controller implements ResourceController{
      */
     public function store() {
         try {
-            $transactionData = [
-                'cashier_number' => Input::get('cashierNumber')
-            ];
-            $this->transactionRepository->add($transactionData);
-            return Redirect::route('transactions.index');
+            $transactionData['cashier_number'] = Input::get('cashier_number');                
+            $transactionData['id'] = $this->transactionRepository->add($transactionData);
+            
+            return View::make('purchaseditem.create', $transactionData);
         } catch (UnauthorizedException $ex) {
             echo $ex->getMessage();
         }
@@ -68,7 +70,8 @@ class TransactionController extends Controller implements ResourceController{
         $transaction = $this->transactionRepository->find($id);
         $items = $transaction['purchasedItems'];
         return View::make('transaction.show', [
-                    'items' => $items
+                    'items' => $items,
+                    'id' => $id
         ]);
     }
 
@@ -77,7 +80,7 @@ class TransactionController extends Controller implements ResourceController{
     }
 
     public function edit($id){
-        
+         return View::make('transaction.edit', $id);
     }
 
 }

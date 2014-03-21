@@ -35,16 +35,15 @@ class PurchasedItemRepository implements TableRepository {
         $rules = [
             'barcode' => 'required',
             'quantity' => 'required',
-            'transaction_id' => 'required'];
+            'id' => 'required'];
         
         $validator = Validator::make($attributes, $rules);
         if ($validator->passes()) {
             $purchasedItem = new PurchasedItem;
             $purchasedItem->barcode = $attributes['barcode'];
             $purchasedItem->quantity = $attributes['quantity'];
-            $purchasedItem->transaction_id = $attributes['transaction_id'];
-            $purchasedItem->save();
-            return $purchasedItem;
+            $purchasedItem->id = $attributes['id'];            
+            return $purchasedItem->save();
         } else {
             throw new ErrorException("Invalid data!");
         }
@@ -64,7 +63,7 @@ class PurchasedItemRepository implements TableRepository {
 
     public function all() {
 		$this->checkReadPermissions();
-        return PurchasedItem::orderBy('transaction_id')->get();
+        return PurchasedItem::orderBy('id')->get();
     }
 
     public function edit($id, $attributes) {

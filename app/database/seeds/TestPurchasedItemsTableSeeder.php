@@ -7,17 +7,17 @@ class TestPurchasedItemsTableSeeder extends DatabaseSeeder {
             [
                 'barcode' => 5011321361058,
                 'quantity' => 1,
-                'transaction_id' => 1
+                'id' => 1
             ],
             [
                 'barcode' => 5200032482284,
                 'quantity' => 1,
-                'transaction_id' => 1
+                'id' => 1
             ],
             [
                 'barcode' => 4800119220803,
                 'quantity' => 1,
-                'transaction_id' => 1
+                'id' => 1
             ]
         ];
 

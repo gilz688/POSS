@@ -23,7 +23,7 @@ class PurchasedItemController extends Controller{
      * @return Response
      */
     public function show($barcode) {
-        
+        echo $barcode->id;
     }
     
     /**
@@ -32,6 +32,7 @@ class PurchasedItemController extends Controller{
      * @return Response
      */
     public function create() {
+		
         return View::make('purchaseditem.create');
     }
 
@@ -44,12 +45,12 @@ class PurchasedItemController extends Controller{
         $itemData = [
 			'barcode' => Input::get('barcode'),
 			'quantity' => Input::get('quantity'),
-			'transaction_id' => Input::get('transaction_id')
+			'id' => Input::get('id')
         ];
         $rules = array(
 			'barcode' => 'required',
 			'quantity' => 'required',
-			'transaction_id' => 'required',
+			'id' => 'required',
         );
         $validator = Validator::make($itemData, $rules);
 
@@ -59,8 +60,7 @@ class PurchasedItemController extends Controller{
                             ->withInput(Input::all());
         }
         $this->items->add($itemData);
-        Session::flash('message', 'Successfully added new item!');
-        return Redirect::route('purchaseditems.index');
+        return View::make('purchaseditem.create',$itemData);
     }
 	
 	/**

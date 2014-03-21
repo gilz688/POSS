@@ -12,7 +12,7 @@ class DatabaseSeeder extends Seeder {
         $this->call('TestUserTableSeeder');
         $this->call('ItemCategoriesTableSeeder');
         $this->call('TestItemsTableSeeder');
-        $this->call('TestInventoryItemTableSeeder');
+       // $this->call('TestInventoryItemTableSeeder');
         $this->call('TestTransactionTableSeeder');
         $this->call('TestPurchasedItemsTableSeeder');
     }

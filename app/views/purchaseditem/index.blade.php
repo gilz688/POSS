@@ -1,17 +1,19 @@
 @extends("layout")
 @section("content")
+
+
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Transaction ID</th>
             <th>Barcode</th>
+            <th>Quantity</th>
         </tr>
     <thead>
     <tbody
-        @foreach ($purchaseditems as $item)
+        @foreach ($items as $item)
         <tr> 
-			<td> {{ $item['transaction_id'] }} </td>
-            <td> {{ $item['barcode'] }} </td>
+			<td> {{ $item['barcode'] }} </td>
+            <td> {{ $item['quantity'] }} </td>
             <td>
                 @if(Auth::user()->role == 'admin')
                 {{ Form::open(['url' => 'purchaseditems/' . $item['barcode'], 'style' => 'float: left;']) }}

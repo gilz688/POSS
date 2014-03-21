@@ -12,13 +12,12 @@ class PurchasedItemTest extends TestCase {
 		$purchasedItemsData =  [
                 'barcode' => 4807770270291,
                 'quantity' => 3,
-                'transaction_id' => 4
+                'id' => 4
             ];
 
-		 $purchasedItems = new PurchasedItemsRepository;
-		 $purchasedItems->add($purchasedItemsData);
-		 $item = $purchasedItems->find($purchasedItemsData['barcode']);
-		 $this->assertEquals(4807770270291, $item['barcode']);
+		 $purchasedItems = new PurchasedItemRepository;
+		 $id = $purchasedItems->add($purchasedItemsData);		 
+		 $this->assertEquals(4807770270291, $id);
 
 	}
 	
@@ -31,12 +30,12 @@ class PurchasedItemTest extends TestCase {
 		$purchasedItemsData =  [
                 'barcode' => 4807770270291,
                 'quantity' => 3,
-                'transaction_id' => 4
+                'id' => 4
             ];
 
-		 $purchasedItems = new PurchasedItemsRepository;
+		 $purchasedItems = new PurchasedItemRepository;
 		 $purchasedItems->add($purchasedItemsData);
-		 $item = $purchasedItems->find($purchasedItemsData['barcode']);
+		 
 	}
 	
 	/**
@@ -48,10 +47,10 @@ class PurchasedItemTest extends TestCase {
 		$purchasedItemsData =  [
                 'barcode' => 4807770270291,
                 'quantity' => 3,
-                'transaction_id' => 4,
+                'id' => 4,
             ];
 
-		 $purchasedItems = new PurchasedItemsRepository;
+		 $purchasedItems = new PurchasedItemRepository;
 		 $item = $purchasedItems->add();
 	}
 	
@@ -64,21 +63,24 @@ class PurchasedItemTest extends TestCase {
 		$purchasedItemsData =  [
                 'barcode' => 4807770270291,
                 'quantity' => hello,
-                'transaction_id' => 4,
+                'id' => 4,
             ];
 
-		 $purchasedItems = new PurchasedItemsRepository;
+		 $purchasedItems = new PurchasedItemRepository;
 		 $item = $purchasedItems->add($purchasedItemsData);
 	}
 
 	public function test_DeletePurchasedItem()
 	{
+
 		Auth::attempt($this->adminCredentials);
-		$barcode = 5200032482284;
-	    $items = new PurchasedItemsRepository;
-	    $this->assertNotNull($items->find($barcode));
+	    $items = new PurchasedItemRepository;
+	    $barcode = 5200032482284;
+	    
+	    
+	    $this->assertNotNull(PurchasedItem::find($barcode));
 	    $items->delete($barcode);
-        $this->assertNull($items->find($barcode));
+        $this->assertNull(PurchasedItem::find($barcode));
 	}
 	
 	/**
@@ -87,7 +89,7 @@ class PurchasedItemTest extends TestCase {
 	public function test_DeletePurchasedItem_UnauthorizedUser()
 	{
 		Auth::attempt($this->auditorCredentials);
-	    $items = new PurchasedItemsRepository;
+	    $items = new PurchasedItemRepository;
 	    $items->delete(5200032482284);
 	}
 	
@@ -106,7 +108,7 @@ class PurchasedItemTest extends TestCase {
 		Auth::attempt($this->adminCredentials);
         $barcode = 5200032482284;
         $data = ['quantity' => 8];
-        $items = new PurchasedItemsRepository;
+        $items = new PurchasedItemRepository;
         $this->assertNotNull($items->find($barcode));
         $items->edit($barcode,$data);
         $attributes = $items->find($barcode);
@@ -129,7 +131,7 @@ class PurchasedItemTest extends TestCase {
 		Auth::attempt($this->adminCredentials);
         $barcode = 5200032482284;
         $data = ['quantity' => hello];
-        $items = new PurchasedItemsRepository;
+        $items = new PurchasedItemRepository;
         $this->assertNotNull($items->find($barcode));
         $items->edit($barcode,$data);
 	}
@@ -142,7 +144,7 @@ class PurchasedItemTest extends TestCase {
 		Auth::attempt($this->adminCredentials);
         $barcode = 5200032482285;
         $data = ['quantity' => 4];
-        $items = new PurchasedItemsRepository;
+        $items = new PurchasedItemRepository;
         $this->assertNull($items->find($barcode));
         $items->edit($barcode,$data);
 	}
