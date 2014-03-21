@@ -19,7 +19,7 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="barcode"><span style="font-family:sans-serif; font-size:13px ">Barcode</span></label>
         <div class="col-md-8">
-            <input  name="barcode" type="text" placeholder="" value="{{ $barcode }}" onfocus="this.blur()" />
+            <input id="barcode" name="barcode" type="text" placeholder="" value="{{ $barcode }}" class="form-control input-md" />
         </div>
     </div>
 
@@ -72,7 +72,7 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="category_id"><span style="font-family:sans-serif; font-size:13px ">Category ID</span></label>
         <div class="col-md-8">
-            <input  name="category_id" type="text" placeholder="" value="{{ $category_id }}" onfocus="this.blur()" />
+            <input  name="category_id" type="text" placeholder="" value="{{ $category_id }}" class="form-control input-md" />
         </div>
     </div>
     

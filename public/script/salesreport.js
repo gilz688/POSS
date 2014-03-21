@@ -9,13 +9,13 @@ function salesreport(){
 		$.ajax({
                 type: 'post',
                 dataType: 'json',
-                url: "http://localhost:8888/report/sales",
+                url: siteloc + "/report/sales",
                 data: {
             		start : start,
             		end : end
             	},
                 beforeSend: function() { 
-                    $("#spinner").html("<img src='../image/loader.gif' /> Please wait...");
+                    $("#spinner").html("<img src='../image/blue.gif' width='25px' height='25px'/> Please wait...");
                 },
                 success: function(response) {
                     var tablebody = "";

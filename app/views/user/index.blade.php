@@ -1,7 +1,12 @@
 @extends("layout")
 @section("content")
+
+<a class="btn btn-small btn-danger" href="{{ URL::route('users.create') }}"><i class="glyphicon glyphicon-user"></i>  ADD USER</a>
+<br>
+<br>
+
 <div class="loader"></div>
-<div class="list">
+
 <table class="table table-hover">
     <thead>
         <tr>
@@ -25,17 +30,22 @@
                 @if(Auth::user()->role == 'admin' && Auth::user()->username != $user->username)
                 {{ Form::open(['url' => 'users/' . $user['id'], 'style' => 'float: left;']) }}
                 {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('remove', ['class' => 'btn btn-danger']) }}
+                <form method="POST" action="http://localhost:8000/user/index" accept-charset="UTF-8" style="display:inline">
+                    <button class="btn btn-small btn-danger" type="submit" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Item" data-message="Are you sure you want to delete this item ?">
+                        <i class="glyphicon glyphicon-trash"></i>  DELETE
+                    </button>
+                </form>
                 {{ Form::close() }}
                 &nbsp;
-                <a class="btn btn-small btn-success" href="{{ URL::route('users.edit',$user->id) }} ">edit</a>
+                <a class="btn btn-small btn-success" href="{{ URL::route('users.edit',$user->id) }} "><i class="glyphicon glyphicon-edit"></i>  EDIT</a>
                 @endif
             </td>
         </tr>
         @endforeach
     </tbody>
 </table>
+<div class="pagination">
 {{ $users->links() }}
 </div>
-<a class="btn btn-small btn-primary" href="{{ URL::route('users.create') }}">add user</a>
+
 @stop

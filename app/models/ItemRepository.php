@@ -89,7 +89,7 @@ class ItemRepository implements TableRepository{
             }
 			if(array_key_exists('price',$attributes)){
                 $price = $attributes['price'];
-                if(gettype($price) == 'double'){
+                if(gettype($price) == 'string'){
                     $item->price = $attributes['price'];
                 }
                 else{
@@ -98,7 +98,7 @@ class ItemRepository implements TableRepository{
             }
 			if(array_key_exists('quantity',$attributes)){
                 $quantity = $attributes['quantity'];
-                if(gettype($quantity) == 'integer'){
+                if(gettype($quantity) == 'string'){
                     $item->quantity = $attributes['quantity'];
                 }
                 else{
