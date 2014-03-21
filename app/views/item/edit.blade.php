@@ -68,13 +68,25 @@
         </div>
     </div>
     
-    <!-- Uneditable category_id -->
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="category_id"><span style="font-family:sans-serif; font-size:13px ">Category ID</span></label>
-        <div class="col-md-8">
-            <input  name="category_id" type="text" placeholder="" value="{{ $category_id }}" onfocus="this.blur()" />
-        </div>
-    </div>
+    	<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category_id">Category</label>  
+  <div class="col-md-4">
+  <select name="category_id" id="category_id" value="{{ $category_id }}">
+					<option value="">{{['itemcategory']['name']}}</option>
+					<option value="1">Baby Items</option>
+					<option value="2">Baking</option>
+					<option value="3">Beverages</option>
+					<option value="4">Bread/Bakery</option>
+					<option value="5">Canned Goods</option>
+					<option value="6">Cereal/Breakfast</option>
+					<option value="7">Condiments</option>
+					<option value="8">Dairy</option>
+					<option value="9">Frozen Foods</option>
+					<option value="10">Health & Beauty</option>
+				</select>    
+  </div>
+</div>
     
     <!-- Button -->
     <div class="form-group">
