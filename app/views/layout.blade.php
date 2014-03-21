@@ -7,7 +7,7 @@
     <title>Point of Sales System</title>
     
     <!-- Bootstrap core CSS -->
-    {{ HTML::style('//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css')}}
+    {{ HTML::style('css/bootstrap.min.css')}}
 
     <!-- Custom styles for this template -->
     {{ HTML::style('css/layout.css')}}

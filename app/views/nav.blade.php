@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#">Point of Sales System</a>
+                <a class="navbar-brand" href="#"><img src='/image/poss_logo.png'></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -47,10 +47,18 @@
                     @endif
                 </ul>   
                 <ul class="nav navbar-nav navbar-right">
+
                     @if(Auth::check())
-                    <li>
-                        {{ HTML::linkRoute('profile', 'Profile') }}</li>
-                    <li>{{ HTML::linkRoute('logout', 'Logout') }}</li>
+                    
+                    <li ><span style="display:block;margin: 10px 0px 3px 3px;width: 23px;"><img src='/image/meow.jpg' class="img-circle" width='30px' height='30px' padding-top='20px' /></span>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">USERNAME HERE<b class="caret"></b>
+
+                    <!--<li>{{ HTML::linkRoute('profile', 'USERNAME HERE') }}</li> -->
+
+                        <ul class="dropdown-menu">
+                            <li>{{ HTML::linkRoute('logout', 'Logout') }}</li>
+                        </ul>
+                    </li>
                     @endif
                 </ul>
             </div><!--/.nav-collapse -->
