@@ -1,23 +1,27 @@
 @extends("layout")
 @section("content")
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Hour</th>
-            <th>Transactions</th>
-            <th>Number</th>
-            <th>Sales</th>
-        </tr>
-    <thead>
-    <tbody
-        @foreach($rows as $row)
-        <tr> 
-            <td> {{ $row['hour'] }} </td>
-            <td> {{ $row['transactions'] }} </td>
-            <td> {{ $row['number'] }} </td>
-            <td> {{ $row['sales'] }} </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
+
+{{ HTML::style('css/datepicker3.css')}}
+
+{{ Form::open( array(
+    'url' => '/report/sales',
+    'method' => 'post'
+) ) }}
+<label class="col-md-2 control-label">Date Range:</label>  
+<div class="input-daterange input-group" id="datepicker">
+    <input type="text" class="input-sm form-control" name="start" id="start"/>
+    <span class="input-group-addon">to</span>
+    <input type="text" class="input-sm form-control" name="end" id="end"/>
+</div>
+<div class="col-md-2">
+      <button id="generate" name="add" class="btn btn-primary">Generate Report</button>
+</div>
+{{ Form::close() }}
+
+<script src="../script/bootstrap-datepicker.js"></script>
+<script src="../script/htmltable.js"></script>
+<script src="../script/salesreport.js"></script>
+
+<div id="spinner"></div>
+<div id="report"></div>
 @stop

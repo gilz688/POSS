@@ -15,7 +15,7 @@ class ItemCategoryController extends Controller implements ResourceController{
      */
     public function index() {
         return View::make('itemcategory.index', array(
-                    'categories' => $this->categories->all()
+                    'categories' => $this->categories->paginate()
         ));
     }
 

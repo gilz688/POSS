@@ -98,4 +98,9 @@ class TransactionRepository implements TableRepository {
             return ['items' => count($items), 'sales' => $sales];
         }
     }
+
+    public function paginate($limit = 10){
+        $items = Transaction::paginate($limit);
+        return $items;
+    }
 }

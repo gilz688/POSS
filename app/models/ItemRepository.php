@@ -139,6 +139,11 @@ class ItemRepository implements TableRepository{
             return $attributes;
         }
     }
+
+    public function paginate($limit = 10){
+        $items = Item::paginate($limit);
+        return $items;
+    }
 }
 
 

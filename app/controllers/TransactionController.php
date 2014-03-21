@@ -2,10 +2,10 @@
 
 class TransactionController extends Controller implements ResourceController{
 
-    private $transactionRepository;
+    private $transactions;
 
-    public function __construct(TransactionRepository $transactionRepository) {
-        $this->transactionRepository = $transactionRepository;
+    public function __construct(TransactionRepository $transactions) {
+        $this->transactions = $transactions;
     }
 
     /**
@@ -14,9 +14,8 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function index() {
-        $transactions = $this->transactionRepository->all();
         return View::make('transaction.index', [
-                    'transactions' => $transactions
+                    'transactions' => $this->transactions->paginate()
         ]);
     }
 
@@ -39,7 +38,7 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function destroy($id) {
-        $this->transactionRepository->delete($id);
+        $this->transactions->delete($id);
         return Redirect::route('transactions.index');
     }
 
@@ -51,8 +50,7 @@ class TransactionController extends Controller implements ResourceController{
     public function store() {
         try {
             $transactionData['cashier_number'] = Input::get('cashier_number');                
-            $transactionData['id'] = $this->transactionRepository->add($transactionData);
-            
+            $transactionData['id'] = $this->transactions->add($transactionData);            
             return View::make('purchaseditem.create', $transactionData);
         } catch (UnauthorizedException $ex) {
             echo $ex->getMessage();
@@ -67,7 +65,7 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function show($id) {
-        $transaction = $this->transactionRepository->find($id);
+        $transaction = $this->transactions->find($id);
         $items = $transaction['purchasedItems'];
         return View::make('transaction.show', [
                     'items' => $items,

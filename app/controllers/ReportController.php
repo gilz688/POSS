@@ -9,10 +9,31 @@ class ReportController extends Controller{
     }
 
 	public function getSalesReport(){
-		$start = Carbon::create(2014,03,13,0,0,0);
-		$end = $start->addDay();
+		return View::make('report.sales');
+	}
+
+	public function postSalesReport(){
+		$start = Carbon::createFromFormat('m/d/Y', Input::get('start'));
+		$end = Carbon::createFromFormat('m/d/Y', Input::get('end'));
 		$report = new SalesReport($this->transactionRepository,$start,$end);
-		$rows = $report->getRows();
-		return View::make('report.sales', ['rows' => $rows]);
+		return Response::json([
+			'header' => $report->getHeader(),
+			'rows' => $report->getRows()
+		]);
+	}
+	
+	// Display all clerk
+	public function displayAllClerk() {
+		$users = new UserRepository;
+		return View::make('report.display', array(
+				'users'=> $users->displayClerk()
+			));
+	}
+
+	// Display clerk performance
+	public function show($creator_id){
+		$clerk = new ClerkPerformance;
+		$t = $clerk->getTran($creator_id);		// Returns an array.
+		return View::make('report.clerk',['rows' => $t]);
 	}
 }

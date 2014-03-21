@@ -81,12 +81,17 @@ class PurchasedItemRepository implements TableRepository {
 		}
     }
 
-    public function find($id) {
-        $item = PurchasedItem::find($id);
+    public function find($barcode) {
+        $item = PurchasedItem::find($barcode);
         if ($item == null) {
             return null;
         } else {
             return $item->attributesToArray();
         }
+    }
+
+    public function paginate($limit = 10){
+        $items = PurchasedItem::paginate($limit);
+        return $items;
     }
 }

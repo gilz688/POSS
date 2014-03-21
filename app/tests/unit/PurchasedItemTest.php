@@ -74,13 +74,13 @@ class PurchasedItemTest extends TestCase {
 	{
 
 		Auth::attempt($this->adminCredentials);
-	    $items = new PurchasedItemRepository;
-	    $barcode = 5200032482284;
+	    $items = new PurchasedItemRepository;	
+		$barcode = 5011321361058;
+
 	    
-	    
-	    $this->assertNotNull(PurchasedItem::find($barcode));
+	    $this->assertNotNull($items->find($barcode));
 	    $items->delete($barcode);
-        $this->assertNull(PurchasedItem::find($barcode));
+        $this->assertNull($items->find($barcode));
 	}
 	
 	/**
