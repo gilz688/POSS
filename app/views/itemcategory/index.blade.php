@@ -1,46 +1,21 @@
 @extends("layout")
 @section("content")
+<center><div id="loader"></div></center>
+<div id="list">
 
-<a class="btn btn-small btn-danger" href="{{ URL::route('itemcategories.create') }}"><i class="glyphicon glyphicon-plus"></i>  ADD CATEGORY</a>
-<br>
-<br>
-
-<div class="loader"></div>
-
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Description</th>
-            <th>Option</th>
-        </tr>
-    </thead>
-    <tbody
-        @foreach ($categories as $category)
-        <tr> 
-            <td> {{ $category->name }} </td>
-            <td> {{ $category->description }} </td>
-            <td>
-                @if(Auth::user()->role == 'admin')
-                {{ Form::open(['url' => 'itemcategories/' . $category->id, 'style' => 'float: left;']) }}
-                {{ Form::hidden('_method', 'DELETE') }}
-                <form method="POST" action="http://localhost:8000/items/index" accept-charset="UTF-8" style="display:inline">
-                    <button class="btn btn-small btn-danger" type="submit" data-toggle="modal" data-target="#confirmDelete" data-title="Delete Item" data-message="Are you sure you want to delete this item ?">
-                        <i class="glyphicon glyphicon-trash"></i>  DELETE
-                    </button>
-                </form>
-                {{ Form::close() }}
-                &nbsp;
-                <a class="btn btn-small btn-success" href="{{ URL::route('itemcategories.edit',$category->id) }} "><i class="glyphicon glyphicon-edit"></i>  EDIT</a>
-                @endif
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-
-<div class="pagination">
-{{ $categories->links() }}
 </div>
+<script type="text/javascript">var role = "{{ Auth::user()->role }}"</script>
+<script src="../script/itemcategory.js"></script>
 <a class="btn btn-small btn-primary" href="{{ URL::route('itemcategories.create') }}">add category</a>
+
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+
 @stop
