@@ -19,7 +19,13 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="barcode"><span style="font-family:sans-serif; font-size:13px ">Barcode</span></label>
         <div class="col-md-8">
-            <input  name="barcode" type="text" placeholder="" value="{{ $barcode }}" onfocus="this.blur()" />
+            <canvas id="ean" width="200" height="100">
+                {{ $barcode }}
+            </canvas>
+            <script type="text/javascript" src="{{ URL::to('/') }}/script/jquery-ean13.min.js"></script>
+            <script type="text/javascript">
+                $("#ean").EAN13("{{ $barcode }}");
+            </script>
         </div>
     </div>
 
@@ -73,7 +79,7 @@
   <label class="col-md-4 control-label" for="category_id">Category</label>  
   <div class="col-md-4">
   <select name="category_id" id="category_id" value="{{ $category_id }}">
-					<option value="">{{['itemcategory']['name']}}</option>
+					<option value="">{{ $itemcategory['name']}}</option>
 					<option value="1">Baby Items</option>
 					<option value="2">Baking</option>
 					<option value="3">Beverages</option>
