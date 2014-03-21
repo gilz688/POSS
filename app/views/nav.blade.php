@@ -51,7 +51,7 @@
                     @if(Auth::check())
                     
                     <li ><span style="display:block;margin: 10px 0px 3px 3px;width: 23px;"><img src='/image/meow.jpg' class="img-circle" width='30px' height='30px' padding-top='20px' /></span>
-                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">USERNAME HERE<b class="caret"></b>
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }}<b class="caret"></b>
 
                     <!--<li>{{ HTML::linkRoute('profile', 'USERNAME HERE') }}</li> -->
 

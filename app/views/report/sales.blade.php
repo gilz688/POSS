@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 
-<script src="//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.js"></script>
+{{ HTML::style('css/datepicker3.css')}}
 
 {{ Form::open( array(
     'url' => '/report/sales',
@@ -18,6 +18,7 @@
 </div>
 {{ Form::close() }}
 
+<script src="../script/bootstrap-datepicker.js"></script>
 <script src="../script/htmltable.js"></script>
 <script src="../script/salesreport.js"></script>
 
