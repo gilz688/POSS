@@ -19,7 +19,17 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="barcode"><span style="font-family:sans-serif; font-size:13px ">Barcode</span></label>
         <div class="col-md-8">
+<<<<<<< HEAD
             <input id="barcode" name="barcode" type="text" placeholder="" value="{{ $barcode }}" class="form-control input-md" />
+=======
+            <canvas id="ean" width="200" height="100">
+                {{ $barcode }}
+            </canvas>
+            <script type="text/javascript" src="{{ URL::to('/') }}/script/jquery-ean13.min.js"></script>
+            <script type="text/javascript">
+                $("#ean").EAN13("{{ $barcode }}");
+            </script>
+>>>>>>> 31cd22a6319227c55e1d9d2e9d1743e94eab75dd
         </div>
     </div>
 
@@ -68,6 +78,7 @@
         </div>
     </div>
     
+<<<<<<< HEAD
     <!-- Uneditable category_id -->
     <div class="form-group">
         <label class="col-md-4 control-label" for="category_id"><span style="font-family:sans-serif; font-size:13px ">Category ID</span></label>
@@ -75,6 +86,27 @@
             <input  name="category_id" type="text" placeholder="" value="{{ $category_id }}" class="form-control input-md" />
         </div>
     </div>
+=======
+    	<!-- Text input-->
+<div class="form-group">
+  <label class="col-md-4 control-label" for="category_id">Category</label>  
+  <div class="col-md-4">
+  <select name="category_id" id="category_id" value="{{ $category_id }}">
+					<option value="">{{ $itemcategory['name']}}</option>
+					<option value="1">Baby Items</option>
+					<option value="2">Baking</option>
+					<option value="3">Beverages</option>
+					<option value="4">Bread/Bakery</option>
+					<option value="5">Canned Goods</option>
+					<option value="6">Cereal/Breakfast</option>
+					<option value="7">Condiments</option>
+					<option value="8">Dairy</option>
+					<option value="9">Frozen Foods</option>
+					<option value="10">Health & Beauty</option>
+				</select>    
+  </div>
+</div>
+>>>>>>> 31cd22a6319227c55e1d9d2e9d1743e94eab75dd
     
     <!-- Button -->
     <div class="form-group">
