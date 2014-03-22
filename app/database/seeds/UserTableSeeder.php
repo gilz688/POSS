@@ -3,6 +3,7 @@
 class UserTableSeeder extends DatabaseSeeder{
     	public function run()
 	{
+            User::truncate();
             $users = [
             [
                 'username' => 'admin',

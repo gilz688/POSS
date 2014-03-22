@@ -32,6 +32,18 @@ class TestUserTableSeeder extends DatabaseSeeder {
             ]
         ];
 
+        $faker = Faker\Factory::create();
+        for($i=0;$i<20;$i++){
+            array_push($users,[
+                'username' => $faker->userName,
+                'password' => Hash::make($faker->word),
+                'role' => 'clerk',
+                'firstname' => $faker->firstName,
+                'middlename' => $faker->lastName,
+                'lastname' => $faker->lastName
+            ]);
+        }
+
         foreach ($users as $user) {
             User::create($user);
         }

@@ -3,6 +3,7 @@
 class ItemCategoriesTableSeeder extends DatabaseSeeder {
 
     public function run() {
+
         $itemCategories = [
             [
                 'name' => 'Baby Items',

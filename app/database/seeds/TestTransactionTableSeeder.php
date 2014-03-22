@@ -3,12 +3,13 @@
 class TestTransactionTableSeeder extends DatabaseSeeder {
 
     public function run() {
+
         $transactions = [
             [
                 'cashier_number' => 1,
                 'creator_id' => 2
             ],
-			[
+            [
                 'cashier_number' => 3,
                 'creator_id' => 2
             ],
@@ -17,6 +18,18 @@ class TestTransactionTableSeeder extends DatabaseSeeder {
                 'creator_id' => 3
             ]
         ];
+        $clerks = User::where('role','clerk')->get(['id'])->toArray();
+        $faker = Faker\Factory::create();
+        
+        for($i=0;$i<100;$i++){
+            $dateCreated = $faker->dateTimeBetween('-1 month','now');
+            array_push($transactions, [
+                'cashier_number' => rand(1,5),
+                'creator_id' => $faker->randomElement($clerks)['id'],
+                'created_at' => $dateCreated,
+                'updated_at' => $dateCreated
+            ]);
+        }
 
         foreach ($transactions as $transaction) {
             Transaction::create($transaction);
