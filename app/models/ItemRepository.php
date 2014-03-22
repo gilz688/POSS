@@ -89,30 +89,17 @@ class ItemRepository implements TableRepository{
                 }
             }
 			if(array_key_exists('price',$attributes)){
-<<<<<<< HEAD
                 $price = doubleval($attributes['price']);
                 $item->price = $attributes['price'];
             }
 			if(array_key_exists('quantity',$attributes)){
                 $quantity = intval($attributes['quantity']);
-=======
                 $price = $attributes['price'];
-                if(gettype($price) == 'string'){
-                    $item->price = $attributes['price'];
-                }
-                else{
-                    throw new ErrorException('Price should be a double value!');
-                }
+                $item->price = $attributes['price'];
             }
 			if(array_key_exists('quantity',$attributes)){
                 $quantity = $attributes['quantity'];
-                if(gettype($quantity) == 'string'){
-                    $item->quantity = $attributes['quantity'];
-                }
-                else{
-                    throw new ErrorException('Quantity should be an integer.! ');
-                }
->>>>>>> 9425e7a58d38c331b7372ba9a11a3e6ff8db20b2
+                $item->quantity = $attributes['quantity'];
             }
             if(array_key_exists('itemDescription',$attributes)){
                 $itemDescription = $attributes['itemDescription'];
@@ -132,6 +119,10 @@ class ItemRepository implements TableRepository{
                     throw new ErrorException('Label should be a string!');
                 }
                 
+            }
+            if(array_key_exists('category_id', $attributes)){
+                $category_id = $attributes['category_id'];
+                $item->category_id = $attributes['category_id'];
             }
             $item->update();
         }
