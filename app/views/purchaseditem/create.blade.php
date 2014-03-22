@@ -36,11 +36,14 @@
   <div class="col-md-4">
     <button id="add" name="add" class="btn btn-primary">Add</button>
   </div>
-
-<!--{{Form::submit('add')}}-->
+  
+ <!-- Invoice Button --> 
+<div class="col-md-4 col-md-offset-4">
+<a class="btn btn-small btn-primary " href="{{ URL::route('transactions.show',$id) }} ">view invoice</a>
+</div>
 
 </fieldset>
-<a class="btn btn-small btn-info" href="{{ URL::route('transactions.show',$id) }} ">view invoice</a>
+
 {{ Form::close() }}
 
 @stop
