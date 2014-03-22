@@ -1,35 +1,21 @@
 @extends("layout")
 @section("content")
-<div class="loader"></div>
-<div class="list">
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Category</th>
-            <th>Description</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody
-        @foreach ($categories as $category)
-        <tr> 
-            <td> {{ $category->name }} </td>
-            <td> {{ $category->description }} </td>
-            <td>
-                @if(Auth::user()->role == 'admin')
-                {{ Form::open(['url' => 'itemcategories/' . $category->id, 'style' => 'float: left;']) }}
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('remove', ['class' => 'btn btn-danger']) }}
-                {{ Form::close() }}
-                &nbsp;
-                <a class="btn btn-small btn-success" href="{{ URL::route('itemcategories.edit',$category->id) }} ">edit</a>
-                @endif
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-{{ $categories->links() }}
+<center><div id="loader"></div></center>
+<div id="list">
+
 </div>
+<script type="text/javascript">var role = "{{ Auth::user()->role }}"</script>
+<script src="../script/itemcategory.js"></script>
 <a class="btn btn-small btn-primary" href="{{ URL::route('itemcategories.create') }}">add category</a>
+
+<button class="btn btn-primary" data-toggle="modal" data-target=".bs-example-modal-sm">Small modal</button>
+
+<div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+    <div class="modal-content">
+      ...
+    </div>
+  </div>
+</div>
+
 @stop

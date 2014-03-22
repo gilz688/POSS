@@ -32,9 +32,9 @@ class UserRepository implements TableRepository {
         }
     }
 
-    public function all() {
+    public function all(array $columns = ["*"]) {
         $this->checkAdmin();
-        return User::orderBy('username')->get();
+        return User::orderBy('username')->get($columns);
     }
 
     public function delete($id) {

@@ -30,9 +30,9 @@ class ItemRepository implements TableRepository{
         }
     }
 
-	public function all() {
+	public function all(array $columns = ["*"]) {
         $this->checkReadPermissions();
-        return Item::orderBy('barcode')->get();
+        return Item::orderBy('barcode')->get($columns);
     }
 	
     public function add($attributes) {
@@ -75,7 +75,8 @@ class ItemRepository implements TableRepository{
     public function edit($barcode, $attributes) {
         $this->checkWritePermissions();
         $item = Item::find($barcode);
-        if ($barcode == null) {
+
+        if ($barcode == null && $barcode < 10000000000000) {
             throw new ErrorException("Invalid barcode!");
         } else {
             if(array_key_exists('itemName',$attributes)){
@@ -88,22 +89,11 @@ class ItemRepository implements TableRepository{
                 }
             }
 			if(array_key_exists('price',$attributes)){
-                $price = $attributes['price'];
-                if(gettype($price) == 'double'){
-                    $item->price = $attributes['price'];
-                }
-                else{
-                    throw new ErrorException('Price should be a double value!');
-                }
+                $price = doubleval($attributes['price']);
+                $item->price = $attributes['price'];
             }
 			if(array_key_exists('quantity',$attributes)){
-                $quantity = $attributes['quantity'];
-                if(gettype($quantity) == 'integer'){
-                    $item->quantity = $attributes['quantity'];
-                }
-                else{
-                    throw new ErrorException('Quantity should be an integer.! ');
-                }
+                $quantity = intval($attributes['quantity']);
             }
             if(array_key_exists('itemDescription',$attributes)){
                 $itemDescription = $attributes['itemDescription'];

@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 [2014-03-22 00:55:11] Codeception.INFO: PASSED [] []
 [2014-03-22 00:55:13] Codeception.INFO: PASSED [] []
 [2014-03-22 00:55:15] Codeception.INFO: PASSED [] []
@@ -461,3 +462,44 @@
 [2014-03-22 03:26:47] Codeception.INFO: PASSED [] []
 [2014-03-22 03:26:49] Codeception.INFO: PASSED [] []
 [2014-03-22 03:26:52] Codeception.INFO: PASSED [] []
+=======
+[2014-03-22 15:45:59] Codeception.ALERT: Failed asserting that Array (
+    0 => Array (
+        'date' => '03-22-2014'
+        'sales' => 458.5
+    )
+) is null. [] []
+[2014-03-22 15:45:59] Codeception.INFO: # FAILED # [] []
+[2014-03-22 15:45:59] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:00] Codeception.ALERT: Invalid id. [] []
+[2014-03-22 15:46:00] Codeception.INFO: # ERROR # [] []
+[2014-03-22 15:46:00] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:01] Codeception.ALERT: Access denied. [] []
+[2014-03-22 15:46:01] Codeception.INFO: # ERROR # [] []
+[2014-03-22 15:46:01] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:23] Codeception.ALERT: Undefined offset: 0 [] []
+[2014-03-22 15:46:23] Codeception.INFO: # ERROR # [] []
+[2014-03-22 15:46:23] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:24] Codeception.ALERT: Invalid id. [] []
+[2014-03-22 15:46:24] Codeception.INFO: # ERROR # [] []
+[2014-03-22 15:46:24] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:24] Codeception.ALERT: Access denied. [] []
+[2014-03-22 15:46:24] Codeception.INFO: # ERROR # [] []
+[2014-03-22 15:46:24] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:40] Codeception.ALERT: Failed asserting that two strings are equal. [] []
+[2014-03-22 15:46:40] Codeception.INFO: # FAILED # [] []
+[2014-03-22 15:46:40] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:41] Codeception.ALERT: Invalid id. [] []
+[2014-03-22 15:46:41] Codeception.INFO: # ERROR # [] []
+[2014-03-22 15:46:41] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:42] Codeception.ALERT: Access denied. [] []
+[2014-03-22 15:46:42] Codeception.INFO: # ERROR # [] []
+[2014-03-22 15:46:42] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:54] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:55] Codeception.ALERT: Invalid id. [] []
+[2014-03-22 15:46:55] Codeception.INFO: # ERROR # [] []
+[2014-03-22 15:46:55] Codeception.INFO: PASSED [] []
+[2014-03-22 15:46:56] Codeception.ALERT: Access denied. [] []
+[2014-03-22 15:46:56] Codeception.INFO: # ERROR # [] []
+[2014-03-22 15:46:56] Codeception.INFO: PASSED [] []
+>>>>>>> 8a27e4fdff518d20cf638bd60b3e520fcc7698fb

@@ -9,7 +9,7 @@ interface TableRepository {
     public function delete($id);
     public function edit($id, $attributes);
     public function find($id);
-    public function all();
+    public function all(array $columns = ["*"]);
     public function paginate($limit = 10);
 }
 

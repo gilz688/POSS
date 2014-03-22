@@ -9,7 +9,7 @@
             <th>Quantity</th>
         </tr>
     <thead>
-    <tbody
+    <tbody>
         @foreach ($items as $item)
         <tr> 
 			<td> {{ $item['barcode'] }} </td>
