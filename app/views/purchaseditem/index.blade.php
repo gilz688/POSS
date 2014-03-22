@@ -8,7 +8,7 @@
             <th></th>
         </tr>
     <thead>
-    <tbody
+    <tbody>
         @foreach ($items as $item)
         <tr> 
             <td> {{ $item['transaction_id'] }} </td>

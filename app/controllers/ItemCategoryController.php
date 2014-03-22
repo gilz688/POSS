@@ -14,9 +14,14 @@ class ItemCategoryController extends Controller implements ResourceController{
      * @return Response
      */
     public function index() {
-        return View::make('itemcategory.index', array(
-                    'categories' => $this->categories->paginate()
-        ));
+        $paginator = $this->categories->paginate();
+        if(Request::ajax()){
+            return Response::json([
+                'categories' => $paginator->getCollection()->toJson(),
+                'links' => $paginator->links()
+            ]);
+        }
+        return View::make('itemcategory.index');
     }
 
     /**
@@ -108,6 +113,8 @@ class ItemCategoryController extends Controller implements ResourceController{
      * @return Response
      */
     public function show($id) {
-        
+        return View::make('item.index', [
+                    'item' => $this->items->find($barcode)
+        ]);
     }
 }

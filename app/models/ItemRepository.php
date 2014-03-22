@@ -94,12 +94,6 @@ class ItemRepository implements TableRepository{
             }
 			if(array_key_exists('quantity',$attributes)){
                 $quantity = intval($attributes['quantity']);
-                $price = $attributes['price'];
-                $item->price = $attributes['price'];
-            }
-			if(array_key_exists('quantity',$attributes)){
-                $quantity = $attributes['quantity'];
-                $item->quantity = $attributes['quantity'];
             }
             if(array_key_exists('itemDescription',$attributes)){
                 $itemDescription = $attributes['itemDescription'];
@@ -119,10 +113,6 @@ class ItemRepository implements TableRepository{
                     throw new ErrorException('Label should be a string!');
                 }
                 
-            }
-            if(array_key_exists('category_id', $attributes)){
-                $category_id = $attributes['category_id'];
-                $item->category_id = $attributes['category_id'];
             }
             $item->update();
         }
