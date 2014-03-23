@@ -1,0 +1,47 @@
+input{
+	margin: 1px 2px 0px 2px;
+}
+.label{
+	width: 100px;
+	float: left;
+	margin: 1px 0px 0px 0px;
+}
+.modalNote{
+	font-size: 0.7em;
+}
+.formTable{
+	width: 100%;
+}
+.formTable td{
+	padding: 2px 5px 0px 0px;
+}
+#modalShade {
+    display: none;
+    background: #3B3013;
+    position: fixed; 
+    left: 0; 
+    top: 0;
+    width: 100%; 
+    height: 100%;
+    z-index: 100;
+}
+#barcodeError {
+	display: none;
+	color: #FF0000;
+	font-size: 0.7em;
+	margin: 0px 0px 0px 5px;
+.addItemModal{
+	display: none;
+    background: #FDF3C1;
+    color: #000000;
+    padding: 20px;
+    border: 20px solid #8F6031;
+    float: left;
+    font-size: 1.2em;
+    position: fixed;
+    height: 375px;
+    width: 625px;
+    top: 50%;
+    left: 50%;
+    z-index: 200;
+}

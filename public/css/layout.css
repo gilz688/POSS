@@ -2,3 +2,7 @@ body {
   padding-top: 80px;
   padding-bottom: 40px;
 }
+.modal-dialog{
+	width: 400px;
+	height: 100px;
+}
