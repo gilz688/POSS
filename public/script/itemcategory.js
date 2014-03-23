@@ -38,8 +38,8 @@
         for(var i=0;i<categories.length;i++){
             tablebody = tablebody + "<tr><td>" + categories[i].name +"</td><td>"+ categories[i].description + "</td>";
             tablebody = tablebody + '<td><form action="itemcategories/"' + categories[i].id + '" style="float: left;">';
-            tablebody += '<input type="submit" method="post" value="remove" class="btn btn-danger"><type name="_method" type="hidden" value="DELETE">';
-            tablebody += '&nbsp; <a class="btn btn-small btn-success">edit</a>';
+            tablebody += '<input type="submit" method="post" value="DELETE" class="btn btn-danger"><type name="_method" type="hidden" value="DELETE">';
+            tablebody += '&nbsp; <a class="btn btn-small btn-success"><i class="glyphicon glyphicon-edit"></i>    EDIT</a>';
             tablebody += '</form></td></tr>';
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';

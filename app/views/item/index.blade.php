@@ -26,7 +26,7 @@
     <tbody
         @foreach ($items as $item)
         <tr> 
-            <td> {{ HTML::link('items/' . $item['barcode'], $item['itemName']) }} </td>
+            <td> <span style="font-weight: bold; font-family: sans-serif;">{{ HTML::link('items/' . $item['barcode'], $item['itemName']) }} <span/> </td>
             <td> {{ $item['itemcategory']['name'] }} </td>
 			<td> {{ $item['label'] }} </td>
             <td>
@@ -42,7 +42,7 @@
 				 }}
 				 
 				<form method="POST" action="http://localhost:8000/items/index" accept-charset="UTF-8" style="display:inline">
-					<button class="btn btn-xs btn-danger" onClick="return false;" type="submit"  data-toggle="modal" data-target="#confirmDelete"><!-- data-title="Delete Item" data-message="Are you sure you want to delete this item ?"-->
+					<button class="btn btn-small btn-danger" onClick="return false;" type="submit"  data-toggle="modal" data-target="#confirmDelete"><!-- data-title="Delete Item" data-message="Are you sure you want to delete this item ?"-->
 						<i class="glyphicon glyphicon-trash"></i> DELETE
 					</button>
 				</form>
