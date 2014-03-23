@@ -66,4 +66,5 @@ Route::group(["before" => "auth"], function() {
     // Display the clerk performance
     Route::resource('/report/clerk', 'ReportController');
 	
+    Route::get('/api/search','SearchController@index');
 });
