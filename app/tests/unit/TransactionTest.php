@@ -1,5 +1,5 @@
 <?php
-
+use Carbon\Carbon;
 class TransactionTest extends TestCase {
 
     protected $useDatabase = true;
@@ -68,7 +68,7 @@ class TransactionTest extends TestCase {
      */
     public function testFindWithTransactionByAnotherClerk() {
         Auth::attempt($this->clerkCredentials);
-        $id = 2;
+        $id = 3;
         $transactions = new TransactionRepository();
         $attributes = $transactions->find($id);
         $this->assertNull($attributes);
@@ -186,5 +186,19 @@ class TransactionTest extends TestCase {
         $transactions = new TransactionRepository();
         $this->assertNotNull($transactions->find($id));
         $transactions->edit($id, $data);
+    }
+
+
+    /**
+     * Tests get() function with valid parameters
+     * and authorized user currently logged in.
+     */
+    public function testGet() {
+        Auth::attempt($this->auditorCredentials);
+        $start = Carbon::createFromFormat('Y-m-d H:i:s', '2014-03-20 8:00:00');
+        $end = Carbon::createFromFormat('Y-m-d H:i:s', '2014-03-21 18:00:00');
+        $repo = new TransactionRepository;
+        $transactions = $repo->get($start,$end);
+        $this->assertEquals(count($transactions),3);
     }
 }

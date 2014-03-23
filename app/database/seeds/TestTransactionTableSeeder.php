@@ -1,4 +1,5 @@
 <?php
+use Carbon\Carbon;
 
 class TestTransactionTableSeeder extends DatabaseSeeder {
 
@@ -22,7 +23,8 @@ class TestTransactionTableSeeder extends DatabaseSeeder {
         $faker = Faker\Factory::create();
         
         for($i=0;$i<100;$i++){
-            $dateCreated = $faker->dateTimeBetween('-1 month','now');
+            $dateCreated = Carbon::instance($faker->dateTimeBetween('-1 month', '-1 day'));
+            $dateCreated->setTime($faker->numberBetween(8,17), $faker->numberBetween(0,59));
             array_push($transactions, [
                 'cashier_number' => rand(1,5),
                 'creator_id' => $faker->randomElement($clerks)['id'],

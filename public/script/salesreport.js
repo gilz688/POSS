@@ -15,7 +15,7 @@ function salesreport(){
             		end : end
             	},
                 beforeSend: function() { 
-                    $("#spinner").html("<img src='../image/blue.gif' width='25px' height='25px'/> Please wait...");
+                    $("#spinner").show();
                 },
                 success: function(response) {
                     var tablebody = "";
@@ -36,8 +36,9 @@ function salesreport(){
                     }
                     tablebody = "<tbody>" + tablebody + "</tbody>";
                     table = '<table class ="table table-hover">' + tableheader + tablebody + '</table>';
-                    $('#spinner').html("");
+                    $('#spinner').hide();
                     $("#report").html(table);
+                    showChart();
                 },
                 error: function(xhr, status, error) {
                 var err = eval("(" + xhr.responseText + ")");
@@ -45,4 +46,31 @@ function salesreport(){
                 }
             });
 		return false;
+}
+
+function showChart(){
+    var labels = $("#report > table td:first-child").map(function(){
+       return $(this).text();
+    }).get();
+
+    var sales = $("#report > table td:nth-child(4)").map(function(){
+       return parseFloat($(this).text());
+    }).get();
+
+    var lineChartData = {
+            labels : labels,
+            datasets : [
+                {
+                    fillColor : "rgba(220,220,220,0.5)",
+                    strokeColor : "rgba(220,220,220,1)",
+                    pointColor : "rgba(220,220,220,1)",
+                    pointStrokeColor : "#fff",
+                    data : sales
+                }
+            ]
+
+        }
+
+    var ctx = $("#canvas").get(0).getContext("2d");
+    var myLine = new Chart(ctx).Bar(lineChartData);
 }

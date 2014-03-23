@@ -63,6 +63,7 @@ class TestPurchasedItemsTableSeeder extends DatabaseSeeder {
         foreach ($transactions as $transaction) {
             if ($transaction['id'] > 3) {
                 for ($i = 0; $i < $faker->numberBetween(1, 12); $i++) {
+                    try{
                     $bc = $faker->unique($i == 0)->randomElement($inventoryItems)['barcode'];
                     $trans = $transaction['id'];
                     array_push($items, [
@@ -70,6 +71,9 @@ class TestPurchasedItemsTableSeeder extends DatabaseSeeder {
                         'quantity' => $faker->randomNumber(1, 12),
                         'id' => $trans
                     ]);
+                    }catch(OverflowException $e){
+                        
+                    }
                 }
             }
         }

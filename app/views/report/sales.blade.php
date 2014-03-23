@@ -7,6 +7,7 @@
     'url' => '/report/sales',
     'method' => 'post'
 ) ) }}
+
 <div class="col-md-2"><span style="5px">Date Range:  </span></div>
 <div class="col-md-3">
 <div class="input-daterange input-group" id="datepicker">
@@ -23,10 +24,17 @@
 <br>
 <br>
 
+<script src="../script/Chart.min.js"></script>
+
+<div id="spinner" style="display:none;"><img src='../image/blue.gif' width='25px' height='25px'/> Please wait...</img></div>
+
+<div id="chart" style="float:left; margin:0; width:50%;">
+	<canvas id="canvas" height="450" width="600"></canvas>
+</div>
+
 <script src="../script/bootstrap-datepicker.js"></script>
 <script src="../script/htmltable.js"></script>
 <script src="../script/salesreport.js"></script>
 
-<div id="spinner"></div>
-<div id="report"></div>
+<div id="report" style="float:left; margin:0; width:50%;"></div>
 @stop
