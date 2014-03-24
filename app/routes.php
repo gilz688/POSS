@@ -67,4 +67,8 @@ Route::group(["before" => "auth"], function() {
     Route::resource('/report/clerk', 'ReportController');
 	
     Route::get('/api/search','SearchController@index');
+
+    
+    // Display product sales
+    Route::get('/report/product', 'ReportController@productsReport');
 });

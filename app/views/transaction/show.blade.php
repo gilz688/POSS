@@ -5,15 +5,17 @@
         <tr>
             <th>Item</th>
             <th>Quantity</th>
+            <th>Amount</th>
+            <th>Action</th>
         </tr>
+        <tr>Total Sales: </tr>
     <thead>
-    <tbody
-        @foreach ($items as $item)
+    <tbody>
+        @foreach($items as $item)
         <tr> 
             <td> {{ $item['barcode'] }} </td>
-			<td> {{ $item['quantity'] }} </td>
-			<td>
-				@if(Auth::user()->role == 'admin')
+            <td> {{ $item['quantity'] }} </td>
+                @if(Auth::user()->role == 'admin')
                 {{ Form::open(['url' => 'transactions/' . $item['barcode'], 'style' => 'float: left;']) }}
                 {{ Form::hidden('_method', 'DELETE') }}
                 {{ Form::submit('remove', ['class' => 'btn btn-danger']) }}
@@ -21,8 +23,9 @@
                 &nbsp;
                 <a class="btn btn-small btn-success" href="{{ URL::route('items.edit',$item['barcode']) }} ">edit</a>
                 @endif
-			</td>
-        @endforeach
+            </td>
+            @endforeach
+        <tr> {{ $transaction['sales'] }} </tr>
     </tbody>
 </table>
 @stop

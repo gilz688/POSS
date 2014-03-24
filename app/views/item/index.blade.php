@@ -1,7 +1,12 @@
 @extends("layout")
 @section("content")
 
-<a class="btn btn-small btn-danger" href="{{ URL::route('items.create') }}"><i class="glyphicon glyphicon-plus"></i>  ADD ITEM</a>
+
+    @if(Auth::user()->role == 'admin')
+        <a class="btn btn-small btn-danger" href="{{ URL::route('items.create') }}"><i class="glyphicon glyphicon-plus"></i>  ADD ITEM</a>
+    @endif
+
+
 <br>
 <br>
 
