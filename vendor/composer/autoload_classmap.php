@@ -6,6 +6,7 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'BaseSeeder' => $baseDir . '/app/database/seeds/TestUserTableSeeder.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
     'Boris\\CLIOptionsHandler' => $vendorDir . '/d11wtq/boris/lib/Boris/CLIOptionsHandler.php',
     'Boris\\ColoredInspector' => $vendorDir . '/d11wtq/boris/lib/Boris/ColoredInspector.php',
@@ -1136,6 +1137,7 @@ return array(
     'ReportController' => $baseDir . '/app/controllers/ReportController.php',
     'ResourceController' => $baseDir . '/app/controllers/ResourceController.php',
     'SalesReport' => $baseDir . '/app/models/SalesReport.php',
+    'SearchController' => $baseDir . '/app/controllers/SearchController.php',
     'SessionController' => $baseDir . '/app/controllers/SessionController.php',
     'SessionHandlerInterface' => $vendorDir . '/symfony/http-foundation/Symfony/Component/HttpFoundation/Resources/stubs/SessionHandlerInterface.php',
     'Stack\\Builder' => $vendorDir . '/stack/builder/src/Stack/Builder.php',
@@ -1630,11 +1632,16 @@ return array(
     'System_SSH_Agent_Identity' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH_Agent.php',
     'TableRepository' => $baseDir . '/app/models/TableRepository.php',
     'TestCase' => $baseDir . '/app/tests/TestCase.php',
+    'TestCsvSeeder' => $baseDir . '/app/database/seeds/TestCsvSeeder.php',
+    'TestDataCsvSeeder' => $baseDir . '/app/database/seeds/TestUserCsvSeeder.php',
     'TestDataSeeder' => $baseDir . '/app/database/seeds/TestDataSeeder.php',
+    'TestItemCategoriesCsvSeeder' => $baseDir . '/app/database/seeds/TestItemCategoriesCsvSeeder.php',
+    'TestItemsCsvSeeder' => $baseDir . '/app/database/seeds/TestItemsCsvSeeder.php',
     'TestItemsTableSeeder' => $baseDir . '/app/database/seeds/TestItemsTableSeeder.php',
+    'TestPurchasedItemsCsvSeeder' => $baseDir . '/app/database/seeds/TestPurchasedItemsCsvSeeder.php',
     'TestPurchasedItemsTableSeeder' => $baseDir . '/app/database/seeds/TestPurchasedItemsTableSeeder.php',
     'TestTransactionTableSeeder' => $baseDir . '/app/database/seeds/TestTransactionTableSeeder.php',
-    'TestUserTableSeeder' => $baseDir . '/app/database/seeds/TestUserTableSeeder.php',
+    'TestTransactionsCsvSeeder' => $baseDir . '/app/database/seeds/TestTransactionsCsvSeeder.php',
     'Transaction' => $baseDir . '/app/models/Transaction.php',
     'TransactionController' => $baseDir . '/app/controllers/TransactionController.php',
     'TransactionRepository' => $baseDir . '/app/models/TransactionRepository.php',

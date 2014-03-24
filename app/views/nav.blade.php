@@ -10,7 +10,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="#"><img src='/image/poss_logo.png'></a>
+                <a class="navbar-brand" href="{{ url('/') }}"><img src='/image/poss_logo.png'></a>
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -41,24 +41,24 @@
                         <ul class="dropdown-menu">
                             <li>{{ HTML::link('/report/sales', 'Sales Report') }}</li>
                             <li>{{ HTML::link('/report/clerkperformance', 'Clerk Performance Report') }}</li>
-                            <li>{{ HTML::link('/report/product', 'Product Sales') }}</li>
                         </ul>
                     </li>
+
+                    <li><span style="display:block;width: 100px; height:30px;margin: 10px 0px 3px 3px;">@include('smartsearch')</span></li>
 
                     @endif
                 </ul>   
                 <ul class="nav navbar-nav navbar-right">
 
                     @if(Auth::check())
-                    
-                    <li ><span style="display:block;margin: 10px 0px 3px 3px;width: 23px;"><img src='/image/meow.jpg' class="img-circle" width='30px' height='30px' padding-top='20px' /></span>
+                    <li><span style="display:block;margin: 10px 0px 3px 3px;width: 23px;"><img src='/image/meow.jpg' class="img-circle" width='30px' height='30px' padding-top='20px' /></span>
                     <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">{{ Auth::user()->username }}<b class="caret"></b>
 
-                    <!--<li>{{ HTML::linkRoute('profile', 'USERNAME HERE') }}</li> -->
+                            <!--<li>{{ HTML::linkRoute('profile', 'USERNAME HERE') }}</li> -->
 
-                        <ul class="dropdown-menu">
-                            <li>{{ HTML::linkRoute('logout', 'Logout') }}</li>
-                        </ul>
+                            <ul class="dropdown-menu">
+                                <li>{{ HTML::linkRoute('logout', 'Logout') }}</li>
+                            </ul>
                     </li>
                     @endif
                 </ul>

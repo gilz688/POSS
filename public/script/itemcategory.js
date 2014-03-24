@@ -6,10 +6,10 @@
         });
 
         var page = 1;
-        itemcategories(page);
+        retrieve(page);
     });
 
-    function itemcategories(page) {
+    function retrieve(page) {
         $.ajax({
             type: 'get',
             dataType: 'json',
@@ -18,14 +18,19 @@
                 page: page
             },
             beforeSend: function() {
-                $("#loader").html("<img src='" + siteloc + "/image/loader.gif' /> Please wait...");
+                $("#list").fadeOut("fast", function(){
+                    $(".loader").show();
+                });
             },
             success: function(response) {
-                $("#loader").html("");
                 var data = JSON.parse(response.categories);
-                $("#list").html(generatetable(data));
+                $("#list").html(generatetable(data)+response.links);
+                $(".loader").hide("fast",function(){
+                    $("#list").fadeIn("fast");
+                });
             },
             error: function(xhr, status, error) {
+                $(".loader").hide();
                 alert(error);
             }
         });

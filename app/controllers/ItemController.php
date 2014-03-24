@@ -15,7 +15,7 @@ private $items;
      */
     public function index() {
         return View::make('item.index', array(
-                    'items' => $this->items->paginate(5)
+                    'items' => $this->items->paginate()
         ));
     }
 
@@ -25,7 +25,8 @@ private $items;
      * @return Response
      */
     public function create() {
-        return View::make('item.create');
+        echo '<script type="text/javascript">alert("hello!");</script>';
+        //return View::make('item.create');
     }
 
     /**

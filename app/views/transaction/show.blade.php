@@ -5,11 +5,10 @@
         <tr>
             <th>Item</th>
             <th>Quantity</th>
-            <th>Action</th>
         </tr>
     <thead>
-    <tbody>
-        @foreach($items as $item)
+    <tbody
+        @foreach ($items as $item)
         <tr> 
             <td> {{ $item['barcode'] }} </td>
 			<td> {{ $item['quantity'] }} </td>
@@ -26,19 +25,4 @@
         @endforeach
     </tbody>
 </table>
-<table class="table table-hover">
-    <thead>
-        <tr>
-            <th>Amount</th>
-        </tr>
-    </thead>
-    <tbody>
-            @foreach($amount as $value)
-            <tr>
-                <td> {{ $value }} </td>
-            @endforeach
-            </tr>
-    </tbody>
-</table>
-Total Sales: {{ $transaction['sales'] }}
 @stop
