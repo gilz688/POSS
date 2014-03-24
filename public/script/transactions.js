@@ -13,7 +13,7 @@
         $.ajax({
             type: 'get',
             dataType: 'json',
-            url: siteloc + "/itemcategories",
+            url: siteloc + "/transactions",
             data: {
                 page: page
             },
@@ -23,8 +23,8 @@
                 });
             },
             success: function(response) {
-                var data = JSON.parse(response.categories);
-                $("#list").html(generatetable(data,response.options)+response.links);
+                var data = JSON.parse(response.transactions);
+                $("#list").html(generatetable(data,response.options,response.names)+response.links);
                 $(".loader").hide("fast",function(){
                     $("#list").fadeIn("fast");
                 });
@@ -37,20 +37,20 @@
         return false;
     }
 
-    function generatetable(categories,options){
-        var tableheader = "<tr><th>Category Name</th><th>Description</th><th>Options</th></tr>";
+    function generatetable(transactions,options,names){
+        var tableheader = "<tr><th>Timestamp</th><th>Cashier Number</th><th>Creator</th><th>Options</th></tr>";
         var tablebody = "";
-        for(var i=0;i<categories.length;i++){
-            tablebody = tablebody + '<tr><td><a href="../itemcategories/' + categories[i].id + '">' + categories[i].name + '</a></td><td>'+ categories[i].description + "</td>";
+        for(var i=0;i<transactions.length;i++){
+            tablebody = tablebody + '<tr><td>' + transactions[i].created_at + '</td><td>'+ transactions[i].cashier_number + '</td><td>'+ names[i] + "</td>";
             tablebody = tablebody + '<td>' + options[i] + '</td></tr>';
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';
     }
 
-    function removeCategory(id){
-        alert("Remove category with id of "+id);
+    function voidTransaction(id){
+        alert("Void transaction with id of "+id);
     }
     
-    function editCategory(id){
-        alert("Edit category with id of "+id);
+    function viewInvoice(id){
+        alert("View invoice for transaction with id of "+id);
     }

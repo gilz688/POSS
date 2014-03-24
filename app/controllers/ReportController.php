@@ -50,4 +50,11 @@ class ReportController extends Controller {
         return View::make('report.clerk', ['rows' => $t]);
     }
 
+    
+    public function productsReport() {
+        $products = new ProductReport;
+        $a = $products->getProduct();
+        return View::make('report.product', ['quantities' => $a[0], 'prices' => $a[1]]);
+    }
+
 }

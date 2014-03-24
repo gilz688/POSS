@@ -60,7 +60,7 @@ class SalesReport {
         return $this->data;
     }
 
-    private function getTotal($transactions) {
+    public function getTotal($transactions) {
         $sales = 0.0;
         $items = 0;
         foreach ($transactions as $transaction) {

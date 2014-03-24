@@ -13,10 +13,30 @@ class TransactionController extends Controller implements ResourceController{
      *
      * @return Response
      */
-    public function index() {
-        return View::make('transaction.index', [
-                    'transactions' => $this->transactions->paginate()
-        ]);
+    public function index() {       
+        if(Request::ajax()){
+            $paginator = $this->transactions->paginate(8);
+
+            $options = [];
+            $names = [];
+            $transactions = $paginator->getItems();
+                    
+            foreach($transactions as $transaction){
+                array_push($names,$transaction->creator->username);
+                $view = View::make('entry.transaction_option', ['id' => $transaction['id'] ]);
+                $contents = (string) $view;  
+                array_push($options, $contents);
+            }
+
+            return Response::json([
+                'transactions' => $paginator->getCollection()->toJson(),
+                'links' => $paginator->links()->render(),
+                'options' => $options,
+                'names' => $names
+            ]);
+        }
+ 
+        return View::make('transaction.index');
     }
 
     /**
@@ -67,9 +87,15 @@ class TransactionController extends Controller implements ResourceController{
     public function show($id) {
         $transaction = $this->transactions->find($id);
         $items = $transaction['purchasedItems'];
+		$amount = $this->transactions->getAmount($items);
+        $totalTransaction = $this->transactions->getTotal($id);
+        $arr = [$items, $amount];
         return View::make('transaction.show', [
-                    'items' => $items,
-                    'id' => $id
+            'items' => $items,
+            'array' => $arr,
+            'item' => $arr[0],
+            'amount' => $arr[1],
+            'transaction' => $totalTransaction
         ]);
     }
 

@@ -1,40 +1,21 @@
 @extends("layout")
 @section("content")
-<div class="loader"></div>
-<div class="list">
-<table class="table table-hover">
-    <thead
-        <tr>
-            <th>Transaction ID</th>
-            <th>Cashier Number</th>
-            <th>Creator</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody
 
-        @foreach ($transactions as $transaction)
-        <tr> 
-            <td> {{ $transaction->id }} </td>
-            <td> {{ $transaction->cashier_number }} </td>
-            <td> {{ $transaction->creator_id }} </td>
-            <td>
-                @if(Auth::user()->role == 'auditor')
-                {{ Form::open(['url' => 'transactions/' . $transaction['id'], 'style' => 'float: left;']) }}
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('void', ['class' => 'btn btn-warning']) }}
-                {{ Form::close() }}
-                @endif
-                &nbsp;
-                <a class="btn btn-small btn-info" href="{{ URL::route('transactions.show',$transaction->id) }} ">view invoice</a>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-{{ $transactions->links() }}
-</div>
-@if(Auth::user()->role == 'clerk')
-<a class="btn btn-small btn-primary" href="{{ URL::route('transactions.create') }}">Add Transaction</a>
+@if(Auth::user() != null)
+    @if(Auth::user()->role=="clerk")
+        <a class="btn btn-small btn-danger" href="{{ URL::route('transactions.create') }}"><i class="glyphicon glyphicon-plus"></i>CREATE TRANSACTION</a>
+    @endif
 @endif
+
+<br>
+<br>
+
+<div class="loader text-center">@include('loader.preloader_canvas')</div>
+<div id="list">
+</div>
+
+</div>
+
+<script src="../script/transactions.js"></script>
+
 @stop
