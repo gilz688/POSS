@@ -93,7 +93,8 @@ class TransactionRepository implements TableRepository {
             $items = $transaction->purchasedItems;
             $sales = 0.00;
             foreach($items as $item){
-                $sales += $item->item->price * $item->quantity;
+                $price = $item->item['price'];
+                $sales += $price * $item['quantity'];
             }
             return ['items' => count($items), 'sales' => $sales];
         }

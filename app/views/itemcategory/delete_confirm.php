@@ -1,5 +1,5 @@
 
-<!-- Modal Dialog -->
+<!-- Delete Dialog -->
 						<div class="modal fade" id="confirmDelete" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
 						  <div class="modal-dialog">
 							<div class="modal-content">

@@ -1,0 +1,25 @@
+#mainlayout{
+  position: fixed; 
+  top: 200px; 
+  left: 0px;
+}
+
+.form-signin {
+  max-width: 300px;
+  position: fixed;
+  left: 50%;
+  margin-top: -40px;
+  margin-left: -100px;
+}
+
+#loginbox{
+    margin-top: 10px;
+}
+
+.panel-body{
+    padding-top: 30px;
+}
+
+.input-group{
+    margin-bottom: 25px;
+}

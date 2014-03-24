@@ -14,11 +14,11 @@ class ItemCategoryController extends Controller implements ResourceController{
      * @return Response
      */
     public function index() {
-        $paginator = $this->categories->paginate();
         if(Request::ajax()){
+            $paginator = $this->categories->paginate(8);
             return Response::json([
                 'categories' => $paginator->getCollection()->toJson(),
-                'links' => $paginator->links()
+                'links' => $paginator->links()->render()
             ]);
         }
         return View::make('itemcategory.index');
