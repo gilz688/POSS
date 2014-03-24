@@ -36,6 +36,7 @@
 
                         @endif {{ HTML::linkRoute('transactions.index', 'Transactions') }}</li>     
 
+                    @if(Auth::check() && Auth::user()->role != 'clerk')
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Reports<b class="caret"></b></a>
                         <ul class="dropdown-menu">
@@ -44,6 +45,7 @@
                             <li>{{ HTML::link('/report/product', 'Product Sales') }}</li>
                         </ul>
                     </li>
+                    @endif
 
                     <li><span style="display:block;width: 100px; height:30px;margin: 10px 0px 3px 3px;">@include('smartsearch')</span></li>
 

@@ -1,7 +1,11 @@
 @extends("layout")
 @section("content")
+@if(Auth::user() != null)
+	@if(Auth::user()->role == 'admin')
+		<a class="btn btn-small btn-danger" href="{{ URL::route('itemcategories.create') }}"><i class="glyphicon glyphicon-plus"></i>     ADD CATEGORY</a>
+	@endif
+@endif
 
-<a class="btn btn-small btn-danger" href="{{ URL::route('itemcategories.create') }}"><i class="glyphicon glyphicon-plus"></i>     ADD CATEGORY</a>
 <br>
 <br>
 
