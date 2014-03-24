@@ -24,7 +24,7 @@
             },
             success: function(response) {
                 var data = JSON.parse(response.categories);
-                $("#list").html(generatetable(data)+response.links);
+                $("#list").html(generatetable(data,response.options)+response.links);
                 $(".loader").hide("fast",function(){
                     $("#list").fadeIn("fast");
                 });
@@ -37,15 +37,12 @@
         return false;
     }
 
-    function generatetable(categories){
+    function generatetable(categories,options){
         var tableheader = "<tr><th>Category Name</th><th>Description</th><th>Options</th></tr>";
         var tablebody = "";
         for(var i=0;i<categories.length;i++){
-            tablebody = tablebody + "<tr><td>" + categories[i].name +"</td><td>"+ categories[i].description + "</td>";
-            tablebody = tablebody + '<td><form action="itemcategories/"' + categories[i].id + '" style="float: left;">';
-            tablebody += '<input type="submit" method="post" value="DELETE" class="btn btn-danger"><type name="_method" type="hidden" value="DELETE">';
-            tablebody += '&nbsp; <a class="btn btn-small btn-success"><i class="glyphicon glyphicon-edit"></i>    EDIT</a>';
-            tablebody += '</form></td></tr>';
+            tablebody = tablebody + '<tr><td><a href="../itemcategories/' + categories[i].id + '">' + categories[i].name + '</a></td><td>'+ categories[i].description + "</td>";
+            tablebody = tablebody + '<td>' + options[i] + '</td></tr>';
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';
     }
