@@ -1,14 +1,6 @@
 @extends("layout")
 @section("content")
-<head>
-	<!--modal scripts-->
-	<link rel="stylesheet" href="css/modal.css" type="text/css" />
-        <link rel="stylesheet" href="css/carousel.css" type="text/css" />
-        <script type="text/javascript" src="script/jquery-1.5.min.js"></script>
-        <script type="text/javascript" src="script/jquery.ez-bg-resize.js"></script>
-        <script type="text/javascript" src="script/carousel.js"></script>
-        <script type="text/javascript" src="script/jqitem.js"></script>
-</head>
+
 
 <a class="btn btn-small btn-danger" href="{{ URL::route('items.create') }}"><i class="glyphicon glyphicon-plus"></i>  ADD ITEM</a>
 <br>
