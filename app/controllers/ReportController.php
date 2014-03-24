@@ -13,9 +13,10 @@ class ReportController extends Controller{
 	}
 
 	public function postSalesReport(){
-		$start = Carbon::createFromFormat('m/d/Y', Input::get('start'));
-		$end = Carbon::createFromFormat('m/d/Y', Input::get('end'));
+		$start = Input::get('start');
+		$end = Input::get('end');
 		$report = new SalesReport($this->transactionRepository,$start,$end);
+		$report->generate();
 		return Response::json([
 			'header' => $report->getHeader(),
 			'rows' => $report->getRows()

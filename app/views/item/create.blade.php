@@ -104,3 +104,43 @@
 </div>
 </div>
 @stop
+
+
+<!--
+<!--modal form for add item--
+<div id="addItemWindow" class="addItemModal">
+			<h2>Add Item</h2>
+			<form name="add" href="{{ URL::route('items.create') }}" method="post">
+				<label for="barcode">Barcode</label>
+					<input type="text" name="barcode" id="barcode" size="13" /><br />
+				<label  for="itemName">Item Name</label>
+					<input type="text" name="itemName" id="itemName" size="30" /><br />
+				<label for="price">Price</label>
+					<input type="text" name="price" id="price" size="13" /><br />
+				<label  for="quantity">Quantity</label>
+					<input type="text" name="quantity" id="quantity" size="13" /><br/>
+				<label  for="itemDescription">Description</label>
+					<input type="text" name="itemDescription" id="itemDescription" size="100" /><br />
+				<label  for="label">Label</label>
+					<input type="text" name="label" id="label" size="13" /><br />
+				<label  for="category_id">Category</label>
+					<select name="category_id" id="category_id">
+						<option value="">--select--</option>
+						<option value="1">Baby Items</option>
+						<option value="2">Baking</option>
+						<option value="3">Beverages</option>
+						<option value="4">Bread/Bakery</option>
+						<option value="5">Canned Goods</option>
+						<option value="6">Cereal/Breakfast</option>
+						<option value="7">Condiments</option>
+						<option value="8">Dairy</option>
+						<option value="9">Frozen Foods</option>
+						<option value="10">Health & Beauty</option>
+					</select>  
+				<input type="hidden" name="formName" value="add" />
+				<label class="label">&nbsp;</label>
+					<input type="submit" value="ADD ITEM" />
+					<input type="reset" value="CLEAR" />
+			</form>
+		</div>
+-->

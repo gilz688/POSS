@@ -21,7 +21,7 @@ class AdministrationCest
         $I->reloadPage();
         $I->fillField('username', 'admin1');
         $I->fillField('password', 'admin1_password');
-        $I->click('Login');
+        $I->click('LOGIN');
         $I->resizeWindow(1366, 768);
     }
     
@@ -31,23 +31,13 @@ class AdministrationCest
         $this->loginAsAdmin($I);
         $I->click('Users');
         $I->cantSee('clerk3');
-        $I->click('Add New User');
+        $I->click('ADD USER');
         $I->fillField('username', 'clerk3');
         $I->fillField('password', 'clerk3_password');
         $I->fillField('confirm', 'clerk3_password');
         $I->selectOption('role', 'Clerk');
-        $I->click('Add');
+        $I->click('ADD');
         $I->canSeeInCurrentUrl('/users');
         $I->canSee('clerk3');
-    }
-    
-    public function tryToDeleteUser(WebGuy $I) {
-        $I->am('admin');
-        $I->wantTo("delete user 'clerk2'");
-        $this->loginAsAdmin($I);
-        $I->click('Users');
-        $I->canSee('clerk2');
-        $I->click('remove','//tr[td="clerk2"]');
-        $I->cantSee('clerk2');
     }
 }

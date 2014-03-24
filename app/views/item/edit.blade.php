@@ -9,7 +9,7 @@
 ]) }}
 
 <div class="col-md-6 col-md-offset-3">
-<div style="background: #FFFFFF; padding: 5px 20px 10px 20px">
+<div style="background: rgba(255,255,255, 0.3); padding: 5px 20px 10px 20px">
 <fieldset>
 
     <!-- Form Name -->
@@ -19,9 +19,7 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="barcode"><span style="font-family:sans-serif; font-size:13px ">Barcode</span></label>
         <div class="col-md-8">
-<<<<<<< HEAD
-            <input id="barcode" name="barcode" type="text" placeholder="" value="{{ $barcode }}" class="form-control input-md" />
-=======
+            
             <canvas id="ean" width="200" height="100">
                 {{ $barcode }}
             </canvas>
@@ -29,7 +27,6 @@
             <script type="text/javascript">
                 $("#ean").EAN13("{{ $barcode }}");
             </script>
->>>>>>> 31cd22a6319227c55e1d9d2e9d1743e94eab75dd
         </div>
     </div>
 
@@ -77,20 +74,11 @@
 
         </div>
     </div>
-    
-<<<<<<< HEAD
-    <!-- Uneditable category_id -->
-    <div class="form-group">
-        <label class="col-md-4 control-label" for="category_id"><span style="font-family:sans-serif; font-size:13px ">Category ID</span></label>
-        <div class="col-md-8">
-            <input  name="category_id" type="text" placeholder="" value="{{ $category_id }}" class="form-control input-md" />
-        </div>
-    </div>
-=======
+   
     	<!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="category_id">Category</label>  
-  <div class="col-md-4">
+  <div class="col-md-8">
   <select name="category_id" id="category_id" value="{{ $category_id }}">
 					<option value="">{{ $itemcategory['name']}}</option>
 					<option value="1">Baby Items</option>
@@ -106,13 +94,13 @@
 				</select>    
   </div>
 </div>
->>>>>>> 31cd22a6319227c55e1d9d2e9d1743e94eab75dd
     
     <!-- Button -->
     <div class="form-group">
         <label class="col-md-9 control-label" for="update"></label>
-        <div class="col-md-3">
+        <div class="col-md-6">
             <button id="edit" name="update" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>   UPDATE</button>
+			 <a  class="btn btn-small btn-danger" href="{{ URL::route('items.index') }}" id="cancel"><i class="glyphicon glyphicon-remove"></i>    CANCEL</a>
         </div>
     </div>
     

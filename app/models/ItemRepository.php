@@ -78,7 +78,8 @@ class ItemRepository implements TableRepository{
 
         if ($barcode == null && $barcode < 10000000000000) {
             throw new ErrorException("Invalid barcode!");
-        } else {
+        } 
+		else {
             if(array_key_exists('itemName',$attributes)){
                 $itemName = $attributes['itemName'];
                 if(gettype($itemName) == 'string'){
@@ -94,6 +95,7 @@ class ItemRepository implements TableRepository{
             }
 			if(array_key_exists('quantity',$attributes)){
                 $quantity = intval($attributes['quantity']);
+				$item->quantity = $attributes['quantity'];
             }
             if(array_key_exists('itemDescription',$attributes)){
                 $itemDescription = $attributes['itemDescription'];
@@ -113,6 +115,10 @@ class ItemRepository implements TableRepository{
                     throw new ErrorException('Label should be a string!');
                 }
                 
+            }
+			if(array_key_exists('category_id',$attributes)){
+                $category_id = intval($attributes['category_id']);
+				$item->category_id = $attributes['category_id'];
             }
             $item->update();
         }
