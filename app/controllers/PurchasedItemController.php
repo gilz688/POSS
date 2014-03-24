@@ -3,6 +3,7 @@
 class PurchasedItemController extends Controller{
 	
 	private $items;
+	private $array_items;
 	
 	public function __construct(PurchasedItemRepository $items){
 		$this->items = $items;
@@ -19,11 +20,20 @@ class PurchasedItemController extends Controller{
 	    /**
      * Display the specified resource.
      *
-     * @param  bigint  $barcode
+     * 
      * @return Response
      */
-    public function show($barcode) {
-        echo $barcode->id;
+    public function show() {
+		Session::put('pItems', $this->array_items);
+		$pItems = Session::get('pItems');
+		
+		foreach($pItems as $item){
+			echo $item['barcode'];
+		}
+		
+		
+		//return View::make('purchaseditem.show',$pItems);
+        //return View::make('purchaseditem.show',['purchaseditems' => $this->array_items]);
     }
     
     /**
@@ -32,7 +42,6 @@ class PurchasedItemController extends Controller{
      * @return Response
      */
     public function create() {
-		
         return View::make('purchaseditem.create');
     }
 
@@ -44,13 +53,11 @@ class PurchasedItemController extends Controller{
     public function store() {
         $itemData = [
 			'barcode' => Input::get('barcode'),
-			'quantity' => Input::get('quantity'),
-			'id' => Input::get('id')
+			'quantity' => Input::get('quantity')
         ];
         $rules = array(
 			'barcode' => 'required',
-			'quantity' => 'required',
-			'id' => 'required',
+			'quantity' => 'required'
         );
         $validator = Validator::make($itemData, $rules);
 
@@ -59,8 +66,12 @@ class PurchasedItemController extends Controller{
                             ->withErrors($validator)
                             ->withInput(Input::all());
         }
-        $this->items->add($itemData);
-        return View::make('purchaseditem.create',$itemData);
+        else{
+			$array_items[] = $itemData;
+			$this->items->add($itemData);
+			return View::make('purchaseditem.create');
+		}
+        
     }
 	
 	/**

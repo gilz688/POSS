@@ -14,9 +14,7 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function index() {
-        return View::make('transaction.index', [
-                    'transactions' => $this->transactions->paginate()
-        ]);
+		return View::make('transaction.index', ['transactions' => $this->transactions->paginate()]);
     }
 
     /**
@@ -25,7 +23,14 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function create() {		
-		return View::make('transaction.create');
+		if(Session::get('cashier_number') != null){
+			return View::make('purchaseditem.create');
+		}
+		else{
+			/* Get cashier number */
+			return View::make('transaction.create');
+		}
+		
 		//$transactionData['cashier_number'] = Input::get('cashier_number');                
         //$transactionData['id'] = $this->transactionRepository->add($transactionData);
         //return View::make('purchaseditem.create', $transactionData);
@@ -49,8 +54,8 @@ class TransactionController extends Controller implements ResourceController{
      */
     public function store() {
         try {
-            $transactionData['cashier_number'] = Input::get('cashier_number');                
-            $transactionData['id'] = $this->transactions->add($transactionData);            
+            $transactionData['cashier_number'] = Input::get('cashier_number');
+            Session::put('cashier_number',$transactionData['cashier_number']);   
             return View::make('purchaseditem.create', $transactionData);
         } catch (UnauthorizedException $ex) {
             echo $ex->getMessage();

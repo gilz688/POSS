@@ -1,5 +1,20 @@
 @extends("layout")
 @section("content")
+
+
+
+
+@if(Auth::user()->role == 'clerk')
+
+	@if(Session::get('cashier_number') == null)
+		<button class="btn btn-xs btn-default" data-toggle="modal" data-target="#addTransaction">Add Transaction</button>
+	@endif
+	@if(Session::get('cashier_number') != null)
+		<a href="/transactions" class="btn btn-xs btn-default active" role="button">Add Transaction</a>
+	@endif
+@endif
+<br/>
+<br/>
 <div class="loader"></div>
 <div class="list">
 <table class="table table-hover">
@@ -32,9 +47,6 @@
         @endforeach
     </tbody>
 </table>
-{{ $transactions->links() }}
-</div>
-@if(Auth::user()->role == 'clerk')
-<a class="btn btn-small btn-primary" href="{{ URL::route('transactions.create') }}">Add Transaction</a>
-@endif
+
+@include('transaction.addCashier')
 @stop
