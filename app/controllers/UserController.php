@@ -21,7 +21,7 @@ class UserController extends Controller implements ResourceController {
             
             while($iterator->valid()){
                 $user = $iterator->next();
-                $view = View::make('entry.option', ['id' => $user['id'] ]);
+                $view = View::make('entry.user_option', ['id' => $user['id'] ]);
                 $contents = (string) $view;  
                 array_push($options, $contents);
             }
