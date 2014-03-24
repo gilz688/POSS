@@ -1,12 +1,5 @@
 @extends("layout")
 @section("content")
-<<<<<<< HEAD
-
-=======
-<head>
-
-</head>
->>>>>>> 724d8d7437abee72f4bf7ab6e32d616d9b760887
 
 <a class="btn btn-small btn-danger" href="{{ URL::route('items.create') }}"><i class="glyphicon glyphicon-plus"></i>  ADD ITEM</a>
 <br>
