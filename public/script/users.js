@@ -47,3 +47,11 @@
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';
     }
+
+    function removeUser(id){
+        alert("Remove user with id of "+id);
+    }
+    
+    function editUser(id){
+        alert("Edit user with id of "+id);
+    }
