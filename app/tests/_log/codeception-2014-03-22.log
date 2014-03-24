@@ -503,3 +503,805 @@
 [2014-03-22 15:46:56] Codeception.INFO: # ERROR # [] []
 [2014-03-22 15:46:56] Codeception.INFO: PASSED [] []
 >>>>>>> 8a27e4fdff518d20cf638bd60b3e520fcc7698fb
+[2014-03-23 02:24:35] Codeception.ALERT: Argument 1 passed to Illuminate\Database\Grammar::columnize() must be of the type array, integer given, called in C:\BitNami\wappstack-5.4.24-0\apache2\htdocs\POSS\vendor\laravel\framework\src\Illuminate\Database\Query\Grammars\Grammar.php on line 112 and defined [] []
+[2014-03-23 02:24:35] Codeception.INFO: # ERROR # [] []
+[2014-03-23 02:24:35] Codeception.INFO: PASSED [] []
+[2014-03-23 02:24:41] Codeception.INFO: PASSED [] []
+[2014-03-23 02:24:47] Codeception.INFO: PASSED [] []
+[2014-03-23 02:24:52] Codeception.INFO: PASSED [] []
+[2014-03-23 02:27:02] Codeception.ALERT: Failed asserting that Illuminate\Database\Eloquent\Collection Object (
+    'items' => Array (
+        0 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '2'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:27:01'
+                'updated_at' => '2014-03-23 02:27:01'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '2'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:27:01'
+                'updated_at' => '2014-03-23 02:27:01'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        1 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '6'
+                'barcode' => '5200032482284'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:27:01'
+                'updated_at' => '2014-03-23 02:27:01'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '6'
+                'barcode' => '5200032482284'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:27:01'
+                'updated_at' => '2014-03-23 02:27:01'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        2 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '11'
+                'barcode' => '4806517213096'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:27:01'
+                'updated_at' => '2014-03-23 02:27:01'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '11'
+                'barcode' => '4806517213096'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:27:01'
+                'updated_at' => '2014-03-23 02:27:01'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        3 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '17'
+                'barcode' => '4809189220213'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:27:01'
+                'updated_at' => '2014-03-23 02:27:01'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '17'
+                'barcode' => '4809189220213'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:27:01'
+                'updated_at' => '2014-03-23 02:27:01'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        4 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '17'
+                'barcode' => '4807770270291'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:27:01'
+                'updated_at' => '2014-03-23 02:27:01'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '17'
+                'barcode' => '4807770270291'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:27:01'
+                'updated_at' => '2014-03-23 02:27:01'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+    )
+) is null. [] []
+[2014-03-23 02:27:02] Codeception.INFO: # FAILED # [] []
+[2014-03-23 02:27:02] Codeception.INFO: PASSED [] []
+[2014-03-23 02:27:08] Codeception.INFO: PASSED [] []
+[2014-03-23 02:27:13] Codeception.INFO: PASSED [] []
+[2014-03-23 02:27:19] Codeception.INFO: PASSED [] []
+[2014-03-23 02:48:16] Codeception.ALERT: Failed asserting that Illuminate\Database\Eloquent\Collection Object (
+    'items' => Array (
+        0 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '2'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:48:15'
+                'updated_at' => '2014-03-23 02:48:15'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '2'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:48:15'
+                'updated_at' => '2014-03-23 02:48:15'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        1 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '5'
+                'barcode' => '4842850036564'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:48:15'
+                'updated_at' => '2014-03-23 02:48:15'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '5'
+                'barcode' => '4842850036564'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:48:15'
+                'updated_at' => '2014-03-23 02:48:15'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        2 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '7'
+                'barcode' => '4800088145053'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:48:15'
+                'updated_at' => '2014-03-23 02:48:15'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '7'
+                'barcode' => '4800088145053'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:48:15'
+                'updated_at' => '2014-03-23 02:48:15'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        3 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '8'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:48:15'
+                'updated_at' => '2014-03-23 02:48:15'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '8'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:48:15'
+                'updated_at' => '2014-03-23 02:48:15'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        4 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '12'
+                'barcode' => '4809189220213'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:48:15'
+                'updated_at' => '2014-03-23 02:48:15'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '12'
+                'barcode' => '4809189220213'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:48:15'
+                'updated_at' => '2014-03-23 02:48:15'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+    )
+) is null. [] []
+[2014-03-23 02:48:16] Codeception.INFO: # FAILED # [] []
+[2014-03-23 02:48:16] Codeception.INFO: PASSED [] []
+[2014-03-23 02:48:22] Codeception.INFO: PASSED [] []
+[2014-03-23 02:48:27] Codeception.INFO: PASSED [] []
+[2014-03-23 02:48:32] Codeception.INFO: PASSED [] []
+[2014-03-23 02:50:22] Codeception.ALERT: Failed asserting that Illuminate\Database\Eloquent\Collection Object (
+    'items' => Array (
+        0 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '2'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:50:21'
+                'updated_at' => '2014-03-23 02:50:21'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '2'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:50:21'
+                'updated_at' => '2014-03-23 02:50:21'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        1 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '10'
+                'barcode' => '4842850036564'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:50:21'
+                'updated_at' => '2014-03-23 02:50:21'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '10'
+                'barcode' => '4842850036564'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:50:21'
+                'updated_at' => '2014-03-23 02:50:21'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        2 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '12'
+                'barcode' => '4800088145053'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:50:21'
+                'updated_at' => '2014-03-23 02:50:21'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '12'
+                'barcode' => '4800088145053'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:50:21'
+                'updated_at' => '2014-03-23 02:50:21'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        3 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '14'
+                'barcode' => '4807770120213'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:50:21'
+                'updated_at' => '2014-03-23 02:50:21'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '14'
+                'barcode' => '4807770120213'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:50:21'
+                'updated_at' => '2014-03-23 02:50:21'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        4 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '14'
+                'barcode' => '4809189220213'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:50:21'
+                'updated_at' => '2014-03-23 02:50:21'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '14'
+                'barcode' => '4809189220213'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:50:21'
+                'updated_at' => '2014-03-23 02:50:21'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+    )
+) is null. [] []
+[2014-03-23 02:50:22] Codeception.INFO: # FAILED # [] []
+[2014-03-23 02:50:22] Codeception.INFO: PASSED [] []
+[2014-03-23 02:50:27] Codeception.INFO: PASSED [] []
+[2014-03-23 02:50:33] Codeception.INFO: PASSED [] []
+[2014-03-23 02:50:38] Codeception.INFO: PASSED [] []
+[2014-03-23 02:55:30] Codeception.ALERT: Failed asserting that Illuminate\Database\Eloquent\Collection Object (
+    'items' => Array (
+        0 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '2'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:55:29'
+                'updated_at' => '2014-03-23 02:55:29'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '2'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:55:29'
+                'updated_at' => '2014-03-23 02:55:29'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        1 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '11'
+                'barcode' => '4842850036564'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:55:29'
+                'updated_at' => '2014-03-23 02:55:29'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '11'
+                'barcode' => '4842850036564'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:55:29'
+                'updated_at' => '2014-03-23 02:55:29'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        2 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '12'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:55:29'
+                'updated_at' => '2014-03-23 02:55:29'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '12'
+                'barcode' => '5011321361058'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:55:29'
+                'updated_at' => '2014-03-23 02:55:29'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        3 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '18'
+                'barcode' => '4800119220803'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:55:29'
+                'updated_at' => '2014-03-23 02:55:29'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '18'
+                'barcode' => '4800119220803'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:55:29'
+                'updated_at' => '2014-03-23 02:55:29'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+        4 => PurchasedItem Object (
+            'table' => 'purchased_items'
+            'softDelete' => true
+            'connection' => null
+            'primaryKey' => 'id'
+            'perPage' => 15
+            'incrementing' => true
+            'timestamps' => true
+            'attributes' => Array (
+                'id' => '21'
+                'barcode' => '4809189220213'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:55:29'
+                'updated_at' => '2014-03-23 02:55:29'
+                'deleted_at' => null
+            )
+            'original' => Array (
+                'id' => '21'
+                'barcode' => '4809189220213'
+                'quantity' => '12'
+                'created_at' => '2014-03-23 02:55:29'
+                'updated_at' => '2014-03-23 02:55:29'
+                'deleted_at' => null
+            )
+            'relations' => Array ()
+            'hidden' => Array ()
+            'visible' => Array ()
+            'appends' => Array ()
+            'fillable' => Array ()
+            'guarded' => Array (
+                0 => '*'
+            )
+            'dates' => Array ()
+            'touches' => Array ()
+            'observables' => Array ()
+            'with' => Array ()
+            'exists' => true
+        )
+    )
+) is null. [] []
+[2014-03-23 02:55:30] Codeception.INFO: # FAILED # [] []
+[2014-03-23 02:55:30] Codeception.INFO: PASSED [] []
+[2014-03-23 02:55:35] Codeception.INFO: PASSED [] []
+[2014-03-23 02:55:40] Codeception.INFO: PASSED [] []
+[2014-03-23 02:55:45] Codeception.INFO: PASSED [] []

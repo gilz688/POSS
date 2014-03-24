@@ -14,7 +14,7 @@
             <th>Option</th>
         </tr>
     <thead>
-    <tbody
+    <tbody>
         @foreach ($items as $item)
         <tr> 
             <td> {{ HTML::link('items/' . $item->barcode, $item->itemName) }} </td>

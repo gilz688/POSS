@@ -67,9 +67,14 @@ class TransactionController extends Controller implements ResourceController{
     public function show($id) {
         $transaction = $this->transactions->find($id);
         $items = $transaction['purchasedItems'];
+        $amount = $this->transactions->getAmount($items);
+        $totalTransaction = $this->transactions->getTotal($id);
+        $arr = [$items, $amount];
         return View::make('transaction.show', [
-                    'items' => $items,
-                    'id' => $id
+                    'array' => $arr,
+                    'item' => $arr[0],
+                    'amount' => $arr[1],
+                    'transaction' => $totalTransaction
         ]);
     }
 

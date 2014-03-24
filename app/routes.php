@@ -65,5 +65,7 @@ Route::group(["before" => "auth"], function() {
 
     // Display the clerk performance
     Route::resource('/report/clerk', 'ReportController');
+    // Display product sales
+    Route::get('/report/product', 'ReportController@productsReport');
 	
 });

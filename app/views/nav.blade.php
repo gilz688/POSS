@@ -41,6 +41,7 @@
                         <ul class="dropdown-menu">
                             <li>{{ HTML::link('/report/sales', 'Sales Report') }}</li>
                             <li>{{ HTML::link('/report/clerkperformance', 'Clerk Performance Report') }}</li>
+                            <li>{{ HTML::link('/report/product', 'Product Sales') }}</li>
                         </ul>
                     </li>
 

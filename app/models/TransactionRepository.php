@@ -99,6 +99,21 @@ class TransactionRepository implements TableRepository {
         }
     }
 
+
+    public function getAmount($items) {
+        $array = [];
+        $amount = 0.0;
+        $a = new ItemRepository;
+        foreach($items as $item) {
+            $find = $a->find($item['barcode']);
+            $price = $find['price'];
+            $quantity = $item['quantity'];
+            $amount = $quantity * $price;
+            $array[] = $amount;
+        }
+        return $array;
+    }
+
     public function paginate($limit = 10){
         $items = Transaction::paginate($limit);
         return $items;
