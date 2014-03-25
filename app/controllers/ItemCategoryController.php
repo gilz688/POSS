@@ -125,8 +125,10 @@ class ItemCategoryController extends Controller implements ResourceController{
      * @return Response
      */
     public function show($id) {
-        return View::make('item.index', [
-                    'item' => $this->items->find($barcode)
+        $a = new ItemRepository;
+        $b = $a->findItemByCategoryId($id);
+        return View::make('itemcategory.show', [
+                    'items' => $b
         ]);
     }
 }
