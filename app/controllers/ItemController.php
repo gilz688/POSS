@@ -135,7 +135,9 @@ private $items;
      */
     public function destroy($barcode) {
         $this->items->delete($barcode);
-        return Redirect::route('items.index');
+        if(!Response::ajax){
+            return Redirect::route('items.index');
+        }
     }
 
     /**

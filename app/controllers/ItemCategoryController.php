@@ -114,8 +114,18 @@ class ItemCategoryController extends Controller implements ResourceController{
      * @return Response
      */
     public function destroy($id) {
-        $this->categories->delete($id);
-        return Redirect::route('itemcategories.index');
+        try{
+            $this->categories->delete($id);
+        } catch(ErrorException $e){
+
+        }
+
+        if(Request::ajax()){
+            echo 'true'; 
+        }
+        else{
+            return Redirect::route('itemcategories.index');
+        }
     }
 
     /**

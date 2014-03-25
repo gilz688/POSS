@@ -28,6 +28,7 @@
 
 <br>
 
+<!--
 <div id="grapharea">
 
   <holder class="ui-state-default"><img src="image/1.png" width="350px" height="auto" /></holder>
@@ -35,5 +36,5 @@
   <holder class="ui-state-default"><img src="image/3.png" width="350px" height="auto"/></holder>
 
 </div>
-
+-->
 @stop
