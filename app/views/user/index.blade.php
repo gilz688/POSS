@@ -12,6 +12,6 @@
 </div>
 
 <script type="text/javascript">var role = "{{ Auth::user()->role }}"</script>
-
+@include('user.confirm_delete')
 
 @stop

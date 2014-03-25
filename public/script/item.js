@@ -23,8 +23,8 @@
                 });
             },
             success: function(response) {
-                var data = JSON.parse(response.itemss);
-                $("#list").html(generatetable(data,response.options)+response.links);
+                var data = JSON.parse(response.items);
+                $("#list").html(generatetable(data,response.options,response.names)+response.links);
                 $(".loader").hide("fast",function(){
                     $("#list").fadeIn("fast");
                 });
@@ -37,20 +37,21 @@
         return false;
     }
 
-    function generatetable(items,options){
-        var tableheader = "<tr><th>Barcode</th><th>Name</th><th>Category</th><th>Label</th><th>Options</th></tr>";
+    function generatetable(items,options,names){
+        var tableheader = "<tr><th>Barcode</th><th>Item Name</th><th>Category</th><th>Label</th><th>Options</th></tr>";
         var tablebody = "";
         for(var i=0;i<items.length;i++){
-            tablebody = tablebody + '<tr><td><a href="../items/' + itemss[i].barcode + '">' + itemss[i].itemName + '</td><td>'+ itemss[i].itemcategory['name'] + '</td><td>' + itemss[i].label + "</a></td>";
+            tablebody = tablebody + '<tr><td><a href="../items/' + items[i].barcode + '">' + items[i].itemName + '</a></td><td>'+ items[i].category_id+ '</td><td>' + items[i].label + "</td>";
             tablebody = tablebody + '<td>' + options[i] + '</td></tr>';
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';
     }
 
     function removeItem(barcode){
-        alert("Remove item with barcode of "+barcode);
+        alert("Delete item with barcode of "+barcode);
     }
     
     function editItem(barcode){
-        alert("Edit category with barcode of "+barcode);
+        alert("Edit item  with barcode of "+barcode);
     }
+	

@@ -25,8 +25,8 @@ private $items;
      * @return Response
      */
     public function create() {
-        echo '<script type="text/javascript">alert("hello!");</script>';
-        //return View::make('item.create');
+        //echo '<script type="text/javascript">alert("hello!");</script>';
+        return View::make('item.create');
     }
 
     /**
