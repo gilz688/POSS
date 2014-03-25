@@ -1,4 +1,6 @@
-@if(Auth::user()->id != $id)
+@if(Auth::user()->id == $id)
+<a class="btn btn-small btn-danger" disabled="disabled"><i class="glyphicon glyphicon-trash"></i>DELETE</a>
+@else
 <a class="btn btn-small btn-danger" onclick="removeUser( {{ $id }} )"><i class="glyphicon glyphicon-trash"></i>DELETE</a>
 @endif
 &nbsp;
