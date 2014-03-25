@@ -134,8 +134,16 @@ private $items;
      * @return Response
      */
     public function destroy($barcode) {
-        $this->items->delete($barcode);
-        if(!Response::ajax){
+        try{
+            $this->items->delete($barcode);
+        } catch(ErrorException $e){
+
+        }
+
+        if(Request::ajax()){
+            echo 'true'; 
+        }
+        else{
             return Redirect::route('items.index');
         }
     }

@@ -46,12 +46,42 @@
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';
     }
-/*
-    function removeItem(barcode){
-        alert("Delete item with barcode of "+barcode);
+function removeItem(barcode){
+        $('#confirmDelete').modal('show');
+        $('button#confirm').click(function(){
+            submitDelete(barcode);            
+        });     
     }
     
-    function editItem(barcode){
-        alert("Edit item  with barcode of "+barcode);
+     function submitDelete(barcode){
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "positionClass": "toast-bottom-right",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        $.ajax({
+            type: 'post',
+            dataType: 'json',
+            url: siteloc + "/items/" + barcode,
+            data: {
+                _method : 'DELETE',
+            },
+            success: function(response) {
+                $('#confirmDelete').modal('hide');
+                retrieve(1);
+                toastr.success('Item  successfully deleted.')
+            },
+            error: function(xhr, status, error) {
+                toastr.error('Item  successfully deleted.')
+            }
+        });
     }
-	*/
