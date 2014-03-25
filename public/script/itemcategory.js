@@ -82,7 +82,7 @@
                 toastr.success('Item category successfully deleted.')
             },
             error: function(xhr, status, error) {
-                toastr.error('Item category successfully deleted.')
+                toastr.error(error);
             }
         });
     }

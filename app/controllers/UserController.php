@@ -42,8 +42,18 @@ class UserController extends Controller implements ResourceController {
      * @return Response
      */
     public function destroy($id) {
-        $this->users->delete($id);
-        return Redirect::route('users.index');
+        try{
+            $this->users->delete($id);
+        } catch(ErrorException $e){
+
+        }
+
+        if(Request::ajax()){
+            echo 'true'; 
+        }
+        else{
+            return Redirect::route('users.index');
+        }
     }
 
     /**
