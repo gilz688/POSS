@@ -64,6 +64,7 @@ class ItemCategoryController extends Controller implements ResourceController{
             return Redirect::to('itemcategories/create')
                             ->withErrors($validator)
                             ->withInput(Input::all());
+			echo'<script type="text/javascript">alert("Category name entered already exist!");</script>';
         }
         $this->categories->add($categoryData);
         Session::flash('message', 'Successfully added new item category!');
@@ -93,8 +94,8 @@ class ItemCategoryController extends Controller implements ResourceController{
             'description' => Input::get('description'),
         ];
         $rules = [
-            'name' => 'required|unique:item_categories',
-            'description' => 'required',
+            'name' => '',
+            'description' => '',
         ];
         $validator = Validator::make($categoryData, $rules);
         if ($validator->fails()) {

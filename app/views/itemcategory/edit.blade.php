@@ -34,11 +34,11 @@
     </div>
 
     <!-- Button -->
-    <div class="form-group">
-        <label class="col-md-11  control-label" for="update"></label>
-        <div class="col-md-1 col-md-offset-9">
-			<button id="edit" name="update" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>   UPDATE</button>
-			 <a  class="btn btn-small btn-danger" href="{{ URL::route('itemcategories.index') }}" id="cancel"><i class="glyphicon glyphicon-remove"></i>    CANCEL</a>
+     <div class="form-group">
+        <label class="col-md-9 control-label" for="update"></label>
+        <div class="col-md-6">
+            <button id="edit" name="update" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>UPDATE</button>
+			 <a  class="btn btn-small btn-danger" href="{{ URL::route('itemcategories.index') }}" id="cancel"><i class="glyphicon glyphicon-remove"></i>CANCEL</a>
         </div>
     </div>
 

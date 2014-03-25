@@ -5,4 +5,4 @@
 	</button>
 </form>
 &nbsp;
-<a class="btn btn-small btn-success" onClick="{{ URL::route('users.edit', $id) }} "><i class="glyphicon glyphicon-edit"></i>  EDIT</a>
+<a class="btn btn-small btn-primary" href="{{ URL::route('users.edit', $id) }}"><i class="glyphicon glyphicon-edit"></i>EDIT</a>
