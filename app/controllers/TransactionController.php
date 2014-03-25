@@ -13,8 +13,30 @@ class TransactionController extends Controller implements ResourceController{
      *
      * @return Response
      */
-    public function index() {
-		return View::make('transaction.index', ['transactions' => $this->transactions->paginate()]);
+    public function index() {       
+        if(Request::ajax()){
+            $paginator = $this->transactions->paginate(8);
+
+            $options = [];
+            $names = [];
+            $transactions = $paginator->getItems();
+                    
+            foreach($transactions as $transaction){
+                array_push($names,$transaction->creator->username);
+                $view = View::make('entry.transaction_option', ['id' => $transaction['id'] ]);
+                $contents = (string) $view;  
+                array_push($options, $contents);
+            }
+
+            return Response::json([
+                'transactions' => $paginator->getCollection()->toJson(),
+                'links' => $paginator->links()->render(),
+                'options' => $options,
+                'names' => $names
+            ]);
+        }
+ 
+        return View::make('transaction.index');
     }
 
     /**
@@ -23,12 +45,13 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function create() {		
-		if(Session::get('cashier_number') != null){
-			return View::make('purchaseditem.create');
+		if(Session::get('cashier_number') == null){
+			return View::make('transaction.create');
 		}
 		else{
-			/* Get cashier number */
-			return View::make('transaction.create');
+			$transactionData['cashier_number'] = Session::get('cashier_number');                
+            $transactionData['id'] = $this->transactions->add($transactionData); 
+			return View::make('purchaseditem.create',$transactionData);
 		}
 		
 		//$transactionData['cashier_number'] = Input::get('cashier_number');                
@@ -54,8 +77,9 @@ class TransactionController extends Controller implements ResourceController{
      */
     public function store() {
         try {
-            $transactionData['cashier_number'] = Input::get('cashier_number');
-            Session::put('cashier_number',$transactionData['cashier_number']);   
+            $transactionData['cashier_number'] = Input::get('cashier_number');                
+            $transactionData['id'] = $this->transactions->add($transactionData);  
+            Session::put('cashier_number',$transactionData['cashier_number']);       
             return View::make('purchaseditem.create', $transactionData);
         } catch (UnauthorizedException $ex) {
             echo $ex->getMessage();
@@ -72,9 +96,15 @@ class TransactionController extends Controller implements ResourceController{
     public function show($id) {
         $transaction = $this->transactions->find($id);
         $items = $transaction['purchasedItems'];
+		$amount = $this->transactions->getAmount($items);
+        $totalTransaction = $this->transactions->getTotal($id);
+        $arr = [$items, $amount];
         return View::make('transaction.show', [
-                    'items' => $items,
-                    'id' => $id
+            'items' => $items,
+            'array' => $arr,
+            'item' => $arr[0],
+            'amount' => $amount,
+            'transaction' => $totalTransaction
         ]);
     }
 

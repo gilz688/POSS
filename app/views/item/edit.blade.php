@@ -9,7 +9,7 @@
 ]) }}
 
 <div class="col-md-6 col-md-offset-3">
-<div style="background: #FFFFFF; padding: 5px 20px 10px 20px">
+<div style="background: rgba(255,255,255, 0.3); padding: 5px 20px 10px 20px">
 <fieldset>
 
     <!-- Form Name -->
@@ -78,7 +78,7 @@
     	<!-- Text input-->
 <div class="form-group">
   <label class="col-md-4 control-label" for="category_id">Category</label>  
-  <div class="col-md-4">
+  <div class="col-md-8">
   <select name="category_id" id="category_id" value="{{ $category_id }}">
 					<option value="">{{ $itemcategory['name']}}</option>
 					<option value="1">Baby Items</option>
@@ -98,10 +98,10 @@
     <!-- Button -->
     <div class="form-group">
         <label class="col-md-9 control-label" for="update"></label>
-        <div class="col-md-3">
+        <div class="col-md-6">
             <button id="edit" name="update" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>   UPDATE</button>
-			 <a href="{{ URL::route('items.index') }}" class="btn btn-large">Cancel</a>
-		</div>
+			 <a  class="btn btn-small btn-danger" href="{{ URL::route('items.index') }}" id="cancel"><i class="glyphicon glyphicon-remove"></i>    CANCEL</a>
+        </div>
     </div>
     
 </fieldset>

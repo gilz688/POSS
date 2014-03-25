@@ -6,10 +6,10 @@
         });
 
         var page = 1;
-        itemcategories(page);
+        retrieve(page);
     });
 
-    function itemcategories(page) {
+    function retrieve(page) {
         $.ajax({
             type: 'get',
             dataType: 'json',
@@ -18,14 +18,19 @@
                 page: page
             },
             beforeSend: function() {
-                $("#loader").html("<img src='" + siteloc + "/image/loader.gif' /> Please wait...");
+                $("#list").fadeOut("fast", function(){
+                    $(".loader").show();
+                });
             },
             success: function(response) {
-                $("#loader").html("");
                 var data = JSON.parse(response.categories);
-                $("#list").html(generatetable(data));
+                $("#list").html(generatetable(data)+response.links);
+                $(".loader").hide("fast",function(){
+                    $("#list").fadeIn("fast");
+                });
             },
             error: function(xhr, status, error) {
+                $(".loader").hide();
                 alert(error);
             }
         });
@@ -38,8 +43,8 @@
         for(var i=0;i<categories.length;i++){
             tablebody = tablebody + "<tr><td>" + categories[i].name +"</td><td>"+ categories[i].description + "</td>";
             tablebody = tablebody + '<td><form action="itemcategories/"' + categories[i].id + '" style="float: left;">';
-            tablebody += '<input type="submit" method="post" value="remove" class="btn btn-danger"><type name="_method" type="hidden" value="DELETE">';
-            tablebody += '&nbsp; <a class="btn btn-small btn-success">edit</a>';
+            tablebody += '<input type="submit" method="post" value="DELETE" class="btn btn-danger"><type name="_method" type="hidden" value="DELETE">';
+            tablebody += '&nbsp; <a class="btn btn-small btn-success"><i class="glyphicon glyphicon-edit"></i>    EDIT</a>';
             tablebody += '</form></td></tr>';
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';

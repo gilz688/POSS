@@ -1,0 +1,81 @@
+[2014-03-24 16:36:08] Codeception.ALERT: Undefined offset: 0 [] []
+[2014-03-24 16:36:08] Codeception.INFO: # ERROR # [] []
+[2014-03-24 16:36:08] Codeception.INFO: PASSED [] []
+[2014-03-24 16:36:28] Codeception.ALERT: Failed asserting that 297 is null. [] []
+[2014-03-24 16:36:28] Codeception.INFO: # FAILED # [] []
+[2014-03-24 16:36:28] Codeception.INFO: PASSED [] []
+[2014-03-24 16:41:55] Codeception.ALERT: Undefined offset: 417 [] []
+[2014-03-24 16:41:55] Codeception.INFO: # ERROR # [] []
+[2014-03-24 16:41:55] Codeception.INFO: PASSED [] []
+[2014-03-24 16:42:32] Codeception.ALERT: Failed asserting that Array (
+    'Ethyl Alcohol' => 35.0
+    'Shampoo' => 393.25
+    'Sports Drink' => 181.5
+    'Aficionado Body Spray' => 100.25
+    'Nissin Wafer' => 65.5
+    'Gardenia Loaf Bread' => 147.5
+    'Selecta Ice Cream' => 159.5
+) is null. [] []
+[2014-03-24 16:42:32] Codeception.INFO: # FAILED # [] []
+[2014-03-24 16:42:32] Codeception.INFO: PASSED [] []
+[2014-03-24 16:53:42] Codeception.ALERT: in_array() expects parameter 2 to be array, double given [] []
+[2014-03-24 16:53:42] Codeception.INFO: # ERROR # [] []
+[2014-03-24 16:53:42] Codeception.INFO: PASSED [] []
+[2014-03-24 16:56:12] Codeception.ALERT: Failed asserting that Array (
+    0 => Array (
+        'Ethyl Alcohol' => 270
+        'Shampoo' => 241
+        'Sports Drink' => 266
+        'Aficionado Body Spray' => 267
+        'Nissin Wafer' => 252
+        'Gardenia Loaf Bread' => 219
+        'Selecta Ice Cream' => 274
+        'Silka Papaya Soap' => 223
+        'UFC Tamis Anghang Catsup' => 284
+        'Australian Karne Norte' => 304
+    )
+    1 => Array (
+        'Ethyl Alcohol' => 35.0
+        'Shampoo' => 393.25
+        'Sports Drink' => 181.5
+        'Aficionado Body Spray' => 100.25
+        'Nissin Wafer' => 65.5
+        'Gardenia Loaf Bread' => 147.5
+        'Selecta Ice Cream' => 159.5
+    )
+) is null. [] []
+[2014-03-24 16:56:12] Codeception.INFO: # FAILED # [] []
+[2014-03-24 16:56:12] Codeception.INFO: PASSED [] []
+[2014-03-24 17:04:55] Codeception.ALERT: Failed asserting that true is null. [] []
+[2014-03-24 17:04:55] Codeception.INFO: # FAILED # [] []
+[2014-03-24 17:04:55] Codeception.INFO: PASSED [] []
+[2014-03-24 17:05:53] Codeception.ALERT: Failed asserting that Array (
+    0 => Array (
+        'Shampoo' => 319
+        'Ethyl Alcohol' => 301
+        'Sports Drink' => 299
+        'Selecta Ice Cream' => 296
+        'Nissin Wafer' => 296
+    )
+    1 => Array (
+        'Shampoo' => 393.25
+        'Sports Drink' => 181.5
+        'Selecta Ice Cream' => 159.5
+        'Gardenia Loaf Bread' => 147.5
+        'Aficionado Body Spray' => 100.25
+    )
+) is null. [] []
+[2014-03-24 17:05:53] Codeception.INFO: # FAILED # [] []
+[2014-03-24 17:05:53] Codeception.INFO: PASSED [] []
+[2014-03-24 17:13:05] Codeception.ALERT: 387 does not match expected type "array". [] []
+[2014-03-24 17:13:05] Codeception.INFO: # FAILED # [] []
+[2014-03-24 17:13:05] Codeception.INFO: PASSED [] []
+[2014-03-24 17:19:16] Codeception.ALERT: Failed asserting that two arrays are equal. [] []
+[2014-03-24 17:19:16] Codeception.INFO: # FAILED # [] []
+[2014-03-24 17:19:16] Codeception.INFO: PASSED [] []
+[2014-03-24 17:20:53] Codeception.ALERT: Failed asserting that two arrays are equal. [] []
+[2014-03-24 17:20:53] Codeception.INFO: # FAILED # [] []
+[2014-03-24 17:20:53] Codeception.INFO: PASSED [] []
+[2014-03-24 17:22:44] Codeception.ALERT: Failed asserting that two arrays are equal. [] []
+[2014-03-24 17:22:44] Codeception.INFO: # FAILED # [] []
+[2014-03-24 17:22:44] Codeception.INFO: PASSED [] []

@@ -93,14 +93,40 @@ class TransactionRepository implements TableRepository {
             $items = $transaction->purchasedItems;
             $sales = 0.00;
             foreach($items as $item){
-                $sales += $item->item->price * $item->quantity;
+                $price = $item->item['price'];
+                $sales += $price * $item['quantity'];
             }
             return ['items' => count($items), 'sales' => $sales];
         }
     }
 
+	
+    public function getAmount($items) {
+        $array = [];
+        $amount = 0.0;
+        $a = new ItemRepository;
+        foreach($items as $item) {
+            $find = $a->find($item['barcode']);
+            $price = $find['price'];
+            $quantity = $item['quantity'];
+            $amount = $quantity * $price;
+            $array[] = $amount;
+        }
+        return $array;
+    }
+	
     public function paginate($limit = 10){
-        $items = Transaction::paginate($limit);
+        if(!Auth::check()){
+            throw new UnauthorizedException('User is not logged in or session expired!');
+        }
+        $role = Auth::user()->role;
+        if($role=='clerk'){
+            $id = Auth::user()->id;
+            $items = Transaction::where('creator_id',$id)->orderBy('created_at','desc')->paginate($limit);
+        }
+        else if($role == 'admin' || $role == 'auditor'){
+            $items = Transaction::orderBy('created_at','desc')->paginate($limit);
+        }
         return $items;
     }
 }

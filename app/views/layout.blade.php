@@ -3,7 +3,7 @@
     <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript">var siteloc = "{{ URL::to('/') }}"</script>
+    <script type="text/javascript">var siteloc = "{{ url('/') }}"</script>
     <title>Point of Sales System</title>
     
     <!-- Bootstrap core CSS -->
@@ -16,7 +16,10 @@
         
                 <!-- Bootstrap core JavaScript
         ================================================== -->
-        <script src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+        <!--<script src="../script/jquery-1.9.1.min.js"></script> -->
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
         <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
         
         @include("header")

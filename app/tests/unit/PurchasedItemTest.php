@@ -114,6 +114,7 @@ class PurchasedItemTest extends TestCase {
 	 */
 	public function test_DeletePurchasedItem()
 	{
+
 		Auth::attempt($this->clerkCredentials);
 	    $items = new PurchasedItemRepository;	
 	    $barcode = 4806517213096;

@@ -140,6 +140,10 @@ class ItemRepository implements TableRepository{
         $items = Item::paginate($limit);
         return $items;
     }
+
+    public function findItemByCategoryId($category_id) {
+        return Item::where('category_id', '=', $category_id)->get();
+    }
 }
 
 

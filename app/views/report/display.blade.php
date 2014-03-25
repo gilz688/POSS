@@ -17,4 +17,9 @@
         @endforeach
     </tbody>
 </table>
+
+<div class="pagination">
+{{ $users->links() }}
+</div>
+
 @stop

@@ -26,7 +26,7 @@
 
 <script src="../script/Chart.min.js"></script>
 
-<div id="spinner" style="display:none;"><img src='../image/blue.gif' width='25px' height='25px'/> Please wait...</img></div>
+<div id="spinner" style="display:none;"><img src='../image/metro_loader.gif' width='25px' height='25px'/> Please wait...</img></div>
 
 <div id="chart" style="float:left; margin:0; width:50%;">
 	<canvas id="canvas" height="450" width="600"></canvas>

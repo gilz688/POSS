@@ -14,11 +14,22 @@ class ItemCategoryController extends Controller implements ResourceController{
      * @return Response
      */
     public function index() {
-        $paginator = $this->categories->paginate();
         if(Request::ajax()){
+            $paginator = $this->categories->paginate(8);
+
+            $options = [];
+            $categories = $paginator->getItems();
+                    
+            foreach($categories as $category){
+                $view = View::make('entry.itemcategory_option', ['id' => $category['id'] ]);
+                $contents = (string) $view;  
+                array_push($options, $contents);
+            }
+
             return Response::json([
                 'categories' => $paginator->getCollection()->toJson(),
-                'links' => $paginator->links()
+                'links' => $paginator->links()->render(),
+                'options' => $options
             ]);
         }
         return View::make('itemcategory.index');
@@ -113,8 +124,10 @@ class ItemCategoryController extends Controller implements ResourceController{
      * @return Response
      */
     public function show($id) {
-        return View::make('item.index', [
-                    'item' => $this->items->find($barcode)
+        $a = new ItemRepository;
+        $b = $a->findItemByCategoryId($id);
+        return View::make('itemcategory.show', [
+                    'items' => $b
         ]);
     }
 }

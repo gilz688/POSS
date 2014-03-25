@@ -1,52 +1,31 @@
 @extends("layout")
 @section("content")
 
+    @if(Auth::user()->role=="clerk")
+        <a id="transactionView" class="btn btn-small btn-danger" <!--href="{{ URL::route('transactions.create') -->}}"><i class="glyphicon glyphicon-plus"></i>CREATE TRANSACTION</a>
+    @endif
 
+<br>
+<br>
 
+<div id="transactionAjaxView"></div>
 
-@if(Auth::user()->role == 'clerk')
+<div class="loader text-center">@include('loader.preloader_canvas')</div>
+	<div id="list"></div>
+</div>
 
-	@if(Session::get('cashier_number') == null)
-		<button class="btn btn-xs btn-default" data-toggle="modal" data-target="#addTransaction">Add Transaction</button>
-	@endif
-	@if(Session::get('cashier_number') != null)
-		<a href="/transactions" class="btn btn-xs btn-default active" role="button">Add Transaction</a>
-	@endif
-@endif
-<br/>
-<br/>
-<div class="loader"></div>
-<div class="list">
-<table class="table table-hover">
-    <thead
-        <tr>
-            <th>Transaction ID</th>
-            <th>Cashier Number</th>
-            <th>Creator</th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody
+<script type="text/javascript">
+	('#transactionView').click(function(){
+		$.ajax({
+			url: siteloc + '/transaction/index',
+			success: function(data){
+				$('#transactionAjaxView').html(data);
+			}
+			
+		});
+		
+		
+	});
+</script>
 
-        @foreach ($transactions as $transaction)
-        <tr> 
-            <td> {{ $transaction->id }} </td>
-            <td> {{ $transaction->cashier_number }} </td>
-            <td> {{ $transaction->creator_id }} </td>
-            <td>
-                @if(Auth::user()->role == 'auditor')
-                {{ Form::open(['url' => 'transactions/' . $transaction['id'], 'style' => 'float: left;']) }}
-                {{ Form::hidden('_method', 'DELETE') }}
-                {{ Form::submit('void', ['class' => 'btn btn-warning']) }}
-                {{ Form::close() }}
-                @endif
-                &nbsp;
-                <a class="btn btn-small btn-info" href="{{ URL::route('transactions.show',$transaction->id) }} ">view invoice</a>
-            </td>
-        </tr>
-        @endforeach
-    </tbody>
-</table>
-
-@include('transaction.addCashier')
 @stop

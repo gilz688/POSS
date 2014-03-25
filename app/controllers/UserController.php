@@ -14,10 +14,25 @@ class UserController extends Controller implements ResourceController {
      * @return Response
      */
     public function index() {
-        return View::make('user.index', array(
-                    'users' => $this->users->paginate(),
-                    'username' => Auth::user()->username
-        ));
+        if(Request::ajax()){
+            $paginator = $this->users->paginate(8);
+            $options = [];
+            $users = $paginator->getItems();
+                    
+            foreach($users as $user){
+                $view = View::make('entry.user_option', ['id' => $user['id'] ]);
+                $contents = (string) $view;  
+                array_push($options, $contents);
+            }
+            
+            return Response::json([
+                'users' => $paginator->getCollection()->toJson(),
+                'links' => $paginator->links()->render(),
+                'options' => $options
+            ]);
+        }
+
+        return View::make('user.index');
     }
 
     /**

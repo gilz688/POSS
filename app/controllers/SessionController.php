@@ -39,7 +39,6 @@ class SessionController extends Controller {
     }
 
     public function getLogout() {
-		Session::forget('cashier_number');
         Auth::logout();
         return Redirect::route('login');
     }

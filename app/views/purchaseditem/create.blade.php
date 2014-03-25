@@ -1,18 +1,14 @@
 @extends("layout")
 @section("content")
 
-
-
-
 {{ Form::open([
         "url" => "purchaseditems",
         "autocomplete" => "off",
         "class"        => "form-horizontal"
         
 ]) }}
-{{$cashier_number}}
-<fieldset>	
-	
+
+<fieldset>
 <!-- Form Name -->
 <legend>Add New Purchase Item</legend>
 
@@ -32,6 +28,7 @@
   </div>
 </div>
 
+{{Form::hidden('id',$id)}}
 
 <!-- Button -->
 <div class="form-group">
@@ -39,15 +36,11 @@
   <div class="col-md-4">
     <button id="add" name="add" class="btn btn-primary">Add</button>
   </div>
-</div>
   
-<div class="form-group">
-  <label class="col-md-4 control-label" for="add"></label>
-  <div class="col-md-4">
-     <a class="btn btn-small btn-info" href="{{ URL::route('transactions.index') }} ">Invoice</a>
+ <!-- Invoice Button --> 
+<div class="col-md-4 col-md-offset-4">
+<a class="btn btn-small btn-primary " href="{{ URL::route('transactions.show',$id) }} ">view invoice</a>
 </div>
-</div>
- 
 
 </fieldset>
 

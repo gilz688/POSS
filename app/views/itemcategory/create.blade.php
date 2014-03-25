@@ -8,7 +8,7 @@
 ]) }}
 
 <div class="col-md-6 col-md-offset-3">
-<div style="background: #FFFFFF; padding: 5px 20px 10px 20px">
+<div style="background: rgba(255,255,255,0.2); padding: 5px 20px 10px 20px">
 <fieldset>
 
 <!-- Form Name -->
