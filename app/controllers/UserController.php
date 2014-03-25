@@ -18,9 +18,9 @@ class UserController extends Controller implements ResourceController {
             $paginator = $this->users->paginate(8);
             $iterator = $paginator->getIterator();
             $options = [];
-            
-            while($iterator->valid()){
-                $user = $iterator->next();
+            $users = $paginator->getItems();
+                    
+            foreach($users as $user){
                 $view = View::make('entry.user_option', ['id' => $user['id'] ]);
                 $contents = (string) $view;  
                 array_push($options, $contents);
