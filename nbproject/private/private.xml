@@ -3,29 +3,53 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/views/header.blade.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/ItemRepository.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/controllers/SearchController.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/public/script/itemcategory.js</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/tests/unit/UserTest.php</file>
             <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestDataSeeder.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/tests/unit/ItemTest.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/TableRepository.php</file>
             <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestUserTableSeeder.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/tests/unit/ItemCategoryTest.php</file>
             <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/TransactionRepository.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/ItemCategory.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/UserTableSeeder.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/migrations/2014_02_15_012206_create_item_categories_table.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/migrations/2014_02_15_012210_create_purchased_items_table.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/migrations/2014_02_02_072744_create_users_table.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/tests/unit/SalesReportTest.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestItemCategoriesCsvSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/views/purchaseditem/index.blade.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/public/script/users.js</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/controllers/UserController.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/controllers/SessionController.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/routes.php</file>
             <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestPurchasedItemsTableSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/SalesReport.php</file>
             <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestTransactionTableSeeder.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/migrations/2014_02_15_012208_create_inventory_items_table.php</file>
             <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/views/nav.blade.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/migrations/2014_02_15_012208_create_transactions_table.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/PurchasedItemsRepository.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/ItemCategoryRepository.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/migrations/2014_02_15_012207_create_items_table.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestInventoryItemTableSeeder.php</file>
-            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/tests/unit/PurchasedItemTest.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/views/entry/transaction_option.blade.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/controllers/ItemCategoryController.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/public/script/salesreport.js</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/filters.php</file>
             <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestItemsTableSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestUserCsvSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/views/layout.blade.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestTransactionsCsvSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/ItemRepository.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/controllers/ReportController.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/ItemCategoriesTableSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/ItemCategory.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/Transaction.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/UserTableSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestCsvSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/PurchasedItemRepository.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/config/view.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/controllers/TransactionController.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/views/itemcategory/index.blade.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/DatabaseSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/UserRepository.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/views/smartsearch.blade.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestItemsCsvSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/models/ItemCategoryRepository.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/TestPurchasedItemsCsvSeeder.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/views/transaction/index.blade.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/controllers/ItemController.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/controllers/ResourceController.php</file>
+            <file>file:/C:/Users/gilmo_000/Laravel4-Vagrant/www/app/database/seeds/BaseSeeder.php</file>
         </group>
     </open-files>
 </project-private>

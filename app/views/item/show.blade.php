@@ -1,6 +1,8 @@
 @extends("layout")
 @section("content")
 <script type="text/javascript" src="../script/jquery-ean13.min.js"></script>
+
+<div class="col-md-6 col-md-offset-3">
 <table class="table table-hover">
     <tbody
         <tr> 
@@ -41,3 +43,4 @@
     </tbody>
 </table>
 @stop
+</div>

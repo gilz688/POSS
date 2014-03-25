@@ -1,6 +1,4 @@
-{{ Form::open(['url' => 'itemcategory/' . $id, 'style' => 'float: left;']) }}
-{{ Form::hidden('_method', 'DELETE') }}
-{{ Form::submit('remove', ['class' => 'btn btn-danger']) }}
-{{ Form::close() }}
-&nbsp;                
-<a class="btn btn-small btn-success" href="{{ URL::route('itemcategories.edit',$id) }} ">edit</a> 
+<a class="btn btn-small btn-danger" onclick="removeCategory( {{ $id }} )">remove</a> 
+&nbsp;
+               
+<a class="btn btn-small btn-success" onclick="editCategory( {{ $id }} )">edit</a> 

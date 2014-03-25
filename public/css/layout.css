@@ -6,3 +6,6 @@ body {
 	width: 400px;
 	height: 100px;
 }
+
+#grapharea { list-style-type: none; margin: 0; padding: 0; width: 1600px; }
+#grapharea holder {margin: 0 80px 0 0;  float: left; width: 300px; font-size: 4em; text-align: center; }
