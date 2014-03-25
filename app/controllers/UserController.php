@@ -16,7 +16,6 @@ class UserController extends Controller implements ResourceController {
     public function index() {
         if(Request::ajax()){
             $paginator = $this->users->paginate(8);
-            $iterator = $paginator->getIterator();
             $options = [];
             $users = $paginator->getItems();
                     

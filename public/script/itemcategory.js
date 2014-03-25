@@ -46,3 +46,11 @@
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';
     }
+
+    function removeCategory(id){
+        alert("Remove category with id of "+id);
+    }
+    
+    function editCategory(id){
+        alert("Edit category with id of "+id);
+    }

@@ -50,8 +50,13 @@
 
     function removeUser(id){
         alert("Remove user with id of "+id);
+		
     }
     
     function editUser(id){
         alert("Edit user with id of "+id);
     }
+	
+	
+	//script for delete confirmation
+	

@@ -17,16 +17,15 @@ class ItemCategoryController extends Controller implements ResourceController{
         if(Request::ajax()){
             $paginator = $this->categories->paginate(8);
 
-            $iterator = $paginator->getIterator();
             $options = [];
-            
-            while($iterator->valid()){
-                $category = $iterator->next();
+            $categories = $paginator->getItems();
+                    
+            foreach($categories as $category){
                 $view = View::make('entry.itemcategory_option', ['id' => $category['id'] ]);
-                $contents = (string) $view;
+                $contents = (string) $view;  
                 array_push($options, $contents);
             }
-            
+
             return Response::json([
                 'categories' => $paginator->getCollection()->toJson(),
                 'links' => $paginator->links()->render(),
