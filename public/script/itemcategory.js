@@ -51,6 +51,6 @@
         alert("Remove category with id of "+id);
     }
     
-    function editCategory(id){
-        alert("Edit category with id of "+id);
-    }
+    //function editCategory(id){
+      //  alert("Edit category with id of "+id);
+    //}

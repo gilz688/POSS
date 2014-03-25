@@ -37,16 +37,16 @@
         return false;
     }
 
-    function generatetable(items,options,names){
-        var tableheader = "<tr><th>Barcode</th><th>Item Name</th><th>Category</th><th>Label</th><th>Options</th></tr>";
+    function generatetable(items,options,name){
+        var tableheader = "<tr><th>Item Name</th><th>Label</th><th>Category</th><th>Options</th></tr>";
         var tablebody = "";
         for(var i=0;i<items.length;i++){
-            tablebody = tablebody + '<tr><td><a href="../items/' + items[i].barcode + '">' + items[i].itemName + '</a></td><td>'+ items[i].category_id+ '</td><td>' + items[i].label + "</td>";
+            tablebody = tablebody + '<tr><td><a href="../items/' + items[i].barcode + '">' + items[i].itemName + '</a></td><td>'+ items[i].label + '</td><td>' + name[i] + "</td>";
             tablebody = tablebody + '<td>' + options[i] + '</td></tr>';
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';
     }
-
+/*
     function removeItem(barcode){
         alert("Delete item with barcode of "+barcode);
     }
@@ -54,4 +54,4 @@
     function editItem(barcode){
         alert("Edit item  with barcode of "+barcode);
     }
-	
+	*/
