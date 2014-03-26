@@ -3,7 +3,7 @@
 
     @if(Auth::user()->role=="clerk")
 
-        <a id="transactionView" class="btn btn-small btn-danger" }}"><i class="glyphicon glyphicon-plus"></i>CREATE TRANSACTION</a>
+        <a id="transactionView" class="btn btn-small btn-danger" href="{{ URL::route('transactions.create') }} "><i class="glyphicon glyphicon-plus"></i>CREATE TRANSACTION</a>
 
     @endif
 

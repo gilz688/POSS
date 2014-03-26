@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 <div class="row">
-	<div class="col-md-4">
+	<!--<div class="col-md-4">
 		<table class="table table-hover">
 		<thead>
 			<tr>
@@ -19,7 +19,7 @@
 		</table>
 
 		
-	</div>
+	</div> -->
 	
 <div class="col-md-4">
 <table class="table table-hover">
@@ -62,6 +62,9 @@
 		@foreach($amount as $value)
 		<tr><td>{{$value}}</td></tr>
 		@endforeach
+		<tr><th>Total: {{ $transaction['sales'] }}</th></tr>
+		
+		
 	</tbody>
 </table>
 </div
