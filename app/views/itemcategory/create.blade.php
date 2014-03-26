@@ -37,7 +37,9 @@
   <label class="col-md-10 control-label" for="add"></label>
   <div class="col-md-2">
     <button id="add" name="add" class="btn btn-primary"><i class="glyphicon glyphicon-plus-sign"></i>     ADD</button>
-  </div>
+					 <a  class="btn btn-small btn-danger" href="{{ URL::route('itemcategories.index') }}" id="cancel"><i class="glyphicon glyphicon-remove"></i>    CANCEL</a>
+
+ </div>
 </div>
 
 </fieldset>
@@ -45,4 +47,5 @@
 {{ Form::close() }}
 </div>
 </div>
+
 @stop

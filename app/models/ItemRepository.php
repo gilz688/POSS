@@ -39,7 +39,7 @@ class ItemRepository implements TableRepository{
         $this->checkWritePermissions();
         $rules = [ 
 			'barcode' => 'required',
-			'itemName' => 'required',
+			'itemName' => 'required|Unique:items',
 			'price' => 'required',
 			'quantity' => 'required',
             'itemDescription' => 'required',
@@ -112,7 +112,7 @@ class ItemRepository implements TableRepository{
                     $item->label = $attributes['label'];
                 }
                 else{
-                    throw new ErrorException('Label should be a string!');
+                    throw new ErrorException('Label should be string!');
                 }
                 
             }
@@ -145,5 +145,4 @@ class ItemRepository implements TableRepository{
         return Item::where('category_id', '=', $category_id)->get();
     }
 }
-
 

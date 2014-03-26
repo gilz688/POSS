@@ -58,7 +58,8 @@
     <div class="form-group">
         <label class="col-md-4 control-label" for="update"></label>
         <div class="col-md-4">
-            <button id="add" name="update" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>     UPDATE</button>
+			<button id="edit" name="update" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>   UPDATE</button>
+				<a  class="btn btn-small btn-danger" href="{{ URL::route('users.index') }}" id="cancel"><i class="glyphicon glyphicon-remove"></i>    CANCEL</a>
         </div>
     </div>
 

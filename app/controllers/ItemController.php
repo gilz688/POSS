@@ -13,10 +13,30 @@ private $items;
      *
      * @return Response
      */
-    public function index() {
-        return View::make('item.index', array(
-                    'items' => $this->items->paginate()
-        ));
+    public function index() {       
+        if(Request::ajax()){
+            $paginator = $this->items->paginate(8);
+
+            $options = [];
+            $names = [];
+            $items = $paginator->getItems();
+                    
+            foreach($items as $item){
+                array_push($names,$item->itemcategory->name);
+                $view = View::make('entry.item_option', ['barcode' => $item['barcode'] ]);
+                $contents = (string) $view;  
+                array_push($options, $contents);
+            }
+
+            return Response::json([
+                'items' => $paginator->getCollection()->toJson(),
+                'links' => $paginator->links()->render(),
+                'options' => $options,
+                'names' => $names
+            ]);
+        }
+ 
+        return View::make('item.index');
     }
 
     /**
@@ -25,8 +45,8 @@ private $items;
      * @return Response
      */
     public function create() {
-        echo '<script type="text/javascript">alert("hello!");</script>';
-        //return View::make('item.create');
+        //echo '<script type="text/javascript">alert("hello!");</script>';
+        return View::make('item.create');
     }
 
     /**
@@ -114,8 +134,18 @@ private $items;
      * @return Response
      */
     public function destroy($barcode) {
-        $this->items->delete($barcode);
-        return Redirect::route('items.index');
+        try{
+            $this->items->delete($barcode);
+        } catch(ErrorException $e){
+
+        }
+
+        if(Request::ajax()){
+            echo 'true'; 
+        }
+        else{
+            return Redirect::route('items.index');
+        }
     }
 
     /**
