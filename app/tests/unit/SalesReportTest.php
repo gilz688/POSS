@@ -22,7 +22,7 @@ class SalesReportTest extends TestCase {
             ['id' => '3']
         ];
 
-        $report = new SalesReport(new TransactionRepository, '03/23/2014', '03/23/2014');
+        $report = new SalesReport(new TransactionRepository, '03/26/2014', '03/26/2014');
         $total = $method->invoke($report, $transactions);
         $this->assertEquals($total,['items' => 10, 'sales' => 1082.5]);
     }
@@ -39,7 +39,7 @@ class SalesReportTest extends TestCase {
 
         $transactions = [];
 
-        $report = new SalesReport(new TransactionRepository, '03/23/2014', '03/23/2014');
+        $report = new SalesReport(new TransactionRepository, '03/26/2014', '03/26/2014');
         $total = $method->invoke($report, $transactions);
         $this->assertEquals($total,['items' => 0, 'sales' => 0]);
     }
@@ -49,7 +49,7 @@ class SalesReportTest extends TestCase {
      */ 
     public function testGetDataAsAuditor(){
         Auth::attempt($this->auditorCredentials);
-        $report = new SalesReport(new TransactionRepository, '03/23/2014', '03/23/2014');
+        $report = new SalesReport(new TransactionRepository, '03/26/2014', '03/26/2014');
         $report->generate();
         $data = $report->getData();
         $expectedData = [
@@ -72,7 +72,7 @@ class SalesReportTest extends TestCase {
      */ 
     public function testGetDataAsAdmin(){
         Auth::attempt($this->auditorCredentials);
-        $report = new SalesReport(new TransactionRepository, '03/23/2014', '03/23/2014');
+        $report = new SalesReport(new TransactionRepository, '03/26/2014', '03/26/2014');
         $report->generate();
         $data = $report->getData();
         $expectedData = [
@@ -96,7 +96,7 @@ class SalesReportTest extends TestCase {
      */ 
     public function testGetDataAsClerk(){
         Auth::attempt($this->auditorCredentials);
-        $report = new SalesReport(new TransactionRepository, '03/23/2014', '03/23/2014');
+        $report = new SalesReport(new TransactionRepository, '03/26/2014', '03/26/2014');
         $report->generate();
         $data = $report->getData();
         $expectedData = [
