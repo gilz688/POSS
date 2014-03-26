@@ -99,7 +99,7 @@
     <div class="form-group">
         <label class="col-md-9 control-label" for="update"></label>
         <div class="col-md-6">
-            <button id="edit" name="update" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>   UPDATE</button>
+            <button id="edit" name="update" onclick="submitEdit( {{ $barcode }} )" class="btn btn-primary"><i class="glyphicon glyphicon-ok"></i>   UPDATE</button>
 			 <a  class="btn btn-small btn-danger" href="{{ URL::route('items.index') }}" id="cancel"><i class="glyphicon glyphicon-remove"></i>    CANCEL</a>
         </div>
     </div>
