@@ -60,7 +60,9 @@
                             <!--<li>{{ HTML::linkRoute('profile', 'USERNAME HERE') }}</li> -->
 
                             <ul class="dropdown-menu">
-                                <li>{{ HTML::linkRoute('logout', 'Logout') }}</li>
+                                <li>{{ HTML::linkRoute('logout', 'Logout') }}
+									{{Session::forget('cashier_number')}}
+                                </li>
                             </ul>
                     </li>
                     @endif
