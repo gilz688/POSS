@@ -1,4 +1,3 @@
-
 <!-- Delete Dialog -->
 						<div class="modal fade" id="confirmDelete" role="dialog" aria-labelledby="confirmDeleteLabel" aria-hidden="true">
 						  <div class="modal-dialog">
@@ -36,4 +35,5 @@
   $('#confirmDelete').find('.modal-footer #confirm').on('click', function(){
       $(this).data('form').submit();
   });
+
 </script>

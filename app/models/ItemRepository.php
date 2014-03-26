@@ -145,3 +145,4 @@ class ItemRepository implements TableRepository{
         return Item::where('category_id', '=', $category_id)->get();
     }
 }
+

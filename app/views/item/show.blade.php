@@ -43,4 +43,5 @@
     </tbody>
 </table>
 @stop
+
 </div>

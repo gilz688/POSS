@@ -5,3 +5,4 @@
 @endif
 &nbsp;
 <a class="btn btn-small btn-primary" href="{{ URL::route('users.edit', $id) }}"><i class="glyphicon glyphicon-edit"></i>EDIT</a>
+
