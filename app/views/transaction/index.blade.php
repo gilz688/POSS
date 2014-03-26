@@ -17,8 +17,10 @@
 	<div id="list"></div>
 </div>
 
+
 <script src="../script/transactions.js"></script>
 <script src="../toastr/toastr.min.js"></script>
+
 
 <script type="text/javascript">
 	('#transactionView').click(function(){

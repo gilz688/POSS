@@ -46,7 +46,7 @@
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';
     }
-function removeItem(barcode){
+	function removeItem(barcode){
         $('#confirmDelete').modal('show');
         $('button#confirm').click(function(){
             submitDelete(barcode);            
@@ -85,3 +85,65 @@ function removeItem(barcode){
             }
         });
     }
+	/*
+	function addItem(){
+		$("#barcode").val("");
+		$("#itemName").val("");
+		$("#price").val("");
+		$("#quantity").val("");
+		$("#itemDescription").val("");
+		$("#label").val("");
+		$("#category_id").val("");
+        $('#addItem').modal('show');
+        $('button#confirm').click(function(){
+		
+            submitAdd();            
+        });     
+    }
+	function submitAdd(){
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "positionClass": "toast-bottom-right",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+		var barcode = $("#barcode").val();
+		var itemName = $("#itemName").val();
+		var price = $("#price").val();
+		var quantity = $("#quantity").val();
+		var itemDescription = $("#itemDescription").val();
+		var label = $("#label").val();
+		var category_id = $("#category_id").val();
+        $.ajax({
+            type: 'post',
+            dataType: 'json',
+            url: siteloc + "/items/" ,
+            data: {
+                _method : 'POST',
+				barcode: barcode,
+				itemName: itemName,
+				price: price,
+				quantity: quantity,
+				itemDescription: itemDescription,
+				label: label,
+				category_id: category_id
+            },
+            success: function(response) {
+                $('#addItem').modal('hide');
+                retrieve(1);
+                toastr.success('Item  successfully added.')
+            },
+            error: function(xhr, status, error) {
+                toastr.error('Item  successfully added.')
+            }
+        });
+    }
+	*/

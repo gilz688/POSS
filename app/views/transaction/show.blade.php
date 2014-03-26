@@ -39,6 +39,7 @@
             <td> {{ $item['barcode'] }} </td>
             <td> {{ $item['quantity'] }} </td>
          </tr>  
+
             @endforeach
         
     </tbody>
