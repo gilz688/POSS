@@ -17,7 +17,7 @@ function salesreport() {
         beforeSend: function() {
             $("#chart").fadeOut("slow");
             $("#report").fadeOut("slow", function(){
-                $("#spinner").show();
+                $("#loader").show();
             });
         },
         success: function(response) {
@@ -39,16 +39,16 @@ function salesreport() {
             }
             tablebody = "<tbody>" + tablebody + "</tbody>";
             table = '<table class ="table table-hover">' + tableheader + tablebody + '</table>';
-            $('#spinner').hide();
+            $('#loader').hide("fast");
             $("#report").html(table);
             $("#report").fadeIn("slow");
             showChart();
             $("#chart").fadeIn("slow");
         },
         error: function(xhr, status, error) {
-            $('#spinner').hide();$('#spinner').hide();
+            $('#loader').hide();
             var err = eval("(" + xhr.responseText + ")");
-            alert(err.Message);
+            alert("Invalid Date Range!");
         }
     });
     return false;

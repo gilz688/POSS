@@ -4,9 +4,6 @@
 class ClerkPerformance {
 
 
-	//private $rows;
-	//private $header = ['date','sales'];
-
 	// This function returns an array
 	public function getTran($creator_id) {
 		if (Auth::user()->role == 'admin') {
@@ -45,7 +42,7 @@ class ClerkPerformance {
 
 					array_push($array, $row);
 				}
-
+				arsort($array);
 				return $array;
 			
 			} else {
@@ -69,14 +66,5 @@ class ClerkPerformance {
 		return $b;
 	}
 
-	/*
-	public function getRows(){
-		return $this->rows;
-	}
-
-	public function getHeader(){
-		return $this->header;
-	}
-	*/
 
 }
