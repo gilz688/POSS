@@ -45,7 +45,7 @@ private $items;
      * @return Response
      */
     public function create() {
-        //echo '<script type="text/javascript">alert("hello!");</script>';
+        //echo '<script type="text/javascript">alert("Add Item !");</script>';
         return View::make('item.create');
     }
 
@@ -76,9 +76,23 @@ private $items;
         $validator = Validator::make($itemData, $rules);
 
         if ($validator->fails()) {
+		/*
             return Redirect::to('items/create')
                             ->withErrors($validator)
                             ->withInput(Input::all());
+							*/
+			/*try{
+            $this->items->add($itemData);
+			} 
+			catch(ErrorException $e){
+			}
+			if(Request::ajax()){
+            echo 'true'; 
+			}
+			else{
+            return Redirect::route('items.index');
+			}
+			*/
         }
         $this->items->add($itemData);
         Session::flash('message', 'Successfully added new item!');

@@ -52,8 +52,8 @@ class SalesReportTest extends TestCase {
         $report->generate();
         $data = $report->getData();
         $expectedData = [
-            8 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
-            9 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
+            8 =>  ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
+            9 =>  ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
             10 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
             11 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
             12 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
@@ -75,8 +75,8 @@ class SalesReportTest extends TestCase {
         $report->generate();
         $data = $report->getData();
         $expectedData = [
-            8 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
-            9 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
+            8 =>  ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
+            9 =>  ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
             10 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
             11 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
             12 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
@@ -99,8 +99,8 @@ class SalesReportTest extends TestCase {
         $report->generate();
         $data = $report->getData();
         $expectedData = [
-            8 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
-            9 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
+            8 =>  ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
+            9 =>  ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
             10 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
             11 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],
             12 => ['transactions' => 0, 'items' => 0, 'sales' => 0.0],

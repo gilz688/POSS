@@ -13,7 +13,7 @@
 <br>
 
 <div class="loader text-center">@include('loader.preloader_canvas')</div>
-<div id="list">z
+<div id="list">
 </div>
 
 <script type="text/javascript">var role = "{{ Auth::user()->role }}"</script>
