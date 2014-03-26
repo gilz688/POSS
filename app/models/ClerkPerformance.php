@@ -46,7 +46,6 @@ class ClerkPerformance {
 					array_push($array, $row);
 				}
 
-				arsort($array);
 				return $array;
 			
 			} else {
