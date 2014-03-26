@@ -2,6 +2,7 @@
 @section("content")
 
 
+
 <link href="../toastr/toastr.css" rel="stylesheet"/>
 
 @if(Auth::user() != null)
@@ -9,6 +10,7 @@
 		<a class="btn btn-small btn-danger" href="{{ URL::route('items.create') }}"><i class="glyphicon glyphicon-plus"></i>ADD ITEM</a>
 	@endif
 @endif<br>
+
 <br>
 
 <div class="loader text-center">@include('loader.preloader_canvas')</div>

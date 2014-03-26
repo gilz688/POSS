@@ -43,4 +43,5 @@ class ClerkPerformanceTest extends TestCase{
         $a = new ClerkPerformance;
         $b = $a->getTran($creator_id);
     }
+
 }
