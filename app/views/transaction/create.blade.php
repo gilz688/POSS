@@ -4,11 +4,9 @@
 <div class="row">
 
 	<div class="col-md-4 ">
-		@if ($error != null)
-            <div id="login-alert" class="alert alert-danger col-sm-12"> 
-                {{ $error }}
-            </div>
-            @endif
+		<div id="error">
+            
+		</div>
 
 		
 		<div class="form-group">

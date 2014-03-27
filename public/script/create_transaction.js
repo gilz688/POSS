@@ -1,29 +1,6 @@
 $(document).ready(function(){
  
-    $( '#add' ).click( function(event) {
-		
-        //.....
-        //show some spinner etc to indicate operation in progress
-        //.....
-		
- 
- /*
-		$.post( 
-			$( this ).prop( 'action' ),{
-				"_token": $( this ).find( 'input[name=_token]' ).val(),
-                "cashier_number": $( '#cashier_number' ).val(),
-                "barcode": $( '#barcode' ).val(),
-                "quantity": $( '#quantity' ).val()
-			},
-			function( data ) {
-                //do something with data/response returned by server
-               // var parsedResponse = jQuery.parseJSON(data);
-                alert(parsedResponse);
-				$('tbody').append('<tr><td>' + parsedResponse.barcode + '</td></tr>');
-            },
-            'json'
-        ); */
-       
+    $( '#add' ).click( function(event) {       
         $.ajax({
 			type: 'post',
 			dataType: 'json',
@@ -36,15 +13,20 @@ $(document).ready(function(){
 			},
 			
 			success: function(response){
-				//var parsedResponse = JSON.parse(response);
+				if(response.error == null){
+					$('tbody#top').append(
+						'<tr><td>' + response.itemName + '</td>'
+						+ '<td>' + response.price + '</td>'
+						+ '<td>' + response.quantity + '</td>'
+						+ '<td>' + response.amount + '</td></tr>'
+						
+					);
+				}
+				else{
+					$('#error').html('<div class="alert alert-danger col-sm-12"> Invalid Barcode</div>');
+				}
 				
-				$('tbody#top').append(
-					'<tr><td>' + response.itemName + '</td>'
-					+ '<td>' + response.price + '</td>'
-					+ '<td>' + response.quantity + '</td>'
-					+ '<td>' + response.amount + '</td></tr>'
-					
-				);
+				
 			}
 			
 		}); 
@@ -52,13 +34,8 @@ $(document).ready(function(){
 		//$( '#cashier_number' ).val('');
 		$( '#barcode' ).val('');
 		$( '#quantity' ).val('');
- 
-        //.....
-        //do anything else you might want to do
-        //.....
- 
-        //prevent the form from actually submitting in browser
-        //event.preventDefault();
+		$('#error').html('');
+
     } );
  });
 

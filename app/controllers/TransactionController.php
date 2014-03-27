@@ -83,8 +83,9 @@ class TransactionController extends Controller implements ResourceController{
 			
 			
 			if($item == null){
-				$data['error'] = "invalid barcode";
-				return Redirect::route("transactions.create",$data);
+				return Response::json([
+					'error'=> "invalid barcode"
+				]);
 			}
 			
 			$response = array(
