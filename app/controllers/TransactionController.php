@@ -90,7 +90,13 @@ class TransactionController extends Controller implements ResourceController{
 			
 			if(($quantity % 1) == $quantity ){
 				return Response::json([
-					'error'=> "invalid quantity input",
+					'error'=> "invalid quantity",
+				]);
+			}
+		
+			if($item['quantity'] < $quantity){
+				return Response::json([
+					'error'=> "not enough stocks left",
 				]);
 			}
 			
@@ -100,6 +106,7 @@ class TransactionController extends Controller implements ResourceController{
 				'price' => $item['price'],
 				'amount' => $item['price'] * $quantity
 			);
+			
 			
 			return Response::json( $response );
     }

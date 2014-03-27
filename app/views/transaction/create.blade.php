@@ -12,7 +12,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="cashier_number">Cashier</label>  
 			<div class="col-md-8">
-				<input id="cashier_number" name="barcode" type="number"  placeholder="Enter cashier number" class="form-control input-md" required="true"/>
+				<input id="cashier_number" name="barcode" type="text"  placeholder="Enter cashier number" class="form-control input-md" required="true"/>
 			</div>
 		</div>
 		
@@ -28,7 +28,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="barcode">Quantity</label>  
 			<div class="col-md-8">
-				<input id="quantity" name="quantity" type="number" placeholder="" class="form-control input-md" required="">
+				<input id="quantity" name="quantity" type="text" placeholder="" class="form-control input-md" required="">
 			</div>
 		</div>
 
