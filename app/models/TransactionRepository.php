@@ -109,8 +109,13 @@ class TransactionRepository implements TableRepository {
             $find = $a->find($item['barcode']);
             $price = $find['price'];
             $quantity = $item['quantity'];
+            $name = $find['itemName'];
             $amount = $quantity * $price;
-            $array[] = $amount;
+            $row = [
+                'name'=> $name,
+                'amount'=>$amount
+            ];
+            $array[] = $row;
         }
         return $array;
     }

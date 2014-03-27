@@ -21,22 +21,37 @@
 		
 	</div> -->
 	
+
+
 <div class="col-md-4">
+<table class="table table-hover">
+	<thead><tr><th>Name</th><th>Amount</th></tr></thead>
+	<tbody>
+		@foreach($amountAndName as $value)
+		<tr><td>{{$value['name']}}</td><td>{{$value['amount']}}</td></tr>
+		
+		@endforeach
+		<tr><th>Total:</th><th> {{ $transaction['sales'] }}</th></tr>
+		
+		
+	</tbody>
+</table>
+</div>
+
+
+<div class="col-md-6">
 <table class="table table-hover">
     <thead>
         <tr>
-            <th>Item</th>
+           
             <th>Quantity</th>
-             @if(Auth::user()->role == 'auditor')
-				<th>Action</th>
-            @endif
         </tr>
         
     <thead>
     <tbody>
         @foreach($items as $item)
         <tr> 
-            <td> {{ $item['barcode'] }} </td>
+           
             <td> {{ $item['quantity'] }} </td>
          </tr>  
 
@@ -45,20 +60,6 @@
     </tbody>
 </table>
 </div>
-
-<div class="col-md-4">
-<table class="table table-hover">
-	<thead><tr><th>Amount</th></tr></thead>
-	<tbody>
-		@foreach($amount as $value)
-		<tr><td>{{$value}}</td></tr>
-		@endforeach
-		<tr><th>Total: {{ $transaction['sales'] }}</th></tr>
-		
-		
-	</tbody>
-</table>
-</div
 
 </div>
 

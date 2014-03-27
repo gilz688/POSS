@@ -43,9 +43,9 @@ Route::group(["before" => "auth"], function() {
     /*
      * TransactionController
      */
-    Route::resource('transactions', 'TransactionController');
-
-
+    Route::resource('transactions', 'TransactionController'); 
+    
+	
     /*
      * ItemController
      */

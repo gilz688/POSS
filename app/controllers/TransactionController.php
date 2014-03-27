@@ -45,14 +45,13 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function create() {		
-		if(Session::get('cashier_number') == null){
-			return View::make('transaction.create');
-		}
-		else{
-			$transactionData['cashier_number'] = Session::get('cashier_number');                
-            $transactionData['id'] = $this->transactions->add($transactionData); 
-			return View::make('purchaseditem.create',$transactionData);
-		}
+			$data['msg'] = Input::get("msg");
+			$data['quantity'] => Input::get("quantity");
+			$data['itemName'] => Input::get("itemName");
+			$data['price'] => Input::get("price");
+			$data['amount'] => Input::get("amount");
+			return View::make('transaction.create',$data);
+
 		
 		//$transactionData['cashier_number'] = Input::get('cashier_number');                
         //$transactionData['id'] = $this->transactionRepository->add($transactionData);
@@ -76,15 +75,51 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function store() {
-        try {
-            $transactionData['cashier_number'] = Input::get('cashier_number');                
-            $transactionData['id'] = $this->transactions->add($transactionData);  
-            Session::put('cashier_number',$transactionData['cashier_number']);       
-            return View::make('purchaseditem.create', $transactionData);
-        } catch (UnauthorizedException $ex) {
-            echo $ex->getMessage();
-        }
-        return Redirect::route('transactions.index');
+		if(Session::token() !== Input::get('_token')){
+				return Response::json(array(
+					'msg' => 'Unauthorized creation'
+				));
+			}
+			
+			$cashier_number = Input::get('cashier_number');
+			$quantity = Input::get('quantity');
+			$barcode = Input::get('barcode');
+			
+			$itemRepo = new ItemRepository;
+			$item = $itemRepo->find($barcode);
+
+			
+			if($item == null){
+				$data['msg'] = "invalid barcode";
+				return Redirect::route("transactions.create",$data);
+			}
+			
+			if(($item['quantity']- $quantity) < 0){
+				$data['msg'] = "Not enough items left";
+				return Redirect::route("transactions.create",$data);
+			}
+			
+			if(Session::get('cashier_number') == null){
+				Session::put('cashier_number',$cashier_number);
+				return Redirect::route("transactions.create");
+			}
+			
+			
+			
+			$purchasedItems = new PurchasedItemRepository;
+			$attributes['id'] = Session::get('id');
+			$attributes['quantity'] = $quantity;
+			$attributes['barcode'] = $barcode;
+			$purchasedItems->add($attributes);
+			
+			$response = array(
+				'quantity' => $quantity,
+				'itemName' => $item['itemName'],
+				'price' => $item['price'],
+				'amount' => $item['price'] * $quantity
+			);
+			
+			return Redirect::route("transactions.create",$response );
     }
     
     /**
@@ -96,15 +131,13 @@ class TransactionController extends Controller implements ResourceController{
     public function show($id) {
         $transaction = $this->transactions->find($id);
         $items = $transaction['purchasedItems'];
-		$amount = $this->transactions->getAmount($items);
+		$itemAmountAndName = $this->transactions->getAmount($items);
+
         $totalTransaction = $this->transactions->getTotal($id);
-        $arr = [$items, $amount];
         return View::make('transaction.show', [
             'items' => $items,
-            'array' => $arr,
-            'item' => $arr[0],
-            'amount' => $amount,
-            'transaction' => $totalTransaction
+            'amountAndName' => $itemAmountAndName,
+            'transaction' => $totalTransaction,
         ]);
     }
 
