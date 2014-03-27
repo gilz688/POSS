@@ -4,19 +4,13 @@
 <div class="row">
 
 	<div class="col-md-4 ">
-		@if ($msg != null)
+		@if ($error != null)
             <div id="login-alert" class="alert alert-danger col-sm-12"> 
-                {{ $msg }}
+                {{ $error }}
             </div>
             @endif
-		{{ Form::open([
-			'url' => 'transactions',
-			'method' => 'post',
-			'id' => 'form-create-transaction',
-			"autocomplete" => "off",
-			"class"        => "form-horizontal"        
-		]) }}
-		@if(Session::get('cashier_number') == null)
+
+		
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="cashier_number">Cashier</label>  
 			<div class="col-md-8">
@@ -24,7 +18,7 @@
 			</div>
 		</div>
 		
-		@endif
+		
 		<div class="form-group">
 			 
 			<label class="col-md-4 control-label" for="barcode">Barcode</label>  
@@ -47,7 +41,7 @@
 			</div>
 		</div>
 		
-		{{ Form::close() }}
+
 		
 	</div>
 	
@@ -57,34 +51,39 @@
 			<thead>
 				<tr>
 					<th>Name</th>
-					<th>Quantity</th>
 					<th>Price</th>
+					<th>Quantity</th>
 					<th>Amount</th>
 				</tr>
 			</thead>
-			<tbody>
-				<tr>
-					<td>Name</td>
-					<td>123</td>
-					<td>123</td>
-					<td>1230.00</td>
-				</tr>
-				<tr>
-					<td>Name</td>
-					<td>123</td>
-					<td>123</td>
-					<td>1230.00</td>
-				</tr>
-				<tr>
-					<td>Name</td>
-					<td>123</td>
-					<td>123</td>
-					<td>1230.00</td>
-				</tr>
+			<tbody  id="top">
 				
 				
 			</tbody>
 				
+		</table>
+		<table class="table table-hover">
+		<thead></thead>
+		<tbody>	
+				<tr>
+					<th>Total:</th>
+					<th></th>
+					<th></th>
+					<th>123.00</th>
+				</tr>
+				<tr>
+					<th>Received Amount:</th>
+					<th></th>
+					<th></th>
+					<th>123.00</th>
+				</tr>
+				<tr>
+					<th>Change:</th>
+					<th></th>
+					<th></th>
+					<th>123.00</th>
+				</tr>
+		</tbody>
 		</table>
 	</div>
 	

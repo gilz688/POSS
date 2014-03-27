@@ -1,13 +1,13 @@
 $(document).ready(function(){
  
-    $( '#form-create-transaction' ).on( 'submit', function(event) {
- 
+    $( '#add' ).click( function(event) {
+		
         //.....
         //show some spinner etc to indicate operation in progress
         //.....
-		event.preventDefault();
+		
  
- 
+ /*
 		$.post( 
 			$( this ).prop( 'action' ),{
 				"_token": $( this ).find( 'input[name=_token]' ).val(),
@@ -17,22 +17,17 @@ $(document).ready(function(){
 			},
 			function( data ) {
                 //do something with data/response returned by server
-                var parsedResponse = data;
+               // var parsedResponse = jQuery.parseJSON(data);
                 alert(parsedResponse);
 				$('tbody').append('<tr><td>' + parsedResponse.barcode + '</td></tr>');
             },
             'json'
-        );
-        
-        $('#add').click(function(e){
-			e.preventDefault();
-			$("tbody").load("hello");
-		});
+        ); */
        
-        /**$.ajax({
+        $.ajax({
 			type: 'post',
 			dataType: 'json',
-			url: "transactions",
+			url: "/transactions",
 			data:{
 				cashier_number : $( '#cashier_number' ).val(),
 				barcode : $( '#barcode' ).val(),
@@ -41,18 +36,29 @@ $(document).ready(function(){
 			},
 			
 			success: function(response){
-				var parsedResponse = JSON.parse(response);
-				$('tbody').append('<tr><td>' + parsedResponse.barcode + '</td></tr>');
+				//var parsedResponse = JSON.parse(response);
+				
+				$('tbody#top').append(
+					'<tr><td>' + response.itemName + '</td>'
+					+ '<td>' + response.price + '</td>'
+					+ '<td>' + response.quantity + '</td>'
+					+ '<td>' + response.amount + '</td></tr>'
+					
+				);
 			}
 			
-		}); **/
+		}); 
+		
+		//$( '#cashier_number' ).val('');
+		$( '#barcode' ).val('');
+		$( '#quantity' ).val('');
  
         //.....
         //do anything else you might want to do
         //.....
  
         //prevent the form from actually submitting in browser
-        
+        //event.preventDefault();
     } );
  });
 

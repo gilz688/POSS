@@ -45,11 +45,7 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function create() {		
-			$data['msg'] = Input::get("msg");
-			$data['quantity'] => Input::get("quantity");
-			$data['itemName'] => Input::get("itemName");
-			$data['price'] => Input::get("price");
-			$data['amount'] => Input::get("amount");
+			$data['error'] = Input::get("error");
 			return View::make('transaction.create',$data);
 
 		
@@ -75,11 +71,7 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function store() {
-		if(Session::token() !== Input::get('_token')){
-				return Response::json(array(
-					'msg' => 'Unauthorized creation'
-				));
-			}
+		
 			
 			$cashier_number = Input::get('cashier_number');
 			$quantity = Input::get('quantity');
@@ -87,30 +79,13 @@ class TransactionController extends Controller implements ResourceController{
 			
 			$itemRepo = new ItemRepository;
 			$item = $itemRepo->find($barcode);
-
+			
+			
 			
 			if($item == null){
-				$data['msg'] = "invalid barcode";
+				$data['error'] = "invalid barcode";
 				return Redirect::route("transactions.create",$data);
 			}
-			
-			if(($item['quantity']- $quantity) < 0){
-				$data['msg'] = "Not enough items left";
-				return Redirect::route("transactions.create",$data);
-			}
-			
-			if(Session::get('cashier_number') == null){
-				Session::put('cashier_number',$cashier_number);
-				return Redirect::route("transactions.create");
-			}
-			
-			
-			
-			$purchasedItems = new PurchasedItemRepository;
-			$attributes['id'] = Session::get('id');
-			$attributes['quantity'] = $quantity;
-			$attributes['barcode'] = $barcode;
-			$purchasedItems->add($attributes);
 			
 			$response = array(
 				'quantity' => $quantity,
@@ -119,7 +94,7 @@ class TransactionController extends Controller implements ResourceController{
 				'amount' => $item['price'] * $quantity
 			);
 			
-			return Redirect::route("transactions.create",$response );
+			return Response::json( $response );
     }
     
     /**
