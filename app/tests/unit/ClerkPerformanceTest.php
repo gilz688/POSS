@@ -15,7 +15,7 @@ class ClerkPerformanceTest extends TestCase{
         $b = $a->getTran($creator_id);
         $result = $b[0];
         $this->assertEquals($result['sales'], 458.5);
-        $this->assertEquals($result['date'], '03-23-2014');
+        $this->assertEquals($result['date'], '03-26-2014');
     }
 
     /**

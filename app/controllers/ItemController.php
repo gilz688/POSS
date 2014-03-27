@@ -74,29 +74,19 @@ private $items;
 			'category_id' => 'required',
         );
         $validator = Validator::make($itemData, $rules);
-
-        if ($validator->fails()) {
-		/*
-            return Redirect::to('items/create')
-                            ->withErrors($validator)
-                            ->withInput(Input::all());
-							*/
-			/*try{
-            $this->items->add($itemData);
-			} 
-			catch(ErrorException $e){
+		try{
+			if ($validator->passes()) {
+				$this->items->add($itemData);
+				Session::flash('message', 'Successfully added new item!');
+				return Redirect::route('items.index');
 			}
-			if(Request::ajax()){
-            echo 'true'; 
-			}
-			else{
-            return Redirect::route('items.index');
-			}
-			*/
-        }
-        $this->items->add($itemData);
-        Session::flash('message', 'Successfully added new item!');
-        return Redirect::route('items.index');
+		}
+		catch(\Exception $e){
+			return Redirect::to('items/create' );
+			//echo 'Error!! Invalid input!';
+			Session::flash('message', 'Error!!');
+		}
+        
     }
 
     /**
@@ -132,13 +122,20 @@ private $items;
 			'label' => '',
         ];
         $validator = Validator::make($itemData, $rules);
-        if ($validator->fails()) {
-            return Redirect::to('items/' . $barcode . '/edit')
-                            ->withErrors($validator)
-                           ->withInput(Input::all());
-        }
-        $this->items->edit($barcode, $itemData);
-        return Redirect::route('items.index');
+		try{
+			if ($validator->passes()) {
+				$this->items->edit($barcode, $itemData);
+				return Redirect::route('items.index');
+				Session::flash('message', 'Successfully added new item!');
+				
+			}
+		}
+		catch(\Exception $e){
+			return Redirect::to('items/' . $barcode . '/edit');
+			//echo 'Error!! Invalid input!';
+			Session::flash('message', 'Error!! Invalid input!');
+		}
+        
     }
 
     /**

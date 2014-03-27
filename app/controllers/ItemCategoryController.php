@@ -94,7 +94,7 @@ class ItemCategoryController extends Controller implements ResourceController{
             'description' => Input::get('description'),
         ];
         $rules = [
-            'name' => '',
+            'name' => 'Unique:item_categories',
             'description' => '',
         ];
         $validator = Validator::make($categoryData, $rules);
@@ -102,6 +102,7 @@ class ItemCategoryController extends Controller implements ResourceController{
             return Redirect::to('itemcategories/' . $id . '/edit')
                             ->withErrors($validator)
                             ->withInput(Input::all());
+							//echo'<script>';
         }
         $this->categories->edit($id, $categoryData);
         return Redirect::route('itemcategories.index');

@@ -85,7 +85,41 @@
             }
         });
     }
-	/*
+	
+		/*
+	     function submitEdit($barcode){
+        toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "positionClass": "toast-bottom-right",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+        };
+        $.ajax({
+            type: 'post',
+            dataType: 'json',
+            url: siteloc + "/items.edit/" + barcode,
+            data: {
+                _method : 'POST',
+            },
+            success: function(response) {
+				//$('#edit').modal('hide');
+                retrieve(1);
+                toastr.success('Item  successfully updated.')
+            },
+            error: function(xhr, status, error) {
+                toastr.error('Error!Invalid input.')
+            }
+        });
+    }
+	
 	function addItem(){
 		$("#barcode").val("");
 		$("#itemName").val("");
