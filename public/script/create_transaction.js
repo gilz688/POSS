@@ -23,7 +23,7 @@ $(document).ready(function(){
 					);
 				}
 				else{
-					$('#error').html('<div class="alert alert-danger col-sm-12"> Invalid Barcode</div>');
+					$('#error').html('<div class="alert alert-danger col-sm-12">' + response.error + '</div>');
 				}
 				
 				

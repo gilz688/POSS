@@ -84,7 +84,13 @@ class TransactionController extends Controller implements ResourceController{
 			
 			if($item == null){
 				return Response::json([
-					'error'=> "invalid barcode"
+					'error'=> "invalid barcode",
+				]);
+			}
+			
+			if(($quantity % 1) == $quantity ){
+				return Response::json([
+					'error'=> "invalid quantity input",
 				]);
 			}
 			

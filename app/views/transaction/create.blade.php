@@ -2,7 +2,7 @@
 @section("content")
 <legend>New Transaction</legend>
 <div class="row">
-
+	<form class="form-horizontal">
 	<div class="col-md-4 ">
 		<div id="error">
             
@@ -85,7 +85,7 @@
 		</table>
 	</div>
 	
-	
+	</form>
 	
 	
 </div>
