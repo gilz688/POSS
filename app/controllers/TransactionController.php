@@ -65,26 +65,28 @@ class TransactionController extends Controller implements ResourceController{
         return Redirect::route('transactions.index');
     }
 
+public function store(){
+
+}
     /**
      * Store a newly created transaction in storage.
      *
      * @return Response
      */
 
-    public function store() {
-        try {
+    public function done() {
+        
             $transactionData['cashier_number'] = Input::get('cashier_number'); 
-            $items = json_decode(Input::get('items'));
+            $items = Input::get('items');
                    
             $transactionData['id'] = $this->transactions->add($transactionData); 
             $purchaseditems = new ItemRepository;
             foreach($items as $item){
 				$purchaseditems->add($item);      
 			}
-        } catch (Exception $ex) {
-            echo 'false';
-        }
-		echo 'true';
+        
+        Session::forget('purchaseditems');
+		Response::json(['resp' => 'OK']);
     }
     
     

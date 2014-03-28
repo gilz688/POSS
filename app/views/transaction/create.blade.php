@@ -81,19 +81,19 @@
 					<th>Total:</th>
 					<th></th>
 					<th></th>
-					<th>123.00</th>
+					<th id="total"></th>
 				</tr>
 				<tr>
 					<th>Received Amount:</th>
 					<th></th>
 					<th></th>
-					<th>123.00</th>
+					<th id="received"></th>
 				</tr>
 				<tr>
 					<th>Change:</th>
 					<th></th>
 					<th></th>
-					<th>123.00</th>
+					<th id="change"></th>
 				</tr>
 		</tbody>
 		</table>
