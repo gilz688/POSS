@@ -12,7 +12,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="cashier_number">Cashier</label>  
 			<div class="col-md-8">
-				<input id="cashier_number" name="cashier_number" type="text"  placeholder="Enter cashier number" class="form-control input-md" required="true"/>
+				<input id="cashier_number" name="cashier_number" type="text"   class="form-control input-md" required="true"/>
 			</div>
 		</div>
 		

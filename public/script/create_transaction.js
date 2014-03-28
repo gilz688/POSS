@@ -65,7 +65,7 @@ $(document).ready(function(){
 				alert("samok");
 			},
 			error : function(xhr,error,x){
-				alert(error);
+				//alert(error);
 			}
 		});
 		var total = parseFloat($("#total").html());
@@ -76,6 +76,9 @@ $(document).ready(function(){
 
 	$("#new").click(function(){
 		$('tbody#top').html("");
+		$('#total').html('');
+		$('#received').html('');
+		$('#change').html('');
 	});
 		
 		
