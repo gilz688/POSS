@@ -16,11 +16,11 @@
         
                 <!-- Bootstrap core JavaScript
         ================================================== -->
-        <!--<script src="../script/jquery-1.9.1.min.js"></script> -->
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <script src="../script/jquery-1.9.1.min.js"></script> 
+       <!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
         <script src="//code.jquery.com/jquery-1.10.2.js"></script>
-        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
-        <script src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+        <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script> -->
+        <script src="../script/bootstrap.min.js"></script>
         
         @include("header")
         <div class="content">

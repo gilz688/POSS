@@ -2,7 +2,7 @@
 @section("content")
 <legend>New Transaction</legend>
 <div class="row">
-	<form class="form-horizontal">
+	
 	<div class="col-md-4 ">
 		<div id="error">
             
@@ -12,7 +12,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="cashier_number">Cashier</label>  
 			<div class="col-md-8">
-				<input id="cashier_number" name="barcode" type="text"  placeholder="Enter cashier number" class="form-control input-md" required="true"/>
+				<input id="cashier_number" name="cashier_number" type="text"  placeholder="Enter cashier number" class="form-control input-md" required="true"/>
 			</div>
 		</div>
 		
@@ -21,14 +21,14 @@
 			 
 			<label class="col-md-4 control-label" for="barcode">Barcode</label>  
 			<div class="col-md-8">
-				<input id="barcode" name="barcode" type="text" placeholder="" class="form-control input-md" required=""/>
+				<input id="barcode" name="barcode"  placeholder="" class="form-control input-md" />
 			</div>
 		</div>
 	
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="barcode">Quantity</label>  
 			<div class="col-md-8">
-				<input id="quantity" name="quantity" type="text" placeholder="" class="form-control input-md" required="">
+				<input id="quantity" name="quantity" placeholder="" class="form-control input-md" >
 			</div>
 		</div>
 
@@ -39,10 +39,24 @@
 			</div>
 		</div>
 		
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="payment">Payment</label>  
+			<div class="col-md-8">
+				<input id="payment" name="quantity" placeholder="" class="form-control input-md" >
+			</div>
+		</div>
+		
+		
+		<div class="form-group">
+			<label class="col-md-4 control-label" for="done"></label>
+			<div class="col-md-8">
+				<button id="done" name="done" class="btn btn-danger">Done</button>
+			</div>
+		</div>
 
 		
 	</div>
-	
+
 	
 	<div class="col-md-8">
 		<table class="table table-hover">
@@ -84,9 +98,13 @@
 		</tbody>
 		</table>
 	</div>
+
 	
-	</form>
 	
+	
+			
+			
+		
 	
 </div>
 <script src="../script/create_transaction.js"></script>

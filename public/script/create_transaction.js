@@ -4,7 +4,7 @@ $(document).ready(function(){
         $.ajax({
 			type: 'post',
 			dataType: 'json',
-			url: "/transactions",
+			url: siteloc + "/api/transaction",
 			data:{
 				cashier_number : $( '#cashier_number' ).val(),
 				barcode : $( '#barcode' ).val(),
@@ -21,6 +21,7 @@ $(document).ready(function(){
 						+ '<td>' + response.amount + '</td></tr>'
 						
 					);
+					
 				}
 				else{
 					$('#error').html('<div class="alert alert-danger col-sm-12">' + response.error + '</div>');
@@ -35,7 +36,39 @@ $(document).ready(function(){
 		$( '#barcode' ).val('');
 		$( '#quantity' ).val('');
 		$('#error').html('');
+		
+		
+		
+		event.preventDefault();
 
     } );
+    
+    
+    
+    
+    $( '#done' ).click( function(event) {
+		var cashier_number = $('#cashier_number').val();
+		var cashier_number = $('#cashier_number').val();
+		var cashier_number = $('#cashier_number').val();
+		$.ajax({
+			url : siteloc + '/api/transactionStore',
+			dataType : 'json',
+			type : 'post',
+			data : {
+				cashier_number : cashier_number,
+				items : JSON:stringify(items)
+			},
+			success : function(data){
+				
+			}
+		});
+		
+		
+		
+
+
+    } );
+    
+    
  });
 

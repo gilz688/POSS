@@ -70,7 +70,25 @@ class TransactionController extends Controller implements ResourceController{
      *
      * @return Response
      */
+
     public function store() {
+        try {
+            $transactionData['cashier_number'] = Input::get('cashier_number'); 
+            $items = json_decode(Input::get('items'));
+                   
+            $transactionData['id'] = $this->transactions->add($transactionData); 
+            $purchaseditems = new ItemRepository;
+            foreach($items as $item){
+				$purchaseditems->add($item);      
+			}
+        } catch (Exception $ex) {
+            echo 'false';
+        }
+		echo 'true';
+    }
+    
+    
+        public function transactionStore() {
 		
 			
 			$cashier_number = Input::get('cashier_number');
@@ -104,12 +122,16 @@ class TransactionController extends Controller implements ResourceController{
 				'quantity' => $quantity,
 				'itemName' => $item['itemName'],
 				'price' => $item['price'],
-				'amount' => $item['price'] * $quantity
+				'amount' => $item['price'] * $quantity,
+				'barcode' => $barcode
 			);
 			
+			$items = Session::get('purchaseditems',[]);
+			array_push($items,$barcode);
+			Session::put('purchaseditems',$items);
 			
 			return Response::json( $response );
-    }
+		}
     
     /**
      * Display the specified resource.
