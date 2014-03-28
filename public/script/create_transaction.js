@@ -73,6 +73,10 @@ $(document).ready(function(){
 		$("#received").html(payment);
 		$("#change").html(payment-total);
 	});
+
+	$("#new").click(function(){
+		$('tbody#top').html("");
+	});
 		
 		
 		

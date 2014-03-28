@@ -51,6 +51,7 @@
 			<label class="col-md-4 control-label" for="done"></label>
 			<div class="col-md-8">
 				<button id="done" name="done" class="btn btn-danger">Done</button>
+        <button id="new" name="new" class="btn btn-danger">New Transaction</button>
 			</div>
 		</div>
 
