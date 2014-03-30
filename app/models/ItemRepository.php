@@ -144,5 +144,21 @@ class ItemRepository implements TableRepository{
     public function findItemByCategoryId($category_id) {
         return Item::where('category_id', '=', $category_id)->get();
     }
+
+    public function reducequantity($id,$min){
+        $item = Items::find($id);
+        if($item == null){
+            throw new ErrorException("Invalid id");
+        }
+        else{
+            $quantity = $item->quantity;
+            if($quantity - $min >= 0){
+                $item->edit(['quantity' => $item->quantity - $min]);
+            }
+            else{
+                throw new ErrorException("Not enough stocks!");
+            }
+        }
+    }
 }
 
