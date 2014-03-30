@@ -45,6 +45,7 @@ class TransactionController extends Controller implements ResourceController{
      * @return Response
      */
     public function create() {		
+			Session::put('purchaseditems',[]);
 			$data['error'] = Input::get("error");
 			return View::make('transaction.create',$data);
 
@@ -77,16 +78,29 @@ public function store(){
     public function done() {
         
             $transactionData['cashier_number'] = Input::get('cashier_number'); 
-            $items = Input::get('items');
+            $items = (array)Session::get('purchaseditems');
+            /*$items = Input::get('items');*/
                    
             $transactionData['id'] = $this->transactions->add($transactionData); 
-            $purchaseditems = new ItemRepository;
+            $purchaseditems = new PurchasedItemRepository;
+            
             foreach($items as $item){
-				$purchaseditems->add($item);      
+				$pData['id'] =  $transactionData['id'];
+				
+				$pData['barcode'] =  $item['barcode'];
+				$pData['quantity'] =  $item['quantity'];
+
+				
+				$purchaseditems->add($pData);      
 			}
         
         Session::forget('purchaseditems');
-		Response::json(['resp' => 'OK']);
+        
+        $response = array(
+        'resp' => 'OK'
+        
+        );
+		return Response::json($response);
     }
     
     
@@ -98,21 +112,30 @@ public function store(){
 			$barcode = Input::get('barcode');
 			
 			$itemRepo = new ItemRepository;
+			
+			if(!is_numeric($barcode)){
+				return Response::json([
+					'error'=> "invalid barcode (String)",
+				]);
+			}
+			
 			$item = $itemRepo->find($barcode);
 			
 			
 			
 			if($item == null){
 				return Response::json([
-					'error'=> "invalid barcode",
+					'error'=> "invalid barcode (No Item)",
 				]);
 			}
 			
-			if(($quantity % 1) == $quantity ){
+			if(!is_numeric($quantity) ){
 				return Response::json([
 					'error'=> "invalid quantity",
 				]);
 			}
+			
+			
 		
 			if($item['quantity'] < $quantity){
 				return Response::json([
@@ -128,8 +151,11 @@ public function store(){
 				'barcode' => $barcode
 			);
 			
-			$items = Session::get('purchaseditems',[]);
-			array_push($items,$barcode);
+			$items = (array)Session::get('purchaseditems');
+			array_push($items,[
+				'barcode' => $barcode,
+				'quantity' => $quantity
+			]);
 			Session::put('purchaseditems',$items);
 			
 			return Response::json( $response );

@@ -48,30 +48,39 @@ $(document).ready(function(){
     
     
     $( '#done' ).click( function(event) {
-    	var items = $.map( $(".bc"), function(n){ return $(n).attr("id"); });
-		var cashier_number = $('#cashier_number').val();
+    	
+    	//var items = Session::get('purchaseditems');
+    	//alert(items);
+    	//var items = $.map( $(".bc"), function(n){ return $(n).attr("id"); });
+		//var cashier_number = $
 		//var itemsJson = JSON.stringify(items);
+		//alert('clicked!');
 		
 		$.ajax({
-			url : siteloc + '/api/done',
-			dataType : 'json',
 			type : 'post',
+			dataType : 'json',
+			url : siteloc + "/api/done",			
 			data : {
-				cashier_number : cashier_number,
-				items : items
+				cashier_number : $('#cashier_number').val(),
 			},
-			success : function(data){
-				window.location.replace(siteloc + "/transactions");
-				alert("samok");
-			},
-			error : function(xhr,error,x){
-				//alert(error);
+			success : function(response){
+				//window.location.replace(siteloc + "/transactions");
+				//if(data.resp == 'OK'){
+					alert("yehey");
+				//}
+				//else{
+				//	alert('hahay');
+				//}
+				
 			}
 		});
 		var total = parseFloat($("#total").html());
 		var payment = $("#payment").val();
 		$("#received").html(payment);
 		$("#change").html(payment-total);
+		$('#payment').val('');
+		
+		event.preventDefault();
 	});
 
 	$("#new").click(function(){
@@ -79,6 +88,9 @@ $(document).ready(function(){
 		$('#total').html('');
 		$('#received').html('');
 		$('#change').html('');
+		$('#error').html('');
+		
+		
 	});
 		
 		

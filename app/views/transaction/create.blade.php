@@ -42,7 +42,7 @@
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="payment">Payment</label>  
 			<div class="col-md-8">
-				<input id="payment" name="quantity" placeholder="" class="form-control input-md" >
+				<input id="payment" name="payment" placeholder="" class="form-control input-md" >
 			</div>
 		</div>
 		
@@ -51,9 +51,11 @@
 			<label class="col-md-4 control-label" for="done"></label>
 			<div class="col-md-8">
 				<button id="done" name="done" class="btn btn-danger">Done</button>
-        <button id="new" name="new" class="btn btn-danger">New Transaction</button>
+				 <button id="new" name="new" class="btn btn-danger">New Transaction</button>
 			</div>
 		</div>
+		
+		
 
 		
 	</div>

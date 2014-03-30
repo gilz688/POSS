@@ -21,19 +21,7 @@
 <script src="../script/transactions.js"></script>
 
 
-<script type="text/javascript">
-	('#transactionView').click(function(){
-		$.ajax({
-			url: siteloc + '/transaction',
-			success: function(data){
-				$('#transactionAjaxView').html(data);
-			}
-			
-		});
-		
-		
-	});
-</script>
+
 
 @stop
 
