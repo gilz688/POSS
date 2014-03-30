@@ -76,6 +76,21 @@ public function store(){
      */
 
     public function done() {
+		
+			$transactionData['payment'] = Input::get('payment'); 
+			$transactionData['total'] = Input::get('total'); 
+			$transactionData['change'] = Input::get('change'); 
+			if(!is_numeric($transactionData['payment'])){
+				return Response::json([
+					'error'=> "invalid payment",
+				]);
+			}
+			
+			if($transactionData['payment'] < $transactionData['total']){
+				return Response::json([
+					'error'=> "insufficient payment",
+				]);
+			}
         
             $transactionData['cashier_number'] = Input::get('cashier_number'); 
             $items = (array)Session::get('purchaseditems');

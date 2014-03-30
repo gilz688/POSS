@@ -62,11 +62,23 @@ $(document).ready(function(){
 			url : siteloc + "/api/done",			
 			data : {
 				cashier_number : $('#cashier_number').val(),
+				payment : $("#payment").val(),
+				change : $("#change").val(),
+				total : parseFloat($("#total").html())
 			},
 			success : function(response){
 				//window.location.replace(siteloc + "/transactions");
 				//if(data.resp == 'OK'){
-					alert("yehey");
+				if(response.error != null){
+					$('#error').html('<div class="alert alert-danger col-sm-12">' + response.error + '</div>');
+				}
+				else{
+					alert('ok');
+					var total = parseFloat($("#total").html());
+					var payment = $("#payment").val();
+					$("#received").html(payment);
+					$("#change").html(payment-total);
+				}
 				//}
 				//else{
 				//	alert('hahay');
@@ -74,10 +86,7 @@ $(document).ready(function(){
 				
 			}
 		});
-		var total = parseFloat($("#total").html());
-		var payment = $("#payment").val();
-		$("#received").html(payment);
-		$("#change").html(payment-total);
+
 		$('#payment').val('');
 		
 		event.preventDefault();

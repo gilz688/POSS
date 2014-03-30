@@ -24,6 +24,16 @@
 				<input id="barcode" name="barcode"  placeholder="" class="form-control input-md" />
 			</div>
 		</div>
+		
+		<div class="form-group">
+			 
+			<label class="col-md-4 control-label" for="barcode">Search:</label>  
+			<div class="col-md-8">
+				@include("smartsearch")
+			</div>
+		</div>
+		
+		
 	
 		<div class="form-group">
 			<label class="col-md-4 control-label" for="barcode">Quantity</label>  
