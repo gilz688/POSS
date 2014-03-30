@@ -31,6 +31,17 @@ class SessionController extends Controller {
     public function getLogin() {
         $errors = new MessageBag();
         $old = Input::old("errors");
+        
+        if(Session::get('cashier_number') == null){
+			$cashier_number = Input::get('cashierNum');
+			if($cashier_number == null){
+				Session::put('cashier_number',1);
+			}
+			
+			Session::put('cashier_number',$cashier_number);
+		}
+       
+        
         if ($old) {
             $errors = $old;
         }
@@ -39,7 +50,7 @@ class SessionController extends Controller {
     }
 
     public function getLogout() {
-		Session::forget('cashier_number');
+		
         Auth::logout();
         return Redirect::route('login');
     }

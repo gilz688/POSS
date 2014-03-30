@@ -1,10 +1,10 @@
-{{ HTML::style('dist/css/selectize.bootstrap3.css')}}
-<script type="text/javascript" src='{{ url("dist/js/standalone/selectize.min.js") }}'></script>
-<select id="searchbox" name="q" placeholder="Search items or item categories..." class="form-control"></select>
+{{ HTML::style('dist/css/selectize.bootstrap3.css')}
+<script type="text/javascript" src="../script/selectize.js"></script>
+<select id="transactionsearchbox" name="transactionq"  class="form-control"></select>
  
 <script> 
     $(document).ready(function(){
-    $('#searchbox').selectize({
+    $('#transactionsearchbox').selectize({
         valueField: 'url',
         labelField: 'name',
         searchField: ['name'],
@@ -29,7 +29,7 @@
                 type: 'GET',
                 dataType: 'json',
                 data: {
-                    q: query
+                    transactionq: query
                 },
                 error: function() {
                     callback();

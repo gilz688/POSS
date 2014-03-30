@@ -6,7 +6,7 @@ $(document).ready(function(){
 			dataType: 'json',
 			url: siteloc + "/api/transaction",
 			data:{
-				cashier_number : $( '#cashier_number' ).val(),
+				//cashier_number : $( '#cashier_number' ).val(),
 				barcode : $( '#barcode' ).val(),
 				quantity : $( '#quantity' ).val(),
 				
@@ -61,7 +61,7 @@ $(document).ready(function(){
 			dataType : 'json',
 			url : siteloc + "/api/done",			
 			data : {
-				cashier_number : $('#cashier_number').val(),
+				//ccashier_number : $('#cashier_number').val(),
 				payment : $("#payment").val(),
 				change : $("#change").val(),
 				total : parseFloat($("#total").html())
@@ -73,11 +73,12 @@ $(document).ready(function(){
 					$('#error').html('<div class="alert alert-danger col-sm-12">' + response.error + '</div>');
 				}
 				else{
-					alert('ok');
+					//alert('ok');
 					var total = parseFloat($("#total").html());
-					var payment = $("#payment").val();
-					$("#received").html(payment);
-					$("#change").html(payment-total);
+					var payment_view = $("#payment").val();
+					$("#received").html(payment_view);
+					$("#change").html(payment_view-total);
+					$('#payment').val('');
 				}
 				//}
 				//else{
@@ -87,7 +88,7 @@ $(document).ready(function(){
 			}
 		});
 
-		$('#payment').val('');
+		$('#error').html('');
 		
 		event.preventDefault();
 	});

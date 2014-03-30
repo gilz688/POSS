@@ -92,7 +92,7 @@ public function store(){
 				]);
 			}
         
-            $transactionData['cashier_number'] = Input::get('cashier_number'); 
+            $transactionData['cashier_number'] = Session::get('cashier_number'); 
             $items = (array)Session::get('purchaseditems');
             /*$items = Input::get('items');*/
                    
@@ -122,7 +122,12 @@ public function store(){
         public function transactionStore() {
 		
 			
-			$cashier_number = Input::get('cashier_number');
+			//$cashier_number = Session::get('cashier_number');
+			//if($cashier_number == null ){
+			//	Session::put('cashier_number',1);
+			//	$cashier_number = Session::get('cashier_number');
+			//}
+			$cashier_number = Session::get('cashier_number');
 			$quantity = Input::get('quantity');
 			$barcode = Input::get('barcode');
 			
