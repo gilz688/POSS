@@ -79,7 +79,7 @@ public function store(){
 		
 			$transactionData['payment'] = Input::get('payment'); 
 			$transactionData['total'] = Input::get('total'); 
-			$transactionData['change'] = Input::get('change'); 
+			$transactionData['change'] = $transactionData['payment'] - $transactionData['total'] ; 
 			if(!is_numeric($transactionData['payment'])){
 				return Response::json([
 					'error'=> "invalid payment",
@@ -135,7 +135,7 @@ public function store(){
 			
 			if(!is_numeric($barcode)){
 				return Response::json([
-					'error'=> "invalid barcode (String)",
+					'error'=> "invalid barcode",
 				]);
 			}
 			

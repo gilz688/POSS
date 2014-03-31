@@ -9,6 +9,9 @@ class CreateTransactionsTable extends Migration {
         Schema::create('transactions', function(Blueprint $table) {
             $table->increments('id');
             $table->integer('cashier_number');
+            $table->integer('total');
+            $table->integer('payment');
+            $table->integer('change');
             $table->integer('creator_id')->unsigned();
             $table->integer('voider_id')->unsigned()->nullable();
             $table->foreign('creator_id')->references('id')->on('users');

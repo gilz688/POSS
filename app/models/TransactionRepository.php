@@ -11,6 +11,9 @@ class TransactionRepository implements TableRepository {
             if ($validation->passes()) {
                 $transaction = new Transaction;
                 $transaction->cashier_number = $attributes['cashier_number'];
+                $transaction->total = $attributes['total'];
+                $transaction->payment = $attributes['payment'];
+                $transaction->change = $attributes['change'];
                 $transaction->creator_id = Auth::getUser()->id;
                 $transaction->save();
                 return $transaction->id;

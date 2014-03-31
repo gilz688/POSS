@@ -63,8 +63,9 @@ $(document).ready(function(){
 			data : {
 				//ccashier_number : $('#cashier_number').val(),
 				payment : $("#payment").val(),
-				change : $("#change").val(),
-				total : parseFloat($("#total").html())
+				total : parseFloat($("#total").html()),
+				change : payment - total,
+				
 			},
 			success : function(response){
 				//window.location.replace(siteloc + "/transactions");
