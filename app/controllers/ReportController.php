@@ -46,7 +46,11 @@ class ReportController extends Controller {
     // Display clerk performance
     public function show($creator_id) {
         $clerk = new ClerkPerformance;
+        try{
         $t = $clerk->getTran($creator_id);  // Returns an array.
+    }catch(ErrorException $e){
+        return View::make('report.clerk', ['rows' => []]);
+    }
         return View::make('report.clerk', ['rows' => $t]);
     }
 
