@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-<legend>New Transaction Cashier: {{Session::get('cashier_number')}}</legend>
+<legend>New Transaction</legend>
 <div class="row">
 	
 	<div class="col-md-4 ">
