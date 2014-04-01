@@ -145,7 +145,7 @@ public function store(){
 			
 			if($item == null){
 				return Response::json([
-					'error'=> "invalid barcode (No Item)",
+					'error'=> "invalid barcode",
 				]);
 			}
 			

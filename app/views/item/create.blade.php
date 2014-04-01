@@ -84,6 +84,7 @@
 			<option value="8">Dairy</option>
 			<option value="9">Frozen Foods</option>
 			<option value="10">Health & Beauty</option>
+			<option value="11">Kitchen Utensils</option>
 		</select>
     
   </div>

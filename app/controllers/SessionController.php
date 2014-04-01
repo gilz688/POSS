@@ -33,12 +33,15 @@ class SessionController extends Controller {
         $old = Input::old("errors");
         
         if(Session::get('cashier_number') == null){
-			$cashier_number = Input::get('cashierNum');
-			if($cashier_number == null){
+			if(Input::get('cashierNum') != null){
+				Session::put('cashier_number',Input::get('cashierNum'));
+				
+			}
+			else{
 				Session::put('cashier_number',1);
 			}
 			
-			Session::put('cashier_number',$cashier_number);
+			
 		}
        
         
