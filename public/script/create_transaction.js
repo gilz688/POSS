@@ -17,9 +17,9 @@ $(document).ready(function(){
 					$('tbody#top').append(
 						'<tr id="' + response.barcode + '" class="bc"><td>' + response.itemName + '</td>'
 						+ '<td>' + response.price + '</td>'
-						+ '<td>' + response.quantity + '</td>'
+						+ '<td><input id="itemQuantity" placeholder="' + response.quantity + '" class="form-control input-md"></input></td>'
 						+ '<td class="amt">' + response.amount + '</td>'
-						+ '<td> <a class="btn btn-danger" id="removeBtn" onClick="deleteItem(' + response.barcode + ')">Remove</a></td>' 
+						+ '<td> <a class="btn btn-danger" id="removeBtn" onClick="deleteItem(' + response.barcode + ')">Remove</a><a class="btn btn-danger" id="updateBtn" >Update</a></td>' 
 						+ '</tr>'
 						
 					);
