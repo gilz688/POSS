@@ -18,7 +18,9 @@ $(document).ready(function(){
 						'<tr id="' + response.barcode + '" class="bc"><td>' + response.itemName + '</td>'
 						+ '<td>' + response.price + '</td>'
 						+ '<td>' + response.quantity + '</td>'
-						+ '<td class="amt">' + response.amount + '</td></tr>'
+						+ '<td class="amt">' + response.amount + '</td>'
+						+ '<td> <a class="btn btn-danger" id="removeBtn" onClick="deleteItem(' + response.barcode + ')">Remove</a></td>' 
+						+ '</tr>'
 						
 					);
 					
@@ -44,6 +46,7 @@ $(document).ready(function(){
 
     } );
     
+   
     
     
     
@@ -109,5 +112,20 @@ $(document).ready(function(){
 
 
 });
+
+function deleteItem(barcode){
+	$.ajax({
+		type : 'post',
+			dataType : 'json',
+			url : siteloc + "/api/transactionItemDelete",			
+			data : {
+				barcode : barcode				
+			},
+			success : function(response){
+				$('#' + barcode).html('');
+				//alert('OK');
+			}
+	});
+}
  
 

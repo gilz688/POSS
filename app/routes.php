@@ -74,4 +74,6 @@ Route::group(["before" => "auth"], function() {
     
     Route::post('/api/transaction','TransactionController@transactionStore');
     Route::post('/api/done','TransactionController@done');
+    
+    Route::post('api/transactionItemDelete', 'TransactionController@deleteTransactionItem');
 });

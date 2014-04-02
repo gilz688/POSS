@@ -118,6 +118,35 @@ public function store(){
 		return Response::json($response);
     }
     
+    public function deleteTransactionItem(){
+		$barcode = Input::get('barcode');
+		$newItems = array();
+		$toberemoved;
+		$transactionItems = (array)Session::get('purchaseditems');
+		foreach($transactionItems as $item){
+			if($item['barcode'] != $barcode){
+				$newItems[] = $item;
+			}
+			else{
+				$toberemoved = $item;
+			}
+		}
+		Session::put('purchaseditems',$newItems);
+		return Response::json( $toberemoved );
+		
+	}
+	
+	public function editTransactionItem(){
+		$barcode = Input::get('barcode');
+		$newQuantity = Input::get('quantity');
+		$transactionItems = (array)Session::get('purchaseditems');
+		foreach($transactionItems as $item){
+			if($item['barcode'] == $barcode){
+				$item['quantity'] = $newQuantity;
+			}
+		}
+	}
+    
     
         public function transactionStore() {
 		
