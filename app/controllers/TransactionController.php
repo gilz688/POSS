@@ -136,16 +136,7 @@ public function store(){
 		
 	}
 	
-	public function editTransactionItem(){
-		$barcode = Input::get('barcode');
-		$newQuantity = Input::get('quantity');
-		$transactionItems = (array)Session::get('purchaseditems');
-		foreach($transactionItems as $item){
-			if($item['barcode'] == $barcode){
-				$item['quantity'] = $newQuantity;
-			}
-		}
-	}
+
     
     
         public function transactionStore() {
@@ -192,20 +183,34 @@ public function store(){
 				]);
 			}
 			
+			
 			$response = array(
-				'quantity' => $quantity,
-				'itemName' => $item['itemName'],
-				'price' => $item['price'],
-				'amount' => $item['price'] * $quantity,
-				'barcode' => $barcode
+					'quantity' => $quantity,
+					'itemName' => $item['itemName'],
+					'price' => $item['price'],
+					'amount' => $item['price'] * $quantity,
+					'barcode' => $barcode
 			);
 			
-			$items = (array)Session::get('purchaseditems');
-			array_push($items,[
-				'barcode' => $barcode,
-				'quantity' => $quantity
-			]);
-			Session::put('purchaseditems',$items);
+			
+			if($this->itemsHas($barcode)){
+				$this->setQuantity($barcode,$quantity);
+				return Response::json([
+					'error'=> "Remove  duplicate item first",
+				]);
+			}
+			else{
+				$items = (array)Session::get('purchaseditems');
+				array_push($items,[
+					'barcode' => $barcode,
+					'quantity' => $quantity
+				]);
+				Session::put('purchaseditems',$items);
+				
+			}
+			
+			
+			
 			
 			return Response::json( $response );
 		}
@@ -228,6 +233,31 @@ public function store(){
             'transaction' => $totalTransaction,
         ]);
     }
+    
+    public function itemsHas($barcode){
+		$items = (array)Session::get('purchaseditems');
+		foreach($items as $item){
+			if($item['barcode'] == $barcode){
+				return true;
+			}
+			else{
+				return false;
+			}
+		}
+	}
+	
+	public function setQuantity($barcode,$quantity){
+		$items = (array)Session::get('purchaseditems');
+		$newItems;
+		foreach($items as $item){
+			if($item['barcode'] == $barcode){
+				$item['quantity'] = $quantity;
+			}
+			$newItems[] = $item;
+			
+		}
+		Session::put('purchaseditems',$newItems);
+	}
 
     public function update($id){
 

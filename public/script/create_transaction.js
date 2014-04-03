@@ -17,9 +17,9 @@ $(document).ready(function(){
 					$('tbody#top').append(
 						'<tr id="' + response.barcode + '" class="bc"><td>' + response.itemName + '</td>'
 						+ '<td>' + response.price + '</td>'
-						+ '<td><input id="itemQuantity" placeholder="' + response.quantity + '" class="form-control input-md"></input></td>'
+						+ '<td>' + response.quantity + '</td>'
 						+ '<td class="amt">' + response.amount + '</td>'
-						+ '<td> <a class="btn btn-danger" id="removeBtn" onClick="deleteItem(' + response.barcode + ')">Remove</a><a class="btn btn-danger" id="updateBtn" >Update</a></td>' 
+						+ '<td> <a class="btn btn-danger" id="removeBtn" onClick="deleteItem(' + response.barcode + ',' + response.amount + ')">Remove</a></td>' 
 						+ '</tr>'
 						
 					);
@@ -113,7 +113,7 @@ $(document).ready(function(){
 
 });
 
-function deleteItem(barcode){
+function deleteItem(barcode,amount){
 	$.ajax({
 		type : 'post',
 			dataType : 'json',
@@ -122,10 +122,14 @@ function deleteItem(barcode){
 				barcode : barcode				
 			},
 			success : function(response){
-				$('#' + barcode).html('');
-				//alert('OK');
+				$('#' + barcode).remove();
+				
+				var total = parseFloat($("#total").html());
+				$('#total').html(total - amount);
 			}
 	});
 }
+
+
  
 
