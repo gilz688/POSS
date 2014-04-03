@@ -14,6 +14,8 @@ $(function() {
             "hideMethod": "fadeOut"
     };
 
+    itemsuggestion();
+
 	$("#add").click(function(){
 		var barcode = $("#barcode").val();
 		var quantity = $("#quantity").val();
@@ -24,8 +26,6 @@ $(function() {
 
 	$("#done").click(done);
 	$("#new").click(newTransaction);
-
-	itemsuggestion();
 });
 
 function addItem(barcode,quantity){
@@ -58,6 +58,8 @@ function addItem(barcode,quantity){
 				}
 			}
 		});
+	var select = $("#barcode")[0].selectize;
+	select.clear();
 }
 
 function deleteItem(barcode){
@@ -143,7 +145,7 @@ function updateTotal(){
 function itemsuggestion(){
 	$('#barcode').selectize({
         valueField: 'barcode',
-        labelField: 'barcode',
+        labelField: 'itemName',
         searchField: ['itemName'],
         maxOptions: 5,
         maxItems: 1,
@@ -151,7 +153,7 @@ function itemsuggestion(){
         create: false,
         render: {
             option: function(item, escape) {
-                return '<div><div>' + escape(item.barcode) + '</div><div>' + escape(item.itemName) + '</div></div>';
+                return '<div><div>' + item.barcode + '</div><div>' + escape(item.itemName) + '</div></div>';
             }
         },
         optgroups: [

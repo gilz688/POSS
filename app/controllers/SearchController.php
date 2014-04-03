@@ -86,14 +86,22 @@ class SearchController extends Controller {
                 ->get(['barcode', 'itemName'])
                 ->toArray();
 
+        /*
+        $items_bc = Item::whereRaw("cast(barcode as text) like '" . $query . "%'")
+                ->orderBy('itemName', 'asc')
+                ->take(5)
+                ->get(['barcode', 'itemName'])
+                ->toArray();
+        */
         // Add type of data to each item of each set of results
         $items = $this->appendValue($items, 'itemName', 'class');
+        $items_bc = [];
 
         // Merge all data into one array
-        //$data = array_merge($items2, $items);
+        $data = array_merge($items_bc, $items);
         
         return Response::json([
-            'data' => $items
+            'data' => $data
         ]);
     }
 

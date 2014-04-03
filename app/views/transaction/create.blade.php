@@ -15,7 +15,7 @@
 		</div>
 
 		<div class="form-group">	 
-			<label class="col-md-4 control-label" for="barcode">Barcode</label>  
+			<label class="col-md-4 control-label" for="barcode">Item</label>  
 			<div class="col-md-8" style="padding-bottom: 10px">
 				<input id="barcode" name="barcode"  placeholder="" class="form-control input-md" />
 			</div>

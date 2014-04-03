@@ -155,7 +155,7 @@ public function store(){
 			
 			if(!is_numeric($barcode)){
 				return Response::json([
-					'error'=> "invalid barcode",
+					'error'=> "invalid item",
 				]);
 			}
 			
@@ -165,7 +165,7 @@ public function store(){
 			
 			if($item == null){
 				return Response::json([
-					'error'=> "invalid barcode",
+					'error'=> "invalid item",
 				]);
 			}
 			
