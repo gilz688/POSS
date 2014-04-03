@@ -133,6 +133,12 @@ function deleteItem(barcode,amount){
 
  
 
+function updateTotal(){
+	var total = 0;
+	$.map( $(".amt"), function(n){ total += parseFloat($(n).html()); });
+	$('#total').html(total);
+}
+
 
 function itemsuggestion(){
 	$('#barcode').selectize({
