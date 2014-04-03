@@ -1,4 +1,9 @@
 {{ HTML::style('dist/css/selectize.bootstrap3.css')}}
+<style>
+nav .selectize-input {
+    width: 300px;
+}
+</style>
 <script type="text/javascript" src='{{ url("dist/js/standalone/selectize.min.js") }}'></script>
 <select id="searchbox" name="q" placeholder="Search items or item categories..." class="form-control"></select>
  

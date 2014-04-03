@@ -35,9 +35,9 @@ class SearchController extends Controller {
             ]);
         }
 
-        $items = Item::where('itemName', 'like', '%' . $query . '%')
+        $items = Item::where('itemName', 'ilike', '%' . $query . '%')
                 ->orderBy('itemName', 'asc')
-                ->take(10)
+                ->take(5)
                 ->get(['barcode', 'itemName'])
                 ->toArray();
 
@@ -48,8 +48,8 @@ class SearchController extends Controller {
             );
         }, $items);
 
-        $categories = ItemCategory::where('name', 'like', '%' . $query . '%')
-                ->take(10)
+        $categories = ItemCategory::where('name', 'ilike', '%' . $query . '%')
+                ->take(5)
                 ->get(['id', 'name'])
                 ->toArray();
 
@@ -71,6 +71,29 @@ class SearchController extends Controller {
 
         return Response::json([
                     'data' => $data
+        ]);
+    }
+
+    public function item(){
+        $query = Input::get('q', '');
+        
+        if (!$query && $query == '')
+            return Response::json([], 400);
+
+        $items = Item::where('itemName', 'ilike', '%' . $query . '%')
+                ->orderBy('itemName', 'asc')
+                ->take(5)
+                ->get(['barcode', 'itemName'])
+                ->toArray();
+
+        // Add type of data to each item of each set of results
+        $items = $this->appendValue($items, 'itemName', 'class');
+
+        // Merge all data into one array
+        //$data = array_merge($items2, $items);
+        
+        return Response::json([
+            'data' => $items
         ]);
     }
 

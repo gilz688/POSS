@@ -24,6 +24,8 @@ $(function() {
 
 	$("#done").click(done);
 	$("#new").click(newTransaction);
+
+	itemsuggestion();
 });
 
 function addItem(barcode,quantity){
@@ -109,4 +111,46 @@ function newTransaction(){
 	$('#received').html('');
 	$('#change').html('');
 	$('#error').html('');
+}
+
+function itemsuggestion(){
+	$('#barcode').selectize({
+        valueField: 'barcode',
+        labelField: 'barcode',
+        searchField: ['itemName'],
+        maxOptions: 5,
+        maxItems: 1,
+        options: [],
+        create: false,
+        render: {
+            option: function(item, escape) {
+                return '<div><div>' + escape(item.barcode) + '</div><div>' + escape(item.itemName) + '</div></div>';
+            }
+        },
+        optgroups: [
+            {value: 'item', label: 'Items'}
+        ],
+        optgroupField: 'class',
+        optgroupOrder: ['itemName'],
+        load: function(query, callback) {
+            if (!query.length) return callback();
+            $.ajax({
+                url: siteloc + '/api/item',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    q: query
+                },
+                error: function() {
+                    callback();
+                },
+                success: function(res) {
+                    callback(res.data);
+                }
+            });
+        },
+        onChange: function(){
+            
+        }
+    });
 }

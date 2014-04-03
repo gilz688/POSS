@@ -1,6 +1,9 @@
 @extends("layout")
 @section("content")
 
+{{ HTML::style('dist/css/selectize.bootstrap3.css')}}
+<script type="text/javascript" src='{{ url("dist/js/standalone/selectize.min.js") }}'></script>
+
 <link rel="stylesheet" type="text/css" href="../css/transaction.css"/>
 <link href="../toastr/toastr.css" rel="stylesheet"/>
 <script src="../toastr/toastr.min.js"></script>
