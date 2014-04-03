@@ -50,9 +50,7 @@ function addItem(barcode,quantity){
 						+ '</tr>'
 					);
 					
-					var total = 0;
-					$.map( $(".amt"), function(n){ total += parseFloat($(n).html()); });
-					$('#total').html(total);
+				updateTotal();
 				}
 				else{
 					toastr.clear();
@@ -72,6 +70,7 @@ function deleteItem(barcode){
 			},
 			success : function(response){
 				$('#' + barcode).html('');
+				updateTotal();
 			}
 	});
 }
@@ -111,6 +110,12 @@ function newTransaction(){
 	$('#received').html('');
 	$('#change').html('');
 	$('#error').html('');
+}
+
+function updateTotal(){
+	var total = 0;
+	$.map( $(".amt"), function(n){ total += parseFloat($(n).html()); });
+	$('#total').html(total);
 }
 
 function itemsuggestion(){
