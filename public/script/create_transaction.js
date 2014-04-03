@@ -1,27 +1,51 @@
-$(document).ready(function(){
- 
-    $( '#add' ).click( function(event) {       
-        $.ajax({
+$(function() {
+	toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "positionClass": "toast-bottom-right",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+    };
+
+	$("#add").click(function(){
+		var barcode = $("#barcode").val();
+		var quantity = $("#quantity").val();
+		$("#barcode").val("");
+		$("#quantity").val("");
+		addItem(barcode,quantity);
+	});
+
+	$("#done").click(done);
+	$("#new").click(newTransaction);
+});
+
+function addItem(barcode,quantity){
+	$.ajax({
 			type: 'post',
 			dataType: 'json',
 			url: siteloc + "/api/transaction",
 			data:{
-				//cashier_number : $( '#cashier_number' ).val(),
-				barcode : $( '#barcode' ).val(),
-				quantity : $( '#quantity' ).val(),
-				
+				barcode : barcode,
+				quantity : quantity,	
 			},
 			
 			success: function(response){
 				if(response.error == null){
 					$('tbody#top').append(
-						'<tr id="' + response.barcode + '" class="bc"><td>' + response.itemName + '</td>'
-						+ '<td>' + response.price + '</td>'
+						'<tr id="' + response.barcode + '" class="bc">'
+						+ '<td>' + response.itemName + '</td>'
 						+ '<td><input id="itemQuantity" placeholder="' + response.quantity + '" class="form-control input-md"></input></td>'
+						+ '<td>' + response.price + '</td>'
 						+ '<td class="amt">' + response.amount + '</td>'
-						+ '<td> <a class="btn btn-danger" id="removeBtn" onClick="deleteItem(' + response.barcode + ')">Remove</a><a class="btn btn-danger" id="updateBtn" >Update</a></td>' 
+						+ '<td><a class="btn btn-small btn-danger" onclick="deleteItem(' + response.barcode + ')"><i class="glyphicon glyphicon-trash"></i>DELETE</a></td>'
 						+ '</tr>'
-						
 					);
 					
 					var total = 0;
@@ -29,89 +53,12 @@ $(document).ready(function(){
 					$('#total').html(total);
 				}
 				else{
-					$('#error').html('<div class="alert alert-danger col-sm-12">' + response.error + '</div>');
+					toastr.clear();
+					toastr.error(response.error);
 				}
-				//$(".amt")
-				
-			}
-			
-		}); 
-		
-		//$( '#cashier_number' ).val('');
-		$( '#barcode' ).val('');
-		$( '#quantity' ).val('');
-		$('#error').html('');
-		
-		event.preventDefault();
-
-    } );
-    
-   
-    
-    
-    
-    $( '#done' ).click( function(event) {
-    	
-    	//var items = Session::get('purchaseditems');
-    	//alert(items);
-    	//var items = $.map( $(".bc"), function(n){ return $(n).attr("id"); });
-		//var cashier_number = $
-		//var itemsJson = JSON.stringify(items);
-		//alert('clicked!');
-		
-		$.ajax({
-			type : 'post',
-			dataType : 'json',
-			url : siteloc + "/api/done",			
-			data : {
-				//ccashier_number : $('#cashier_number').val(),
-				payment : $("#payment").val(),
-				total : parseFloat($("#total").html()),
-				change : payment - total,
-				
-			},
-			success : function(response){
-				//window.location.replace(siteloc + "/transactions");
-				//if(data.resp == 'OK'){
-				if(response.error != null){
-					$('#error').html('<div class="alert alert-danger col-sm-12">' + response.error + '</div>');
-				}
-				else{
-					//alert('ok');
-					var total = parseFloat($("#total").html());
-					var payment_view = $("#payment").val();
-					$("#received").html(payment_view);
-					$("#change").html(payment_view-total);
-					$('#payment').val('');
-				}
-				//}
-				//else{
-				//	alert('hahay');
-				//}
-				
 			}
 		});
-
-		$('#error').html('');
-		
-		event.preventDefault();
-	});
-
-	$("#new").click(function(){
-		$('tbody#top').html("");
-		$('#total').html('');
-		$('#received').html('');
-		$('#change').html('');
-		$('#error').html('');
-		
-		
-	});
-		
-		
-		
-
-
-});
+}
 
 function deleteItem(barcode){
 	$.ajax({
@@ -123,9 +70,43 @@ function deleteItem(barcode){
 			},
 			success : function(response){
 				$('#' + barcode).html('');
-				//alert('OK');
 			}
 	});
 }
- 
 
+function done(){
+		$.ajax({
+			type : 'post',
+			dataType : 'json',
+			url : siteloc + "/api/done",			
+			data : {
+				payment : $("#payment").val(),
+				total : parseFloat($("#total").html()),
+				change : payment - total,
+				
+			},
+			success : function(response){
+				if(response.error != null){
+					$('#error').html('<div class="alert alert-danger col-sm-12">' + response.error + '</div>');
+				}
+				else{
+					var total = parseFloat($("#total").html());
+					var payment_view = $("#payment").val();
+					$("#received").html(payment_view);
+					$("#change").html(payment_view-total);
+					$('#payment').val('');
+				}
+
+			}
+		});
+
+		$('#error').html('');
+}
+
+function newTransaction(){
+	$('tbody#top').html("");
+	$('#total').html('');
+	$('#received').html('');
+	$('#change').html('');
+	$('#error').html('');
+}

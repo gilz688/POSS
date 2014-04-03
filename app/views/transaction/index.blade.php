@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 
-<link href="toastr.css" rel="stylesheet"/>
+<link href="../toastr/toastr.css" rel="stylesheet"/>
 
     @if(Auth::user()->role=="clerk")
         <a id="transactionView" class="btn btn-small btn-danger" href="{{ URL::route('transactions.create') }} "><i class="glyphicon glyphicon-plus"></i>CREATE TRANSACTION</a>
