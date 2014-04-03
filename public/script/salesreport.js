@@ -48,7 +48,7 @@ function salesreport() {
         error: function(xhr, status, error) {
             $('#loader').hide();
             var err = eval("(" + xhr.responseText + ")");
-            alert("Invalid Date Range!");
+            alert(status);
         }
     });
     return false;

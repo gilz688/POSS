@@ -374,7 +374,7 @@
   border-radius: 3px;
 }
 .form-control.selectize-control {
-  width: 300px;
+  width: initial;
   padding: 0;
   height: auto;
   border: none;

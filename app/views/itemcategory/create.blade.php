@@ -1,6 +1,8 @@
 @extends("layout")
 @section("content")
 
+
+
 {{ Form::open([
         "url"        => "itemcategories",
         "autocomplete" => "off",

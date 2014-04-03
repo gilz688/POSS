@@ -1,15 +1,41 @@
-$(document).ready(function(){
- 
-    $( '#add' ).click( function(event) {       
-        $.ajax({
+$(function() {
+	toastr.options = {
+            "closeButton": false,
+            "debug": false,
+            "positionClass": "toast-bottom-right",
+            "onclick": null,
+            "showDuration": "300",
+            "hideDuration": "1000",
+            "timeOut": "2000",
+            "extendedTimeOut": "1000",
+            "showEasing": "swing",
+            "hideEasing": "linear",
+            "showMethod": "fadeIn",
+            "hideMethod": "fadeOut"
+    };
+
+	$("#add").click(function(){
+		var barcode = $("#barcode").val();
+		var quantity = $("#quantity").val();
+		$("#barcode").val("");
+		$("#quantity").val("");
+		addItem(barcode,quantity);
+	});
+
+	$("#done").click(done);
+	$("#new").click(newTransaction);
+
+	itemsuggestion();
+});
+
+function addItem(barcode,quantity){
+	$.ajax({
 			type: 'post',
 			dataType: 'json',
 			url: siteloc + "/api/transaction",
 			data:{
-				//cashier_number : $( '#cashier_number' ).val(),
-				barcode : $( '#barcode' ).val(),
-				quantity : $( '#quantity' ).val(),
-				
+				barcode : barcode,
+				quantity : quantity,	
 			},
 			
 			success: function(response){
@@ -20,98 +46,72 @@ $(document).ready(function(){
 						+ '<td>' + response.quantity + '</td>'
 						+ '<td class="amt">' + response.amount + '</td>'
 						+ '<td> <a class="btn btn-danger" id="removeBtn" onClick="deleteItem(' + response.barcode + ',' + response.amount + ')">Remove</a></td>' 
+
 						+ '</tr>'
-						
 					);
 					
-					var total = 0;
-					$.map( $(".amt"), function(n){ total += parseFloat($(n).html()); });
-					$('#total').html(total);
+				updateTotal();
 				}
 				else{
-					$('#error').html('<div class="alert alert-danger col-sm-12">' + response.error + '</div>');
+					toastr.clear();
+					toastr.error(response.error);
 				}
-				//$(".amt")
-				
 			}
-			
-		}); 
-		
-		//$( '#cashier_number' ).val('');
-		$( '#barcode' ).val('');
-		$( '#quantity' ).val('');
-		$('#error').html('');
-		
-		event.preventDefault();
+		});
+}
 
-    } );
-    
-   
-    
-    
-    
-    $( '#done' ).click( function(event) {
-    	
-    	//var items = Session::get('purchaseditems');
-    	//alert(items);
-    	//var items = $.map( $(".bc"), function(n){ return $(n).attr("id"); });
-		//var cashier_number = $
-		//var itemsJson = JSON.stringify(items);
-		//alert('clicked!');
-		
+function deleteItem(barcode){
+	$.ajax({
+		type : 'post',
+			dataType : 'json',
+			url : siteloc + "/api/transactionItemDelete",			
+			data : {
+				barcode : barcode				
+			},
+			success : function(response){
+				$('#' + barcode).html('');
+				updateTotal();
+			}
+	});
+}
+
+function done(){
 		$.ajax({
 			type : 'post',
 			dataType : 'json',
 			url : siteloc + "/api/done",			
 			data : {
-				//ccashier_number : $('#cashier_number').val(),
 				payment : $("#payment").val(),
 				total : parseFloat($("#total").html()),
 				change : payment - total,
 				
 			},
 			success : function(response){
-				//window.location.replace(siteloc + "/transactions");
-				//if(data.resp == 'OK'){
 				if(response.error != null){
 					$('#error').html('<div class="alert alert-danger col-sm-12">' + response.error + '</div>');
 				}
 				else{
-					//alert('ok');
 					var total = parseFloat($("#total").html());
 					var payment_view = $("#payment").val();
 					$("#received").html(payment_view);
 					$("#change").html(payment_view-total);
 					$('#payment').val('');
 				}
-				//}
-				//else{
-				//	alert('hahay');
-				//}
-				
+
 			}
 		});
 
 		$('#error').html('');
-		
-		event.preventDefault();
-	});
+}
 
-	$("#new").click(function(){
-		$('tbody#top').html("");
-		$('#total').html('');
-		$('#received').html('');
-		$('#change').html('');
-		$('#error').html('');
-		
-		
-	});
-		
-		
-		
+function newTransaction(){
+	$('tbody#top').html("");
+	$('#total').html('');
+	$('#received').html('');
+	$('#change').html('');
+	$('#error').html('');
+}
 
-
-});
 
 function deleteItem(barcode,amount){
 	$.ajax({
@@ -133,3 +133,45 @@ function deleteItem(barcode,amount){
 
  
 
+
+function itemsuggestion(){
+	$('#barcode').selectize({
+        valueField: 'barcode',
+        labelField: 'barcode',
+        searchField: ['itemName'],
+        maxOptions: 5,
+        maxItems: 1,
+        options: [],
+        create: false,
+        render: {
+            option: function(item, escape) {
+                return '<div><div>' + escape(item.barcode) + '</div><div>' + escape(item.itemName) + '</div></div>';
+            }
+        },
+        optgroups: [
+            {value: 'item', label: 'Items'}
+        ],
+        optgroupField: 'class',
+        optgroupOrder: ['itemName'],
+        load: function(query, callback) {
+            if (!query.length) return callback();
+            $.ajax({
+                url: siteloc + '/api/item',
+                type: 'GET',
+                dataType: 'json',
+                data: {
+                    q: query
+                },
+                error: function() {
+                    callback();
+                },
+                success: function(res) {
+                    callback(res.data);
+                }
+            });
+        },
+        onChange: function(){
+            
+        }
+    });
+}

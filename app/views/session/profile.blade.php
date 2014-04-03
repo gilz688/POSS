@@ -3,6 +3,7 @@
 
 {{HTML::style('css/profile.css')}}
 
+<!--
 <script>
 
   	$(function() {
@@ -10,7 +11,7 @@
     $( "#grapharea" ).disableSelection();
   	});
 
- </script>
+ </script>-->
 
 <div class="row">
 

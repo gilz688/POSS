@@ -78,7 +78,7 @@ class UserController extends Controller implements ResourceController {
                 'role' => Input::get('role')
             ];
             $this->users->add($userData);
-        } catch (UnauthorizedException $ex) {
+        } catch (Exception $ex) {
             echo $ex->getMessage();
             return Redirect::route('users.create');
         }

@@ -38,12 +38,11 @@
     }
 
     function generatetable(users,options){
-        var tableheader = "<tr><th>Username</th><th>Role</th><th>Lastname</th><th>Firstname</th><th>Middlename</th><th>Options</th></tr>";
+        var tableheader = "<tr><th>Username</th><th>Role</th><th>Options</th></tr>";
         var tablebody = "";
         for(var i=0;i<users.length;i++){
             tablebody = tablebody + "<tr><td>" + users[i].username +"</td><td>"+ users[i].role + "</td>";
-            tablebody = tablebody + "<td>" + users[i].lastname +"</td><td>"+ users[i].firstname + "</td>";
-            tablebody = tablebody + "<td>" + users[i].middlename +"</td><td>"+ options[i] +"</td></tr>";
+            tablebody = tablebody + "<td>" + options[i] +"</td></tr>";
         }
         return '<table class="table table-hover" ><thead>' + tableheader + '</thead><tbody>' + tablebody + '</tbody></table>';
     }
